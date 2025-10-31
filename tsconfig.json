@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "baseUrl": "src", // src를 기준으로 잡음
-    "paths": {
-      "@/*": ["*"] // @/ → src/
-    },
+    "target": "ES2022",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": { "@/*": ["*"] },
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": ["src"]
 }
