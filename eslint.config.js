@@ -43,10 +43,10 @@ export default tseslint.config(
       sourceType: 'module', // ES6 모듈 시스템 사용
       parserOptions: {
         ecmaFeatures: {
-          jsx: true, // JSX 문법 지원
+          jsx: true,
         },
-        project: ['./tsconfig.app.json', './tsconfig.node.json'],
-        tsconfigRootDir: import.meta.dirname,
+        project: ['./tsconfig.app.json'],
+        tsconfigRootDir: process.cwd(),
       },
       // 사용 가능한 글로벌 변수들 정의
       globals: {
