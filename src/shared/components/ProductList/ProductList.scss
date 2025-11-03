@@ -1,0 +1,6 @@
+@use '@/foundations/mixins' as *;
+
+.container {
+  width: 100%;
+  @include flex-grid(18px)
+}
