@@ -6,19 +6,18 @@
   width: 249px;
   height: 490px;
   cursor: pointer;
-}
 
-img {
-  @include img;
-  height: 320px;
-  background-color: #888;
+    img {
+      @include img;
+      height: 320px;
+    }
 }
 
 .info {
   @include flex(column, 4px);
 }
 
-.businessName {
+.business-name {
   font-size: $font-sm;
   color: $color-subtext;
 }
@@ -32,13 +31,10 @@ img {
   font-weight: $font-bold;
 }
 
-.flex {
-  @include flex;
-}
-
 .rate {
   color: $color-discount;
   font-weight: $font-bold;
+  padding-right: 4px;
 }
 
 .final {

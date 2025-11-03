@@ -5,6 +5,12 @@
   src: url('@/assets/fonts/PretendardVariable.woff2') format('woff2');
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Pretendard Variable", sans-serif;
   font-size: $font-base;
@@ -23,10 +29,6 @@ button {
   border: none;
   background: none;
   font-family: inherit;
-}
-
-h1, h2, h3, h4 {
-  margin: 0;
 }
 
 .none {
