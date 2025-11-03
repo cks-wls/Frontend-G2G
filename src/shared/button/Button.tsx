@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from '@shared/components/Button/Button.module.scss';
 
 // 리터럴 유니언 타입 (규칙 준수)
