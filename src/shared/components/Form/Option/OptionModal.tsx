@@ -1,6 +1,6 @@
 import '@/shared/components/Form/Option/OptionModalStyle.scss'
 import bottomArrow from '@/assets/icons/bottomArrow.svg'
-import optionConstants from '@/constants/optionConstants.tsx'
+import optionConstants from '@/constants/optionConstants'
 import { useState } from 'react'
 
 export type ModalSize = 'md' | 'lg'
@@ -28,8 +28,10 @@ function OptionModal({ size }: OptionModalProps) {
         <div className={modalOpen ? `modal-box ${size}` : ''}>
           {/* modalOpen일 때만 modal이 나타나게 설정 */}
           {modalOpen &&
-            optionConstants.map((value) => (
-              <button className={`modal-items ${size}`}>{value}</button>
+            optionConstants.map((value: string) => (
+              <button className={`modal-items ${size}`} key={value}>
+                {value}
+              </button>
             ))}
         </div>
       </div>
