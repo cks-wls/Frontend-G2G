@@ -2,7 +2,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 .option-box {
   position: relative;
 }
@@ -18,17 +17,18 @@
 .modal-box {
   display: flex;
   position: absolute;
-  width: 100%;
   flex-direction: column;
   border: 1px solid #e9eaeb;
   border-radius: 8px;
   box-shadow: 0px 4px 6px -2px #0a0d1208;
   box-shadow: 0px 12px 16px -4px #0a0d1214;
-  gap: 5px;
+  gap: 20px;
+  padding: 10px 0;
 }
 .modal-items {
   background-color: #ffffff;
   text-align: left;
+  margin-left: 14px;
 }
 //md 사이즈
 .option-btn.md {
@@ -36,6 +36,7 @@
   height: 44px;
   padding: 10px 14px;
   border: 1px solid #d5d7da;
+  border-radius: 8px;
   box-shadow: 0px 1px 2px 0px #0a0d120d;
   text-align: left;
   background-color: #ffffff;
@@ -44,10 +45,11 @@
 }
 .option-icon.md {
   top: 14px;
-  right: 14px;
+  left: 286px;
 }
 .modal-box.md {
   top: 52px;
+  width: 320px;
 }
 .modal-items.md {
   font-size: 16px;
@@ -58,6 +60,7 @@
   height: 32px;
   padding: 4px 16px;
   border: 1px solid #eeeeee;
+  border-radius: 6px;
   box-shadow: 0px 1px 2px 0px #0a0d120d;
   text-align: left;
   background-color: #ffffff;
@@ -66,10 +69,11 @@
 }
 .option-icon.lg {
   top: 8px;
-  right: 8px;
+  left: 372px;
 }
 .modal-box.lg {
   top: 40px;
+  width: 400px;
 }
 .modal-items.lg {
   font-size: 12px;
