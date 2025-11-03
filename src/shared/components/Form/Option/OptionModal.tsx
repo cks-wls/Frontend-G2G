@@ -1,6 +1,6 @@
 import '@/shared/components/Form/Option/OptionModalStyle.scss'
 import bottomArrow from '@/assets/icons/bottomArrow.svg'
-import optionConstants from '@/constants/optionConstants'
+import optionConstants from '@/constants/optionConstants.tsx'
 import { useState } from 'react'
 
 export type ModalSize = 'md' | 'lg'
