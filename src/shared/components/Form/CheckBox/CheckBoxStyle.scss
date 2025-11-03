@@ -1,0 +1,12 @@
+.check-box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+}
+
+.check-box:checked {
+  accent-color: #4e6813;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+}
