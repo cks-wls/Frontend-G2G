@@ -1,0 +1,25 @@
+@use '@/foundations/_variables' as *;
+
+@font-face {
+  font-family: "Pretendard Variable";
+  src: url('@/assets/fonts/PretendardVariable.woff2') format('woff2');
+}
+
+body {
+  font-family: "Pretendard Variable", sans-serif;
+  font-size: $font-base;
+  color: $color-text;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
