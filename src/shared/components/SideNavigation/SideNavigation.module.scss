@@ -1,0 +1,40 @@
+@use '@/foundations/variables' as *;
+@use '@/foundations/mixins' as *;
+
+.user-nav {
+  width: 290px;
+  background-color: $color-white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 24px;
+}
+
+.seller-nav {
+  @extend .user-nav;
+  width: 240px;
+}
+
+.user-name {
+  border-bottom: 2px solid $color-border;
+  padding-bottom: 20px;
+  font-size: $font-xl;
+  font-weight: $font-semibold;
+}
+
+.menu-list {
+  padding-top: 16px;
+  font-weight: 500;
+}
+
+.menu-item {
+  display: flex;
+  gap: 8px;
+  padding: 16px 0;
+  cursor: pointer;
+}
+
+.menu-item-active {
+  @extend .menu-item;
+  color: $color-main; 
+}
+
