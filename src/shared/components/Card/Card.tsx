@@ -19,7 +19,7 @@ const Card = ({ product }: CardProps) => {
       </Link>
       <div className='wish-container'>
         <WishButton
-          wishType="card"
+          buttonType="card"
           onClick={() => setLike((prev) => !prev)}
           isWish={like}
         ></WishButton>
