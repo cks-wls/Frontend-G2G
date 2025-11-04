@@ -1,0 +1,17 @@
+@use '@/foundations/variables' as *;
+@use '@/foundations/mixins' as *;
+
+.card {
+  width: 64px;
+  height: 64px;
+  color: $color-main;
+
+}
+
+.detail {
+  width: 64px;
+  height: 64px;
+  color: $color-main;
+  border: 1px solid $color-border;
+  border-radius: 6px;
+}
