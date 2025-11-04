@@ -5,10 +5,17 @@
   src: url('@/assets/fonts/PretendardVariable.woff2') format('woff2');
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Pretendard Variable", sans-serif;
   font-size: $font-base;
   color: $color-text;
+  line-height: 1.4;
   margin: 0;
 }
 
@@ -22,4 +29,8 @@ button {
   border: none;
   background: none;
   font-family: inherit;
+}
+
+.none {
+  display: none;
 }

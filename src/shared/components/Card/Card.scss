@@ -1,0 +1,53 @@
+@use '@/foundations/variables' as *;
+@use '@/foundations/mixins' as *;
+
+.card {
+  @include flex(column, 16px);
+  width: 249px;
+  height: 490px;
+  cursor: pointer;
+
+    img {
+      @include img;
+      height: 320px;
+    }
+}
+
+.info {
+  @include flex(column, 4px);
+}
+
+.business-name {
+  font-size: $font-sm;
+  color: $color-subtext;
+}
+
+.name {
+  font-weight: $font-medium;
+  color: $color-text;
+}
+
+.price {
+  font-weight: $font-bold;
+}
+
+.rate {
+  color: $color-discount;
+  font-weight: $font-bold;
+  padding-right: 4px;
+}
+
+.final {
+  font-size: $font-sm;
+  color: $color-subtext;
+  text-decoration: line-through;
+}
+
+.review {
+  font-size: $font-xs;
+  color: $color-subtext;
+  @include flex;
+}
+
+
+
