@@ -14,7 +14,7 @@ function PageNation({
 }: PageNationProps) {
   const location = useLocation()
   const totalPages = Math.ceil(totalItems / itemCountPerPage) // 총 페이지 수 계산
-  const [start, setStart] = useState(1) // 시작페이지
+  const start = 1 // 시작 페이지 번호
   const [currentPage, setCurrentPage] = useState(1) // 현재페이지
   //   페이지 변경시 active되는 페이지 실시간으로 반영
   useEffect(() => {
