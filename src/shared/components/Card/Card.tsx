@@ -1,5 +1,7 @@
+import WishButton from '@/shared/components/WishButton'
 import type { Product } from '@/types/product'
 import { MessageSquareText } from 'lucide-react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Card.scss'
 
@@ -8,11 +10,20 @@ interface CardProps {
 }
 
 const Card = ({ product }: CardProps) => {
+  const [like, setLike] = useState(false)
+
   return (
     <li className="card">
       <Link to={`/product/${product.id}`}>
         <img src={product.img_url} alt={product.name} />
       </Link>
+      <div className='wish-container'>
+        <WishButton
+          buttonType="card"
+          onClick={() => setLike((prev) => !prev)}
+          isWish={like}
+        ></WishButton>
+      </div>
       <Link to={`/product/${product.id}`}>
         <div className="info">
           <span className="business-name">[{product.business_name}]</span>
