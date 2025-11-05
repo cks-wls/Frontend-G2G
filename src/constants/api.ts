@@ -3,6 +3,6 @@ export const API_BASE_URL = import.meta.env.VITE_API_
 
 export const API_PATHS = {
   PRODUCTS: {
-    LIST: '/api/products/'
+    LIST: '/api/products'
   }
 } as const
