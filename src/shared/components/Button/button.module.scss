@@ -65,15 +65,15 @@
 
 .variant_text {
   background-color: transparent;
-  color: #4c6a36;
-  border: none;
+  color: #888888;
+  border: 1px solid #eeeeee;
 
   &:hover:not(:disabled) {
-    text-decoration: underline;
+    background-color: #f8f8f8;
   }
 
   &:active:not(:disabled) {
-    color: #3e5b2d;
+    background-color: #ebebeb;
   }
 }
 
@@ -95,4 +95,3 @@
   align-items: center;
   justify-content: center;
 }
-
