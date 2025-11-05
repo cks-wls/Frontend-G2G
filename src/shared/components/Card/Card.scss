@@ -6,11 +6,29 @@
   width: 249px;
   height: 490px;
   cursor: pointer;
-
-    img {
-      @include img;
-      height: 320px;
+  position: relative;
+  
+  img {
+    @include img;
+    height: 320px;
+  }
+    
+    &:hover {
+      img {
+        transform: scale(1.02);
+        transition: 0.3s ease-in-out
+      }
+      .wish-container {
+        display: block;
+      }
     }
+}
+
+.wish-container {
+  position: absolute;
+  top: 53%; 
+  left: 75%;
+  display: none
 }
 
 .info {
