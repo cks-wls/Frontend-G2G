@@ -1,4 +1,13 @@
+@use '@/foundations/_mixins.scss' as mixins;
+.modal-overlay {
+  @include mixins.flex-center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 2px 6px 0px #0000001a;
+}
 .review-modal {
+  background-color: #ffffff;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -7,6 +16,7 @@
   height: 628px;
   border-radius: 16px;
   gap: 20px;
+  z-index: 10;
 }
 .title {
   width: 100%;
