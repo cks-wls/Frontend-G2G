@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.search-box {
+  position: relative;
+}
+.input {
+  width: 400px;
+  height: 46px;
+  padding: 12px 215px 12px 16px;
+  border: 1px solid #4e6813;
+  border-radius: 6px;
+}
+.search-icon {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+}
