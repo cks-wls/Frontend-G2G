@@ -1,0 +1,87 @@
+.footer {
+  width: 100%;
+  padding: 40px 80px;
+  background-color: #fff;
+  color: #666;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.section_left {
+  flex: 1.5;
+
+  .logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #537528;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    gap: 20px;
+
+    li a {
+      text-decoration: none;
+      color: #666;
+      font-size: 13px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .company_info {
+    p {
+      margin: 4px 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #777;
+    }
+
+    a {
+      color: #777;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.section_right {
+  flex: 1;
+  text-align: left;
+
+  .center_title {
+    font-weight: 700;
+    font-size: 15px;
+    color: #888;
+    margin-bottom: 6px;
+  }
+
+  .center_phone {
+    font-size: 20px;
+    font-weight: 700;
+    color: #777;
+    margin-bottom: 8px;
+  }
+
+  .center_info {
+    font-size: 13px;
+    color: #999;
+    margin: 2px 0;
+  }
+}
