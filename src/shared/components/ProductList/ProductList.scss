@@ -1,0 +1,6 @@
+@use '@/foundations/mixins' as *;
+
+.product-list {
+  width: 100%;
+  @include flex-grid(18px)
+}
