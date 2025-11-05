@@ -11,7 +11,7 @@ interface ModalProps {
   placeHolder: string
 }
 function ReviewModal({
-  title = '휴기 작성하기',
+  title = '후기 작성하기',
   subTitle = '상품에 만족하셨나요?',
   btnCompleteLabel = '등록',
   placeHolder = '어떤 점이 좋았나요?',
