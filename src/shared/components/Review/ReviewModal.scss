@@ -1,0 +1,81 @@
+.review-modal {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 656px;
+  height: 628px;
+  border-radius: 16px;
+  gap: 20px;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  color: #333333;
+  font-weight: 700;
+  font-size: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.recommend {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+.sub-title {
+  font-weight: 600;
+  font-size: 18px;
+}
+.recommend-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #888888;
+}
+.recommend-btn {
+  display: flex;
+  margin-top: 8px;
+  align-items: center;
+  gap: 4px;
+  width: 120px;
+  height: 44px;
+  padding: 0px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #fafafa;
+}
+.recommend-btn.click {
+  background-color: #4e6813;
+}
+.btn-context {
+  font-weight: 600;
+  font-size: 16px;
+  color: #888888;
+}
+.btn-context.click {
+  color: #ffffff;
+}
+.review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.review-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333333;
+}
+.review-content-textarea {
+  width: 576px;
+  height: 180px;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 6px;
+  border: 1px solid #eeeeee;
+  resize: none;
+}
+.btn-box {
+  display: flex;
+  gap: 8px;
+}
