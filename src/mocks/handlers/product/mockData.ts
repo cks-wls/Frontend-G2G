@@ -1,6 +1,6 @@
 import type { Product } from '@/types/product';
 
-export const MOCK_PRODUCTS: Product[] = [
+export const products: Product[] = [
   {
     id: 1,
     img_url: 'https://via.placeholder.com/300?text=Product+1',
