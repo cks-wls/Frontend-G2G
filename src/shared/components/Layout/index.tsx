@@ -1,19 +1,14 @@
-import type { ReactNode } from "react"
-import SideNavigation from "@/shared/components/SideNavigation"
+import { Outlet } from 'react-router-dom'
+import styles from './Layout.module.scss'
 
-interface LayoutProps {
-  children: ReactNode
-}
-
-const Layout = ({children}: LayoutProps) => {
-
-  const userRole = null
+const Layout = () => {
 
   return (
-    <div>
+    <div className={styles.container}>
       <header />
-      <SideNavigation userName={"d"} navType={userRole}/>
-      <main>{children}</main>
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       <footer />
     </div>
   )

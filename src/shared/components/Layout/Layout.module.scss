@@ -1,0 +1,10 @@
+@use '@/foundations/mixins' as *;
+
+.container {
+  @include flex(column, 50px);
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
