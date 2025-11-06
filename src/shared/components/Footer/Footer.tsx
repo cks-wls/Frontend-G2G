@@ -1,8 +1,10 @@
+import Logo from '@/assets/images/logo.png'
+import { ROUTE_PATHS } from '@/constants/route'
 import { Link } from 'react-router-dom'
 import styles from './Footer.module.scss'
 
 export interface FooterProps {
-  companyName?: string
+  logoSrc?: string
   address?: string
   email?: string
   phone?: string
@@ -15,7 +17,7 @@ export interface FooterProps {
 }
 
 const Footer = ({
-  companyName = 'G2G',
+  logoSrc = Logo,
   address = '경기도 김포시 사우중로 87 201호',
   email = 'kdigital@nextrunners.co.kr',
   phone = '070-4099-8219',
@@ -34,16 +36,14 @@ const Footer = ({
     ],
   },
 }: FooterProps) => {
-
   return (
     <footer className={styles.footer}>
-      {/* 왼쪽 영역: 로고 + 링크 + 회사 정보 */}
-      <div className={styles.section_left}>
-        <Link to="/" className={styles.logo}>
-          {companyName}
-        </Link>
+      <div className={styles.wrap}>
+        <div className={styles.section_left}>
+          <Link to={ROUTE_PATHS.HOME}>
+            <img src={logoSrc} alt="G2G 로고" />
+          </Link>
 
-        {links.length > 0 && (
           <ul className={styles.links}>
             {links.map((link) => (
               <li key={`${link.label}_${link.href}`}>
@@ -51,19 +51,17 @@ const Footer = ({
               </li>
             ))}
           </ul>
-        )}
 
-        <div className={styles.company_info}>
-          <p>{businessInfo}</p>
-          <p>
-            주소 : {address} | 이메일 : <a href={`mailto:${email}`}>{email}</a>{' '}
-            | 전화 : <a href={`tel:${phone}`}>{phone}</a>
-          </p>
+          <div className={styles.company_info}>
+            <p>{businessInfo}</p>
+            <p>
+              주소 : {address} | 이메일 :{' '}
+              <a href={`mailto:${email}`}>{email}</a> | 전화 :{' '}
+              <a href={`tel:${phone}`}>{phone}</a>
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* 오른쪽 영역: 고객센터 */}
-      {customerCenter && (
         <div className={styles.section_right}>
           <strong className={styles.center_title}>고객센터</strong>
           <p className={styles.center_phone}>{customerCenter.phone}</p>
@@ -73,7 +71,7 @@ const Footer = ({
             </p>
           ))}
         </div>
-      )}
+      </div>
     </footer>
   )
 }
