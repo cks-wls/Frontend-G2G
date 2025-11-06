@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './SideNavigation.module.scss'
-import type { UserRole } from '@/types/user'
+import type { UserType } from '@/types/user'
 
 const USER_SIDE_MENU = [
   { label: '주문 내역', path: '', icon: <LucideDollarSign /> },
@@ -27,20 +27,20 @@ const SELLER_SIDE_MENU = [
 
 interface SideNavigationProps {
   userName: string
-  navType?: UserRole
+  navType?: UserType
 }
 
-const SideNavigation = ({ userName, navType='consumer' }: SideNavigationProps) => {
+const SideNavigation = ({ userName, navType= 'CONSUMER' }: SideNavigationProps) => {
 
   const location = useLocation()
   const currentPath = location.pathname
 
-  const menuList = navType === 'consumer' ? USER_SIDE_MENU : SELLER_SIDE_MENU
+  const menuList = navType === 'CONSUMER' ? USER_SIDE_MENU : SELLER_SIDE_MENU
 
   return (
     <nav className={styles[`${navType}-nav`]}>
       <div className={styles['user-name']}>
-        <p>{userName}{navType === 'consumer' ? '님' : ''}</p>
+        <p>{userName}{navType === 'CONSUMER' ? '님' : ''}</p>
       </div>
       <ul className={styles['menu-list']}>
         {menuList.map((menu) => (

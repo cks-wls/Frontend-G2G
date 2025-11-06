@@ -1,2 +1,2 @@
-export type UserRole = 'consumer' | 'seller' | null
+export type UserType = 'GUEST' | 'CONSUMER' | 'SELLER'
 

@@ -1,7 +1,7 @@
 @use '@/foundations/variables' as *;
 @use '@/foundations/mixins' as *;
 
-.user-nav {
+.CONSUMER-nav {
   width: 290px;
   background-color: $color-white;
   border-radius: 6px;
@@ -9,8 +9,8 @@
   padding: 40px 24px;
 }
 
-.seller-nav {
-  @extend .user-nav;
+.SELLER-nav {
+  @extend .CONSUMER-nav;
   width: 240px;
 }
 
