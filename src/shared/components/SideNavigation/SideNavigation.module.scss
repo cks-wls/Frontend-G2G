@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-.menu-item-active {
+.menu-item:hover, .menu-item-active {
   @extend .menu-item;
   color: $color-main; 
 }

@@ -22,7 +22,7 @@ export interface HeaderProps {
   onSearch?: (keyword: string) => void // 검색 이벤트
 }
 
-const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
+const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
   return (
     <header className={cn(userType === 'SELLER' ? 'seller' : 'header')}>
       {/* 로그인 후 (판매자 유형) */}
