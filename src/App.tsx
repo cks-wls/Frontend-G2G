@@ -1,19 +1,13 @@
-import { productApi } from '@/api/productApi'
-import type { Product } from '@/types/product'
-import { useEffect, useState } from 'react'
-import ProductList from './shared/components/ProductList/ProductList'
+import { useProducts } from '@/hooks/queries/product/useProducts'
+import ProductList from '@/shared/components/ProductList/ProductList'
 
 function App() {
-  const [data, setData] = useState<Product[]>([])
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const products = await productApi.getAll()
-      setData(products)
-    }
-    fetchProducts()
-  }, [])
+  const { data: productsData, isLoading, error } = useProducts()
 
-  return <ProductList data={data} />
+  if (isLoading) return <div>로딩 중...</div>
+  if (error) return <div>에러 발생!</div>
+
+  return <ProductList data={productsData} />
 }
 
 export default App
