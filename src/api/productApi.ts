@@ -4,7 +4,7 @@ import type { Product } from "@/types/product"
 
 export const productApi = {
   getAll: async (): Promise<Product[]> => {
-    const {data} = await axiosInstance.get(API_PATHS.PRODUCTS.LIST)
+    const {data} = await axiosInstance.get(API_PATHS.PRODUCTS.GET_ALL)
     return data
   }
 }
