@@ -7,9 +7,7 @@ const MypageLayout = () => {
     <div className={styles['consumer-bg']}>
       <div className={styles['consumer-main']}>
         <SideNavigation userName="" />
-        <div className={styles.main}>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
     </div>
   )

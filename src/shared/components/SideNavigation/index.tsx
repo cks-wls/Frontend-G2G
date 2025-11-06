@@ -14,7 +14,7 @@ const USER_SIDE_MENU = [
   { label: '주문 내역', path: '', icon: <LucideDollarSign /> },
   { label: '찜한 상품', path: '', icon: <LucideHeart /> },
   { label: '상품 후기', path: '', icon: <LucideSquarePen /> },
-  { label: '회원 정보 관리', path: '', icon: <LucideUserRoundCheck /> },
+  { label: '회원정보 관리', path: '', icon: <LucideUserRoundCheck /> },
 ]
 
 const SELLER_SIDE_MENU = [

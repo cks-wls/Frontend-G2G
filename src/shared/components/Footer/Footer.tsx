@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
-import styles from '@shared/components/Footer/Footer.module.scss';
+import { Link } from 'react-router-dom'
+import styles from './Footer.module.scss'
 
 export interface FooterProps {
-  companyName?: string;
-  address?: string;
-  email?: string;
-  phone?: string;
-  businessInfo?: string;
-  links?: { label: string; href: string }[];
+  companyName?: string
+  address?: string
+  email?: string
+  phone?: string
+  businessInfo?: string
+  links?: { label: string; href: string }[]
   customerCenter?: {
-    phone: string;
-    hours: string[];
-  };
+    phone: string
+    hours: string[]
+  }
 }
 
 const Footer = ({
@@ -27,9 +27,14 @@ const Footer = ({
   ],
   customerCenter = {
     phone: '070-4099-8219',
-    hours: ['평일 09:00 - 18:00', '점심시간 12:00 - 13:00', '토·일·공휴일 휴무'],
+    hours: [
+      '평일 09:00 - 18:00',
+      '점심시간 12:00 - 13:00',
+      '토·일·공휴일 휴무',
+    ],
   },
 }: FooterProps) => {
+
   return (
     <footer className={styles.footer}>
       {/* 왼쪽 영역: 로고 + 링크 + 회사 정보 */}
@@ -51,8 +56,8 @@ const Footer = ({
         <div className={styles.company_info}>
           <p>{businessInfo}</p>
           <p>
-            주소 : {address} | 이메일 : <a href={`mailto:${email}`}>{email}</a> | 전화 :{' '}
-            <a href={`tel:${phone}`}>{phone}</a>
+            주소 : {address} | 이메일 : <a href={`mailto:${email}`}>{email}</a>{' '}
+            | 전화 : <a href={`tel:${phone}`}>{phone}</a>
           </p>
         </div>
       </div>
@@ -70,7 +75,7 @@ const Footer = ({
         </div>
       )}
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
