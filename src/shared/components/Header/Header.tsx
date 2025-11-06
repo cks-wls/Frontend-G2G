@@ -10,7 +10,6 @@ import {
   LucideShoppingCart,
   LucideSprout,
 } from 'lucide-react'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.scss'
 
@@ -23,19 +22,7 @@ export interface HeaderProps {
   onSearch?: (keyword: string) => void // 검색 이벤트
 }
 
-const Header = ({
-  userType = 'GUEST',
-  userName,
-  onLogout,
-  onSearch,
-}: HeaderProps) => {
-  const [search, setSearch] = useState('')
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (onSearch && search.trim()) onSearch(search.trim())
-  }
-
+const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
   return (
     <header className={cn(userType === 'SELLER' ? 'seller' : 'header')}>
       {/* 로그인 후 (판매자 유형) */}
