@@ -1,10 +1,33 @@
 @use '@/foundations/mixins' as *;
+@use '@/foundations/variables' as *;
 
 .container {
-  @include flex(column, 50px);
-  min-height: 100vh;
+  @include flex(column, 0);
 }
 
 .main {
-  flex-grow: 1;
+  @include flex-center;
 }
+
+.consumer-bg {
+  flex-grow: 1 ;
+  @include flex-center;
+  background-color: $color-border;
+  padding: 50px 0;
+}
+
+.consumer-main {
+  @include flex(row, 20px);
+  width: 1050px;
+}
+
+.seller-bg {
+  width: 100%;
+  background-color: $color-border;
+}
+
+.seller-main {
+  @include flex(row, 20px);
+  padding: 50px;
+}
+
