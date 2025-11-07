@@ -11,6 +11,9 @@
   top: 0;
   left: 0;
   z-index: $z-header;
+  transition:
+    box-shadow 0.3s ease-in-out,
+    height 0.3s ease-in-out;
 }
 
 .seller {
@@ -26,6 +29,7 @@
   top: 0;
   left: 0;
   z-index: $z-header;
+  transition: box-shadow 0.3s ease-in-out;
 
   .logout {
     @include flex-center;
@@ -38,6 +42,12 @@
   width: 1050px;
   display: flex;
   flex-direction: column;
+
+  .header.compact & {
+    width: 100%;
+    max-width: 1050px;
+    margin: 0 auto;
+  }
 }
 
 .top {
@@ -47,6 +57,18 @@
   height: 36px;
   font-size: 14px;
   font-weight: 500;
+  transition:
+    opacity 0.3s ease-in-out,
+    height 0.3s ease-in-out,
+    margin 0.3s ease-in-out;
+
+  /* 콤팩트 모드에서 top 영역 숨김 */
+  &.hidden {
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
 
   .login a {
     padding: 0 12px;
@@ -79,6 +101,26 @@
   align-items: center;
   justify-content: space-between;
   height: 64px;
+  transition:
+    height 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+
+  /* 콤팩트 모드에서 middle 높이 감소 및 nav와 통합 */
+  .header.compact & {
+    display: none;
+  }
+
+  .logo {
+    transition:
+      opacity 0.3s ease-in-out,
+      width 0.3s ease-in-out;
+
+    &.hidden {
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+    }
+  }
 }
 
 .middle-right {
@@ -111,36 +153,55 @@
   align-items: center;
   font-weight: 500;
   position: relative;
+  transition: height 0.3s ease-in-out;
+}
 
-  .nav-left {
-    @include flex(row, 120px);
-    height: 100%;
+.nav-left {
+  @include flex(row, 100px);
+  height: 100%;
 
-    button {
+  button {
+    @include flex-center;
+    gap: 8px;
+    width: 120px;
+
+    &:hover {
+      color: $color-main;
+    }
+  }
+
+  .header.compact & {
+    gap: 0;
+  }
+
+  .gnb {
+    display: flex;
+
+    li a {
+      width: 160px;
       @include flex-center;
-      gap: 8px;
+      height: 100%;
 
       &:hover {
         color: $color-main;
       }
-    }
-
-    .gnb {
-      display: flex;
-
-      li a {
-        width: 160px;
-        @include flex-center;
-        height: 100%;
-
-        &:hover {
-          color: $color-main;
-        }
+      .header.compact & {
+        width: 100px;
       }
     }
   }
+}
 
-  .nav-right a {
+.nav-right {
+  transition:
+    opacity 0.3s ease-in-out,
+    width 0.3s ease-in-out;
+
+  &.hidden {
+    display: none;
+  }
+
+  a {
     @include flex-center;
     width: 88px;
     height: 32px;
@@ -148,6 +209,29 @@
     color: $color-main;
     border: 1px solid $color-border;
     border-radius: 30px;
+  }
+}
+
+.nav-compact-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: $color-text;
+  }
+
+  a {
+    width: 36px;
+    height: 36px;
+    @include flex-center;
+
+    & :hover {
+      color: $color-main;
+    }
   }
 }
 
@@ -172,6 +256,11 @@
       background-color: $color-bg;
     }
   }
+
+  /* 콤팩트 모드에서도 위치 유지 */
+  .nav.compact & {
+    top: 56px;
+  }
 }
 
 .category:hover + .category-wrap {
@@ -194,15 +283,15 @@
   box-shadow: $shadow-x;
   display: none;
 
-    li {
-      padding: 8px;
-      text-align: center;
-      border-radius: 4px;
+  li {
+    padding: 8px;
+    text-align: center;
+    border-radius: 4px;
 
-      &:hover {
-        background-color: $color-bg;
-      }
+    &:hover {
+      background-color: $color-bg;
     }
+  }
 }
 
 .user:hover .dropdown {

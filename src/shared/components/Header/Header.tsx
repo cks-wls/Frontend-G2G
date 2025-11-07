@@ -10,6 +10,7 @@ import {
   LucideShoppingCart,
   LucideSprout,
 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Header.module.scss'
 
@@ -22,9 +23,29 @@ export interface HeaderProps {
   onSearch?: (keyword: string) => void // 검색 이벤트
 }
 
-const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
+const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
+  const [isCompact, setIsCompact] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      // 스크롤 시 콤팩트 모드 활성화
+      setIsCompact(currentScrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   return (
-    <header className={cn(userType === 'SELLER' ? 'seller' : 'header')}>
+    <header
+      className={cn('header', {
+        compact: isCompact,
+        seller: userType === 'SELLER',
+      })}
+    >
       {/* 로그인 후 (판매자 유형) */}
       {userType === 'SELLER' ? (
         <>
@@ -39,7 +60,7 @@ const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
       ) : (
         // 로그인 전
         <div className={styles.container}>
-          <div className={styles.top}>
+          <div className={cn('top', { hidden: isCompact })}>
             {userType === 'GUEST' && (
               <div className={styles.login}>
                 <Link to={ROUTE_PATHS.LOGIN}>로그인</Link>
@@ -71,7 +92,7 @@ const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
             )}
           </div>
           <div className={styles.middle}>
-            <h1 className={styles.logo}>
+            <h1 className={cn('logo', { hidden: isCompact })}>
               <Link to={ROUTE_PATHS.HOME}>
                 <img src={Logo} alt="G2G 로고" />
               </Link>
@@ -88,7 +109,7 @@ const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
               </div>
             </div>
           </div>
-          <nav className={styles.nav}>
+          <nav className={cn('nav', { compact: isCompact })}>
             <div className={styles['nav-left']}>
               <button type="button" className={styles['category']}>
                 <LucideMenu />
@@ -114,7 +135,20 @@ const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
                 </li>
               </ul>
             </div>
-            <div className={styles['nav-right']}>
+            {isCompact && (
+              <div className={styles['nav-compact-right']}>
+                <Search />
+                <div>
+                  <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                    <LucideHeart />
+                  </Link>
+                  <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                    <LucideShoppingCart />
+                  </Link>
+                </div>
+              </div>
+            )}
+            <div className={cn('nav-right', { hidden: isCompact })}>
               <Link to={ROUTE_PATHS.LOGIN}>입점신청</Link>
             </div>
           </nav>
