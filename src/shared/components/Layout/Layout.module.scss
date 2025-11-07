@@ -10,13 +10,14 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
+  padding-top: 156px;
 }
 
 .consumer-bg {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  padding: 206px 0 50px;
+  padding: 50px 0;
   align-items: start;
   background-color: $color-border;
 }
@@ -24,6 +25,7 @@
 .consumer-main {
   @include flex(row, 20px);
   width: $container-width;
+  align-items: start;
 }
 
 .seller-bg {
@@ -34,4 +36,5 @@
 .seller-main {
   @include flex(row, 20px);
   padding: 100px 50px 50px;
+  align-items: start;
 }
