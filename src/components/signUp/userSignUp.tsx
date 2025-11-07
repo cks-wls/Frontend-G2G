@@ -9,6 +9,9 @@ function UserSignUp() {
     email: '',
     password: '',
     repeatPassword: '',
+    userName: '',
+    userAddress: '',
+    userNumber: '',
   })
   // 유저정보 관리
   const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
@@ -18,6 +21,15 @@ function UserSignUp() {
     undefined
   )
   const [isRepeatPasswordError, setIsRepeatPasswordError] = useState<
+    boolean | undefined
+  >(undefined)
+  const [isUserNameError, setIsUserNameError] = useState<boolean | undefined>(
+    undefined
+  )
+  const [isUserAddressError, setIsUserAddressError] = useState<
+    boolean | undefined
+  >(undefined)
+  const [isUserNumberError, setIsUserNumberError] = useState<
     boolean | undefined
   >(undefined)
 
@@ -44,6 +56,21 @@ function UserSignUp() {
       const isValidRepeatPassword = userInformation.password === value
       setIsRepeatPasswordError(!isValidRepeatPassword)
     }
+    if (name === 'userName') {
+      // 사용자이름 유효성 검사
+      const isValidUserName = /^.{1,}$/.test(value)
+      setIsUserNameError(!isValidUserName)
+    }
+    if (name === 'userAddress') {
+      // 사용자주소 유효성 검사
+      const isValidUserAddress = /^.{1,}$/.test(value)
+      setIsUserAddressError(!isValidUserAddress)
+    }
+    // 사용자번호 유효성 검사
+    if (name === 'userNumber') {
+      const isValidUserNumber = /^\d{11}$/.test(value)
+      setIsUserNumberError(!isValidUserNumber)
+    }
   }
 
   // 버튼 활성화 유무
@@ -51,11 +78,21 @@ function UserSignUp() {
     if (
       isEmailError === undefined ||
       isPasswordError === undefined ||
-      isRepeatPasswordError === undefined
+      isRepeatPasswordError === undefined ||
+      isUserNameError === undefined ||
+      isUserAddressError === undefined ||
+      isUserNumberError === undefined
     ) {
       return false
     }
-    return !isEmailError && !isPasswordError && !isRepeatPasswordError
+    return (
+      !isEmailError &&
+      !isPasswordError &&
+      !isRepeatPasswordError &&
+      !isUserNameError &&
+      !isUserAddressError &&
+      !isUserNumberError
+    )
   }
 
   return (
@@ -98,6 +135,48 @@ function UserSignUp() {
         >
           비밀번호가 일치하지 않아요 확인해주세요
         </div>
+        <div className="user-password-form-box">
+          <div className="user-form-title">이름</div>
+          <ProducerNumberForm
+            placeHolder="사용자의 이름을 입력해주세요"
+            name="userName"
+            onChange={handleChange}
+            isError={isUserNameError}
+          />
+          <div
+            className={`user-error ${isUserNameError ? '' : 'display-none'}`}
+          >
+            이름은 1자 이상 입력해주세요
+          </div>
+        </div>
+        <div className="user-password-form-box">
+          <div className="user-form-title">주소</div>
+          <ProducerNumberForm
+            placeHolder="사용자의 주소를 입력해주세요"
+            name="userAddress"
+            onChange={handleChange}
+            isError={isUserAddressError}
+          />
+          <div
+            className={`user-error ${isUserAddressError ? '' : 'display-none'}`}
+          >
+            주소는 1자 이상 입력해주세요
+          </div>
+        </div>
+        <div className="user-password-form-box">
+          <div className="user-form-title">전화번호</div>
+          <ProducerNumberForm
+            placeHolder="-를 제외한 전화번호 11자리를 입력해주세요"
+            name="userNumber"
+            onChange={handleChange}
+            isError={isUserNumberError}
+          />
+          <div
+            className={`user-error ${isUserNumberError ? '' : 'display-none'}`}
+          >
+            -를 제외한 전화번호 11자리를 입력해주세요
+          </div>
+        </div>
       </div>
       <Button
         size="lg"
@@ -106,7 +185,7 @@ function UserSignUp() {
         type="submit"
         isActive={isActive()}
         className="user-signup-btn"
-        // submit시 Post
+        // submit시 Post!!!!!
       />
     </div>
   )
