@@ -3,7 +3,7 @@ import styles from '@/shared/components/Button/Button.module.scss'
 
 // 리터럴 유니언 타입 (규칙 준수)
 export type ButtonSize = 'sm' | 'md' | 'lg'
-export type ButtonVariant = 'filled' | 'outline' | 'text'
+export type ButtonVariant = 'filled' | 'outline' | 'text' | 'gray'
 export type IconPosition = 'left' | 'right'
 
 // 객체 타입 정의 (규칙 준수)
@@ -11,6 +11,7 @@ export interface ButtonProps {
   label: string
   onClick?: () => void
   isDisabled?: boolean
+  isActive?: boolean
   size?: ButtonSize
   type?: 'button' | 'submit' | 'reset'
   variant?: ButtonVariant
@@ -26,6 +27,7 @@ const Button = ({
   label,
   onClick,
   isDisabled = false,
+  isActive = false,
   size = 'md',
   type = 'button',
   variant = 'filled',
@@ -48,6 +50,7 @@ const Button = ({
     styles[`variant_${variant}`],
     isFullWidth ? styles.full_width : '',
     isDisabled ? styles.disabled : '',
+    isActive ? styles.active : '',
     className,
   ]
     .filter(Boolean)
