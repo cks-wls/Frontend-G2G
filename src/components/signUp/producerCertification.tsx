@@ -34,7 +34,7 @@ function ProducerCertification() {
         className="producer-certification-btn"
         onClick={() => {
           if (isActive()) {
-            navigate('/login/producer', { state: { businessNumber } })
+            navigate('/sign-up/producer', { state: { businessNumber } })
             // 사업자 회원가입페이지에 사업자 번호 넘겨주기
           }
         }}
