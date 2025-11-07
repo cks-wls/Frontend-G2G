@@ -7,4 +7,9 @@
   &.error-form {
     border: 1px solid #ff402b;
   }
+  &.disabled {
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+    color: #333333;
+  }
 }
