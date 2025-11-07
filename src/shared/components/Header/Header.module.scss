@@ -7,7 +7,7 @@
   justify-content: center;
   background-color: #fff;
   box-shadow: $shadow-header;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: $z-header;
@@ -194,15 +194,15 @@
   box-shadow: $shadow-x;
   display: none;
 
-    li {
-      padding: 8px;
-      text-align: center;
-      border-radius: 4px;
+  li {
+    padding: 8px;
+    text-align: center;
+    border-radius: 4px;
 
-      &:hover {
-        background-color: $color-bg;
-      }
+    &:hover {
+      background-color: $color-bg;
     }
+  }
 }
 
 .user:hover .dropdown {
