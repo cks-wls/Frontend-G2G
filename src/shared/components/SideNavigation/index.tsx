@@ -8,12 +8,13 @@ import {
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './SideNavigation.module.scss'
+import type { UserType } from '@/types/user'
 
 const USER_SIDE_MENU = [
   { label: '주문 내역', path: '', icon: <LucideDollarSign /> },
   { label: '찜한 상품', path: '', icon: <LucideHeart /> },
   { label: '상품 후기', path: '', icon: <LucideSquarePen /> },
-  { label: '회원 정보 관리', path: '', icon: <LucideUserRoundCheck /> },
+  { label: '회원정보 관리', path: '', icon: <LucideUserRoundCheck /> },
 ]
 
 const SELLER_SIDE_MENU = [
@@ -24,24 +25,22 @@ const SELLER_SIDE_MENU = [
   { label: '업체 정보 관리', path: '', icon: <LucideFileText /> },
 ]
 
-type variants = 'user' | 'seller'
-
 interface SideNavigationProps {
   userName: string
-  type?: variants
+  navType?: UserType
 }
 
-const SideNavigation = ({ userName, type='user' }: SideNavigationProps) => {
+const SideNavigation = ({ userName, navType= 'CONSUMER' }: SideNavigationProps) => {
 
   const location = useLocation()
   const currentPath = location.pathname
 
-  const menuList = type === 'user' ? USER_SIDE_MENU : SELLER_SIDE_MENU
+  const menuList = navType === 'CONSUMER' ? USER_SIDE_MENU : SELLER_SIDE_MENU
 
   return (
-    <nav className={styles[`${type}-nav`]}>
+    <nav className={styles[`${navType}-nav`]}>
       <div className={styles['user-name']}>
-        <p>{userName}{type === 'user' ? '님' : ''}</p>
+        <p>{userName}{navType === 'CONSUMER' ? '님' : ''}</p>
       </div>
       <ul className={styles['menu-list']}>
         {menuList.map((menu) => (

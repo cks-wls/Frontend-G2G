@@ -1,120 +1,127 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import styles from '@shared/components/Header/Header.module.scss';
+import Logo from '@/assets/images/logo.png'
+import { ROUTE_PATHS } from '@/constants/route'
+import Search from '@/shared/components/Form/Search/Search'
+import type { UserType } from '@/types/user'
+import classNames from 'classnames/bind'
+import {
+  LucideHeart,
+  LucideLogOut,
+  LucideMenu,
+  LucideShoppingCart,
+  LucideSprout,
+} from 'lucide-react'
+import { Link } from 'react-router-dom'
+import styles from './Header.module.scss'
+
+const cn = classNames.bind(styles)
 
 export interface HeaderProps {
-  logoSrc?: string; // 로고 이미지 경로
-  title?: string; // 헤더 제목
-  userType?: 'guest' | 'consumer' | 'seller'; // 사용자 구분
-  userName?: string; // 로그인된 사용자명
-  onLogoClick?: () => void; // 로고 클릭 시 동작
-  onLogout?: () => void; // 로그아웃 버튼 클릭 시
-  onSearch?: (keyword: string) => void; // 검색 이벤트
-  className?: string;
-  style?: React.CSSProperties;
+  userType?: UserType // 사용자 구분
+  userName?: string // 로그인된 사용자명
+  onLogout?: () => void // 로그아웃 버튼 클릭 시
+  onSearch?: (keyword: string) => void // 검색 이벤트
 }
 
-const Header = ({
-  logoSrc,
-  title,
-  userType = 'guest',
-  userName,
-  onLogoClick,
-  onLogout,
-  onSearch,
-  className = '',
-  style,
-}: HeaderProps) => {
-  const [search, setSearch] = useState('');
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const handleLogoClick = () => {
-    if (onLogoClick) onLogoClick();
-    else window.location.href = '/'; // 기본: 메인 이동
-  };
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSearch && search.trim()) onSearch(search.trim());
-  };
-
-  const classNames = [
-    styles.header,
-    className,
-  ].join(' ');
-
+const Header = ({ userType = 'CONSUMER', userName, onLogout }: HeaderProps) => {
   return (
-    <header className={classNames} style={style}>
-      {/* 로고 */}
-      <div className={styles.left}>
-        <div className={styles.logo} onClick={handleLogoClick}>
-          {logoSrc ? <img src={logoSrc} alt="로고" /> : 'LOGO'}
+    <header className={cn(userType === 'SELLER' ? 'seller' : 'header')}>
+      {/* 로그인 후 (판매자 유형) */}
+      {userType === 'SELLER' ? (
+        <>
+          <h1>
+            <img src={Logo} alt="G2G 로고" />
+          </h1>
+          <button className={styles.logout} type="button" onClick={onLogout}>
+            로그아웃
+            <LucideLogOut size={16} />
+          </button>
+        </>
+      ) : (
+        // 로그인 전
+        <div className={styles.container}>
+          <div className={styles.top}>
+            {userType === 'GUEST' && (
+              <div className={styles.login}>
+                <Link to={ROUTE_PATHS.LOGIN}>로그인</Link>
+                <Link to={ROUTE_PATHS.LOGIN}>회원가입</Link>
+              </div>
+            )}
+
+            {/* 로그인 후 (소비자 유형) */}
+            {userType === 'CONSUMER' && (
+              <Link to={ROUTE_PATHS.MYPAGE.INDEX} className={styles.user}>
+                <span>{userName ?? '사용자'} 님</span>
+                <div className={styles['user-icon']}>
+                  <LucideSprout size={20} />
+                </div>
+                <ul className={styles.dropdown}>
+                  <li>
+                    <Link to={ROUTE_PATHS.MYPAGE.INDEX}>주문내역</Link>
+                  </li>
+                  <li>
+                    <Link to={ROUTE_PATHS.MYPAGE.INDEX}>회원정보</Link>
+                  </li>
+                  <li>
+                    <button type="button" onClick={onLogout}>
+                      로그아웃
+                    </button>
+                  </li>
+                </ul>
+              </Link>
+            )}
+          </div>
+          <div className={styles.middle}>
+            <h1 className={styles.logo}>
+              <Link to={ROUTE_PATHS.HOME}>
+                <img src={Logo} alt="G2G 로고" />
+              </Link>
+            </h1>
+            <div className={styles['middle-right']}>
+              <Search />
+              <div>
+                <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                  <LucideHeart />
+                </Link>
+                <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                  <LucideShoppingCart />
+                </Link>
+              </div>
+            </div>
+          </div>
+          <nav className={styles.nav}>
+            <div className={styles['nav-left']}>
+              <button type="button" className={styles['category']}>
+                <LucideMenu />
+                카테고리
+              </button>
+              <ul className={styles['category-wrap']}>
+                <li>
+                  <Link to="">카테고리 1</Link>
+                </li>
+                <li>
+                  <Link to="">카테고리 2</Link>
+                </li>
+              </ul>
+              <ul className={styles.gnb}>
+                <li>
+                  <Link to="">신상품</Link>
+                </li>
+                <li>
+                  <Link to="">베스트</Link>
+                </li>
+                <li>
+                  <Link to="">알뜰상품</Link>
+                </li>
+              </ul>
+            </div>
+            <div className={styles['nav-right']}>
+              <Link to={ROUTE_PATHS.LOGIN}>입점신청</Link>
+            </div>
+          </nav>
         </div>
-        {title && <h1 className={styles.title}>{title}</h1>}
-      </div>
-
-      {/* 중앙: 검색창 */}
-      <form className={styles.searchBox} onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          placeholder="검색어를 입력하세요"
-        />
-        <button type="submit">검색</button>
-      </form>
-
-      {/* 오른쪽: 사용자 메뉴 */}
-      <div className={styles.right}>
-        {userType === 'guest' && (
-          <>
-            <Link to="/login" className={styles.link}>
-              로그인
-            </Link>
-            <Link to="/signup" className={styles.link}>
-              회원가입
-            </Link>
-          </>
-        )}
-
-        {userType === 'consumer' && (
-          <div
-            className={styles.userMenu}
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <span className={styles.userName}>{userName ?? '사용자'}님 ▼</span>
-            {dropdownOpen && (
-              <div className={styles.dropdown}>
-                <Link to="/orders">주문내역</Link>
-                <Link to="/profile">회원정보</Link>
-                <button onClick={onLogout}>로그아웃</button>
-              </div>
-            )}
-          </div>
-        )}
-
-        {userType === 'seller' && (
-          <div
-            className={styles.userMenu}
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <span className={styles.userName}>
-              {userName ?? '판매자'}님 ▼
-            </span>
-            {dropdownOpen && (
-              <div className={styles.dropdown}>
-                <Link to="/seller/dashboard">판매자센터</Link>
-                <Link to="/seller/products">상품관리</Link>
-                <button onClick={onLogout}>로그아웃</button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      )}
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
