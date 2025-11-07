@@ -1,0 +1,39 @@
+.user-signup-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-signup-title {
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333333;
+}
+.user-email-form-box {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-form-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333333;
+}
+.user-password-form-box {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.user-signup-btn {
+  margin-top: 40px;
+}
+.user-error {
+  font-weight: 400;
+  font-size: 12px;
+  color: #ff402b;
+  &.display-none {
+    display: none;
+  }
+}
