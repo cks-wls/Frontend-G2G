@@ -6,15 +6,17 @@ import { useLocation } from 'react-router-dom'
 function ProducerSignUp() {
   const location = useLocation()
   const businessNumber = location.state.businessNumber //string 형태로 넘어옴
+  // api 명세서랑 변수 이름 맞춤
   const [producerInformation, setProducerInformation] = useState({
     email: '',
     password: '',
     repeatPassword: '',
-    companyName: '',
-    businessNumber: { businessNumber },
-    ceoName: '',
-    companyNumber: '',
-    companyAddress: '',
+    business_name: '',
+    business_address: '',
+    businessNumber: { businessNumber }, //사업자 등록번호 api 명세서에 등록되면 변수 이름 수정하기
+    username: '',
+    phone_num: '',
+    business_number: '',
   })
   const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
     undefined
@@ -28,7 +30,10 @@ function ProducerSignUp() {
   const [isCompanyNameError, setIsCompanyNameError] = useState<
     boolean | undefined
   >(undefined)
-  const [isCeoNameError, setIsCeoNameError] = useState<boolean | undefined>(
+  const [isUserNameError, setIsUserNameError] = useState<boolean | undefined>(
+    undefined
+  )
+  const [isPhoneNumError, setIsPhoneNumError] = useState<boolean | undefined>(
     undefined
   )
   const [isCompanyNumberError, setIsCompanyNumberError] = useState<
@@ -59,23 +64,28 @@ function ProducerSignUp() {
       const isValidRepeatPassword = producerInformation.password === value
       setIsRepeatPasswordError(!isValidRepeatPassword)
     }
-    if (name === 'companyName') {
+    if (name === 'business_name') {
       // 회사이름 유효성 검사
       const isValidCompanyName = /^.{1,}$/.test(value)
       setIsCompanyNameError(!isValidCompanyName)
     }
-    // 대표이름 유효성 검사
-    if (name === 'ceoName') {
-      const isValidCeoName = /^.{1,}$/.test(value)
-      setIsCeoNameError(!isValidCeoName)
+    // 사용자 이름 유효성 검사
+    if (name === 'username') {
+      const isValidUserName = /^.{1,}$/.test(value)
+      setIsUserNameError(!isValidUserName)
+    }
+    // 사용자 번호 유효성 검사
+    if (name === 'phone_num') {
+      const isValidPhoneNum = /^\d{11}$/.test(value)
+      setIsPhoneNumError(!isValidPhoneNum)
     }
     // 대표번호 유효성 검사
-    if (name === 'companyNumber') {
+    if (name === 'business_number') {
       const isValidCompanyNumber = /^\d{10}$/.test(value)
       setIsCompanyNumberError(!isValidCompanyNumber)
     }
     // 주소 유효성 검사
-    if (name === 'companyAddress') {
+    if (name === 'business_address') {
       const isValidCompanyAddress = /^.{1,}$/.test(value)
       setIsCompanyAddressError(!isValidCompanyAddress)
     }
@@ -86,8 +96,9 @@ function ProducerSignUp() {
       isEmailError === undefined ||
       isPasswordError === undefined ||
       isRepeatPasswordError === undefined ||
+      isUserNameError == undefined ||
+      isPhoneNumError == undefined ||
       isCompanyNameError === undefined ||
-      isCeoNameError === undefined ||
       isCompanyNumberError === undefined ||
       isCompanyAddressError === undefined
     ) {
@@ -97,8 +108,9 @@ function ProducerSignUp() {
       !isEmailError &&
       !isPasswordError &&
       !isRepeatPasswordError &&
+      !isUserNameError &&
+      !isPhoneNumError &&
       !isCompanyNameError &&
-      !isCeoNameError &&
       !isCompanyNumberError &&
       !isCompanyAddressError
     )
@@ -145,9 +157,33 @@ function ProducerSignUp() {
         </div>
       </div>
       <div className="producer-form-box">
+        <div className="producer-form-title">이름</div>
+        <ProducerNumberForm
+          name="username"
+          placeHolder="사용자의 이름을 입력해주세요"
+          onChange={handleChange}
+          isError={isUserNameError}
+        />
+        <div className={`user-error ${isUserNameError ? '' : 'display-none'}`}>
+          이름은 1자 이상 입력해주세요
+        </div>
+      </div>
+      <div className="producer-form-box">
+        <div className="producer-form-title">전화번호</div>
+        <ProducerNumberForm
+          name="phone_num"
+          placeHolder="-를 제외한 전화번호 11자리를 입력해주세요"
+          onChange={handleChange}
+          isError={isPhoneNumError}
+        />
+        <div className={`user-error ${isPhoneNumError ? '' : 'display-none'}`}>
+          -를 제외한 전화번호 11자리를 입력해주세요
+        </div>
+      </div>
+      <div className="producer-form-box">
         <div className="producer-form-title">업체명</div>
         <ProducerNumberForm
-          name="companyName"
+          name="business_name"
           placeHolder="상호명을 입력해주세요"
           onChange={handleChange}
           isError={isCompanyNameError}
@@ -168,21 +204,9 @@ function ProducerSignUp() {
         />
       </div>
       <div className="producer-form-box">
-        <div className="producer-form-title">대표자명</div>
-        <ProducerNumberForm
-          name="ceoName"
-          placeHolder="대표자명을 입력해주세요"
-          onChange={handleChange}
-          isError={isCeoNameError}
-        />
-        <div className={`user-error ${isCeoNameError ? '' : 'display-none'}`}>
-          대표자명은 1자 이상 입력해주세요
-        </div>
-      </div>
-      <div className="producer-form-box">
         <div className="producer-form-title">대표 전화번호</div>
         <ProducerNumberForm
-          name="companyNumber"
+          name="business_number"
           placeHolder="-를 제외한 전화번호 10자리를 입력해주세요"
           onChange={handleChange}
           isError={isCompanyNumberError}
@@ -196,7 +220,7 @@ function ProducerSignUp() {
       <div className="producer-form-box">
         <div className="producer-form-title">사업장 주소</div>
         <ProducerNumberForm
-          name="companyAddress"
+          name="business_address"
           placeHolder="사업장 주소를 입력해주세요"
           onChange={handleChange}
           isError={isCompanyAddressError}

@@ -9,9 +9,9 @@ function UserSignUp() {
     email: '',
     password: '',
     repeatPassword: '',
-    userName: '',
-    userAddress: '',
-    userNumber: '',
+    username: '',
+    user_address: '',
+    phone_num: '',
   })
   // 유저정보 관리
   const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
@@ -56,18 +56,18 @@ function UserSignUp() {
       const isValidRepeatPassword = userInformation.password === value
       setIsRepeatPasswordError(!isValidRepeatPassword)
     }
-    if (name === 'userName') {
+    if (name === 'username') {
       // 사용자이름 유효성 검사
       const isValidUserName = /^.{1,}$/.test(value)
       setIsUserNameError(!isValidUserName)
     }
-    if (name === 'userAddress') {
+    if (name === 'user_address') {
       // 사용자주소 유효성 검사
       const isValidUserAddress = /^.{1,}$/.test(value)
       setIsUserAddressError(!isValidUserAddress)
     }
     // 사용자번호 유효성 검사
-    if (name === 'userNumber') {
+    if (name === 'phone_num') {
       const isValidUserNumber = /^\d{11}$/.test(value)
       setIsUserNumberError(!isValidUserNumber)
     }
@@ -139,7 +139,7 @@ function UserSignUp() {
           <div className="user-form-title">이름</div>
           <ProducerNumberForm
             placeHolder="사용자의 이름을 입력해주세요"
-            name="userName"
+            name="username"
             onChange={handleChange}
             isError={isUserNameError}
           />
@@ -153,7 +153,7 @@ function UserSignUp() {
           <div className="user-form-title">주소</div>
           <ProducerNumberForm
             placeHolder="사용자의 주소를 입력해주세요"
-            name="userAddress"
+            name="user_address"
             onChange={handleChange}
             isError={isUserAddressError}
           />
@@ -167,7 +167,7 @@ function UserSignUp() {
           <div className="user-form-title">전화번호</div>
           <ProducerNumberForm
             placeHolder="-를 제외한 전화번호 11자리를 입력해주세요"
-            name="userNumber"
+            name="phone_num"
             onChange={handleChange}
             isError={isUserNumberError}
           />
