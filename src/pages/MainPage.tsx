@@ -1,6 +1,10 @@
+import SlideBanner from '@/components/main/SlideBanner'
+
 const MainPage = () => {
   return (
-    <div style={{height: "100vh"}}>MainPage</div>
+    <div>
+      <SlideBanner />
+    </div>
   )
 }
 
