@@ -38,7 +38,8 @@ function UserSignUp() {
     if (!isActive) return
     try {
       const response = await userSignUpApi.post(userInformation)
-      alert(`환영합니다 ${userInformation.username}님!`)
+      console.log(response)
+      alert(`환영합니다 ${response.username}님!`)
     } catch (err) {
       console.log('가입 실패: ', err)
     }

@@ -44,7 +44,7 @@ function ProducerSignUp() {
     if (!isActive) return
     try {
       const response = await producerSignUpApi.post(producerInformation)
-      alert(`환영합니다 ${producerInformation.username}님!`)
+      alert(`환영합니다 ${response.username}님!`)
     } catch (err) {
       console.log('가입 실패: ', err)
     }
