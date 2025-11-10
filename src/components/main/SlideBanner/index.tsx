@@ -16,7 +16,7 @@ const SlideBanner = () => {
     next,
     prev,
     transition,
-  } = useCarousel({ totalSlides: banners.length, isAutoPlay: true })
+  } = useCarousel({ totalSlides: banners.length, isAutoPlay: true, isLoop: true })
 
   return (
     <div className={styles.container} aria-label="carousel">
