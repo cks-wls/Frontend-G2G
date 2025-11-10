@@ -1,5 +1,8 @@
-import { productHandlers } from "./handlers/product";
-
+import { productHandlers } from './handlers/product'
+import { userSignUpHandlers } from './handlers/signUp'
+import { sellerSignUpHandlers } from './handlers/signUp'
 export const handlers = [
-  ...productHandlers
+  ...productHandlers,
+  ...userSignUpHandlers,
+  ...sellerSignUpHandlers,
 ]
