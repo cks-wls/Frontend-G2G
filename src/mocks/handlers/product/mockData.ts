@@ -1,6 +1,7 @@
-import type { Product } from '@/types/product';
+import type { Product } from '@/types/product'
 
-const PLACEHOLDER_IMG = `data:image/svg+xml;utf8,` +
+const PLACEHOLDER_IMG =
+  `data:image/svg+xml;utf8,` +
   encodeURIComponent(`
   <svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'>
     <rect width='100%' height='100%' fill='#eeeeee'/>
@@ -67,4 +68,4 @@ export const products: Product[] = [
     price: 119000,
     review_count: 2450,
   },
-];
+]

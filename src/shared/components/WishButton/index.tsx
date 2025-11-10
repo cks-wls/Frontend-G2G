@@ -9,7 +9,11 @@ interface WishButtonProps {
   onClick: () => void
 }
 
-const WishButton = ({ buttonType = 'detail', isWish, onClick }: WishButtonProps) => {
+const WishButton = ({
+  buttonType = 'detail',
+  isWish,
+  onClick,
+}: WishButtonProps) => {
   return (
     <button
       type="button"

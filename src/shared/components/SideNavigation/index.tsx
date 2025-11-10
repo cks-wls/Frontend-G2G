@@ -30,8 +30,10 @@ interface SideNavigationProps {
   navType?: UserType
 }
 
-const SideNavigation = ({ userName, navType= 'CONSUMER' }: SideNavigationProps) => {
-
+const SideNavigation = ({
+  userName,
+  navType = 'CONSUMER',
+}: SideNavigationProps) => {
   const location = useLocation()
   const currentPath = location.pathname
 
@@ -40,13 +42,22 @@ const SideNavigation = ({ userName, navType= 'CONSUMER' }: SideNavigationProps) 
   return (
     <nav className={styles[`${navType}-nav`]}>
       <div className={styles['user-name']}>
-        <p>{userName}{navType === 'CONSUMER' ? '님' : ''}</p>
+        <p>
+          {userName}
+          {navType === 'CONSUMER' ? '님' : ''}
+        </p>
       </div>
       <ul className={styles['menu-list']}>
         {menuList.map((menu) => (
           <li key={menu.label}>
-            <Link to={menu.path} >
-              <div className={menu.path ===  currentPath ? styles['menu-item-active'] : styles['menu-item']}>
+            <Link to={menu.path}>
+              <div
+                className={
+                  menu.path === currentPath
+                    ? styles['menu-item-active']
+                    : styles['menu-item']
+                }
+              >
                 <span>{menu.icon}</span>
                 <p>{menu.label}</p>
               </div>

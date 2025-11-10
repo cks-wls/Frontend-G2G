@@ -17,7 +17,7 @@ const Card = ({ product }: CardProps) => {
       <Link to={`/product/${product.id}`}>
         <img src={product.img_url} alt={product.name} />
       </Link>
-      <div className='wish-container'>
+      <div className="wish-container">
         <WishButton
           buttonType="card"
           onClick={() => setLike((prev) => !prev)}

@@ -7,28 +7,28 @@
   height: 490px;
   cursor: pointer;
   position: relative;
-  
+
   img {
     @include img;
     height: 320px;
   }
-    
-    &:hover {
-      img {
-        transform: scale(1.02);
-        transition: 0.3s ease-in-out
-      }
-      .wish-container {
-        display: block;
-      }
+
+  &:hover {
+    img {
+      transform: scale(1.02);
+      transition: 0.3s ease-in-out;
     }
+    .wish-container {
+      display: block;
+    }
+  }
 }
 
 .wish-container {
   position: absolute;
-  top: 53%; 
+  top: 53%;
   left: 75%;
-  display: none
+  display: none;
 }
 
 .info {
@@ -66,6 +66,3 @@
   color: $color-subtext;
   @include flex;
 }
-
-
-
