@@ -64,7 +64,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
             {userType === 'GUEST' && (
               <div className={styles.login}>
                 <Link to={ROUTE_PATHS.LOGIN}>로그인</Link>
-                <Link to={ROUTE_PATHS.SIGNUP}>회원가입</Link>
+                <Link to={ROUTE_PATHS.SIGNUP.INDEX}>회원가입</Link>
               </div>
             )}
 

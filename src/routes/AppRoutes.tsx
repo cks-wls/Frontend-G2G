@@ -4,6 +4,7 @@ import ProducerSignUp from '@/components/signUp/producerSignUp'
 import SignUp from '@/pages/signUp/signUp'
 import UserSignUp from '@/components/signUp/userSignUp'
 import MainPage from '@/pages/main'
+import SignIn from '@/pages/signIn/signIn'
 import CommonLayout from '@/shared/components/Layout/CommonLayout'
 import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
@@ -21,15 +22,16 @@ function AppRoutes() {
           <Route index element={<MainPage />} />
         </Route>
       </Route>
-      {/* 회원가입 페이지 */}
+      {/* 회원가입 및 로그인 페이지 */}
       <Route element={<SignUpLayout />}>
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/signup/user" element={<UserSignUp />} />
+        <Route path={ROUTE_PATHS.SIGNUP.INDEX} element={<SignUp />} />
+        <Route path={ROUTE_PATHS.SIGNUP.USER} element={<UserSignUp />} />
         <Route
-          path="/signup/seller-certification"
+          path={ROUTE_PATHS.SIGNUP.SELLER_CERTIFICATION}
           element={<ProducerCertification />}
         />
-        <Route path="/signup/seller" element={<ProducerSignUp />} />
+        <Route path={ROUTE_PATHS.SIGNUP.SELLER} element={<ProducerSignUp />} />
+        <Route path={ROUTE_PATHS.LOGIN} element={<SignIn />} />
       </Route>
       <Route path={ROUTE_PATHS.SELLER.INDEX} element={<SellerLayout />}>
         <Route index element={<MainPage />} />

@@ -2,6 +2,7 @@ import { sellerSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/producerSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
+import { ROUTE_PATHS } from '@/constants/route'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 function ProducerSignUp() {
