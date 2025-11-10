@@ -5,6 +5,8 @@ import SignUp from '@/pages/signUp/signUp'
 import UserSignUp from '@/components/signUp/userSignUp'
 import MainPage from '@/pages/main'
 import SignIn from '@/pages/signIn/signIn'
+import UserSignIn from '@/components/signIn/UserSignIn'
+import SellerSignIn from '@/components/signIn/SellerSignIn'
 import CommonLayout from '@/shared/components/Layout/CommonLayout'
 import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
@@ -31,7 +33,9 @@ function AppRoutes() {
           element={<ProducerCertification />}
         />
         <Route path={ROUTE_PATHS.SIGNUP.SELLER} element={<ProducerSignUp />} />
-        <Route path={ROUTE_PATHS.LOGIN} element={<SignIn />} />
+        <Route path={ROUTE_PATHS.LOGIN.INDEX} element={<SignIn />} />
+        <Route path={ROUTE_PATHS.LOGIN.USER} element={<UserSignIn />} />
+        <Route path={ROUTE_PATHS.LOGIN.SELLER} element={<SellerSignIn />} />
       </Route>
       <Route path={ROUTE_PATHS.SELLER.INDEX} element={<SellerLayout />}>
         <Route index element={<MainPage />} />
