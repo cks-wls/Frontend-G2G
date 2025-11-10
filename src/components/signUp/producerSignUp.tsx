@@ -2,7 +2,6 @@ import { sellerSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/producerSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
-import { ROUTE_PATHS } from '@/constants/route'
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 function ProducerSignUp() {
@@ -46,6 +45,7 @@ function ProducerSignUp() {
     try {
       const response = await sellerSignUpApi.post(sellerInformation)
       alert(`환영합니다 ${response.username}님!`)
+      // 이메일 인증 화면으로 navigate
     } catch (err) {
       console.log('가입 실패: ', err)
     }
