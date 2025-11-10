@@ -34,7 +34,7 @@ function UserSignIn() {
   }
   return (
     <div className="login-box">
-      <div className="login-title">사업자 로그인</div>
+      <div className="login-title">로그인</div>
       <div className="form-box">
         <div className="login-form-title">이메일</div>
         <ProducerNumberForm
