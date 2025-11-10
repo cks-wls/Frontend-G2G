@@ -1,7 +1,8 @@
+import { producerSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/producerSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 function ProducerSignUp() {
   const location = useLocation()
@@ -13,10 +14,10 @@ function ProducerSignUp() {
     password2: '',
     business_name: '',
     business_address: '',
-    business_number: { businessNumber }, //사업자 등록번호 api 명세서에 등록되면 변수 이름 수정하기
+    business_number: businessNumber,
     username: '',
     phone_number: '',
-    address: '',
+    // address: '',
   })
   const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
     undefined
@@ -36,13 +37,18 @@ function ProducerSignUp() {
   const [isPhoneNumberError, setIsPhoneNumberError] = useState<
     boolean | undefined
   >(undefined)
-  const [isBusinessNumberError, setIsBusinessNumberError] = useState<
-    boolean | undefined
-  >(undefined)
   const [isBusinessAddressError, setIsBusinessAddressError] = useState<
     boolean | undefined
   >(undefined)
-  useEffect(() => {}, [producerInformation])
+  const handleSignUp = async () => {
+    if (!isActive) return
+    try {
+      const response = await producerSignUpApi.post(producerInformation)
+      alert(`환영합니다 ${producerInformation.username}님!`)
+    } catch (err) {
+      console.log('가입 실패: ', err)
+    }
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setProducerInformation((prev) => ({ ...prev, [name]: value }))
@@ -217,7 +223,7 @@ function ProducerSignUp() {
         type="submit"
         isActive={isActive()}
         className="producer-signup-btn"
-        // submit시 Post
+        onClick={handleSignUp}
       />
     </div>
   )

@@ -35,7 +35,6 @@ function ProducerCertification() {
         onClick={() => {
           if (isActive()) {
             navigate('/sign-up/producer', { state: { businessNumber } })
-            // 사업자 회원가입페이지에 사업자 번호 넘겨주기
           }
         }}
       />

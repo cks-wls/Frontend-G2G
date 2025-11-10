@@ -1,7 +1,8 @@
+import { userSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/userSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function UserSignUp() {
   // api 명세서와 맞춤
@@ -33,8 +34,15 @@ function UserSignUp() {
     boolean | undefined
   >(undefined)
 
-  useEffect(() => {}, [userInformation])
-
+  const handleSignUp = async () => {
+    if (!isActive) return
+    try {
+      const response = await userSignUpApi.post(userInformation)
+      alert(`환영합니다 ${userInformation.username}님!`)
+    } catch (err) {
+      console.log('가입 실패: ', err)
+    }
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setUserInformation((prev) => ({ ...prev, [name]: value }))
@@ -181,7 +189,7 @@ function UserSignUp() {
         type="submit"
         isActive={isActive()}
         className="user-signup-btn"
-        // submit시 Post!!!!!
+        onClick={handleSignUp}
       />
     </div>
   )
