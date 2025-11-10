@@ -4,14 +4,14 @@ import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumber
 import { useEffect, useState } from 'react'
 
 function UserSignUp() {
-  // 이메일 유효성 , 비밀번호 유효성, 버튼 상태
+  // api 명세서와 맞춤
   const [userInformation, setUserInformation] = useState({
     email: '',
     password: '',
-    repeatPassword: '',
+    password2: '',
     username: '',
-    user_address: '',
-    phone_num: '',
+    address: '',
+    phone_number: '',
   })
   // 유저정보 관리
   const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
@@ -20,16 +20,16 @@ function UserSignUp() {
   const [isPasswordError, setIsPasswordError] = useState<boolean | undefined>(
     undefined
   )
-  const [isRepeatPasswordError, setIsRepeatPasswordError] = useState<
-    boolean | undefined
-  >(undefined)
+  const [isPassword2Error, setIsPassword2Error] = useState<boolean | undefined>(
+    undefined
+  )
   const [isUserNameError, setIsUserNameError] = useState<boolean | undefined>(
     undefined
   )
-  const [isUserAddressError, setIsUserAddressError] = useState<
-    boolean | undefined
-  >(undefined)
-  const [isUserNumberError, setIsUserNumberError] = useState<
+  const [isAddressError, setIsAddressError] = useState<boolean | undefined>(
+    undefined
+  )
+  const [isPhoneNumberError, setIsPhoneNumberError] = useState<
     boolean | undefined
   >(undefined)
 
@@ -51,25 +51,25 @@ function UserSignUp() {
         )
       setIsPasswordError(!isValidPassword)
     }
-    if (name === 'repeatPassword') {
+    if (name === 'password2') {
       // 비밀번호 재확인 유효성 검사
-      const isValidRepeatPassword = userInformation.password === value
-      setIsRepeatPasswordError(!isValidRepeatPassword)
+      const isValidPassword2 = userInformation.password === value
+      setIsPassword2Error(!isValidPassword2)
     }
     if (name === 'username') {
       // 사용자이름 유효성 검사
       const isValidUserName = /^.{1,}$/.test(value)
       setIsUserNameError(!isValidUserName)
     }
-    if (name === 'user_address') {
+    if (name === 'address') {
       // 사용자주소 유효성 검사
-      const isValidUserAddress = /^.{1,}$/.test(value)
-      setIsUserAddressError(!isValidUserAddress)
+      const isValidAddress = /^.{1,}$/.test(value)
+      setIsAddressError(!isValidAddress)
     }
     // 사용자번호 유효성 검사
-    if (name === 'phone_num') {
-      const isValidUserNumber = /^\d{11}$/.test(value)
-      setIsUserNumberError(!isValidUserNumber)
+    if (name === 'phone_number') {
+      const isValidPhoneNumber = /^\d{11}$/.test(value)
+      setIsPhoneNumberError(!isValidPhoneNumber)
     }
   }
 
@@ -78,20 +78,20 @@ function UserSignUp() {
     if (
       isEmailError === undefined ||
       isPasswordError === undefined ||
-      isRepeatPasswordError === undefined ||
+      isPassword2Error === undefined ||
       isUserNameError === undefined ||
-      isUserAddressError === undefined ||
-      isUserNumberError === undefined
+      isAddressError === undefined ||
+      isPhoneNumberError === undefined
     ) {
       return false
     }
     return (
       !isEmailError &&
       !isPasswordError &&
-      !isRepeatPasswordError &&
+      !isPassword2Error &&
       !isUserNameError &&
-      !isUserAddressError &&
-      !isUserNumberError
+      !isAddressError &&
+      !isPhoneNumberError
     )
   }
 
@@ -126,13 +126,11 @@ function UserSignUp() {
         <ProducerNumberForm
           placeHolder="비밀번호를 한번 더 입력해주세요"
           type="password"
-          name="repeatPassword"
+          name="password2"
           onChange={handleChange}
-          isError={isRepeatPasswordError}
+          isError={isPassword2Error}
         />
-        <div
-          className={`user-error ${isRepeatPasswordError ? '' : 'display-none'}`}
-        >
+        <div className={`user-error ${isPassword2Error ? '' : 'display-none'}`}>
           비밀번호가 일치하지 않아요 확인해주세요
         </div>
         <div className="user-password-form-box">
@@ -153,13 +151,11 @@ function UserSignUp() {
           <div className="user-form-title">주소</div>
           <ProducerNumberForm
             placeHolder="사용자의 주소를 입력해주세요"
-            name="user_address"
+            name="address"
             onChange={handleChange}
-            isError={isUserAddressError}
+            isError={isAddressError}
           />
-          <div
-            className={`user-error ${isUserAddressError ? '' : 'display-none'}`}
-          >
+          <div className={`user-error ${isAddressError ? '' : 'display-none'}`}>
             주소는 1자 이상 입력해주세요
           </div>
         </div>
@@ -167,12 +163,12 @@ function UserSignUp() {
           <div className="user-form-title">전화번호</div>
           <ProducerNumberForm
             placeHolder="-를 제외한 전화번호 11자리를 입력해주세요"
-            name="phone_num"
+            name="phone_number"
             onChange={handleChange}
-            isError={isUserNumberError}
+            isError={isPhoneNumberError}
           />
           <div
-            className={`user-error ${isUserNumberError ? '' : 'display-none'}`}
+            className={`user-error ${isPhoneNumberError ? '' : 'display-none'}`}
           >
             -를 제외한 전화번호 11자리를 입력해주세요
           </div>
