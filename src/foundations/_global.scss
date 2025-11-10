@@ -1,7 +1,7 @@
 @use '@/foundations/_variables' as *;
 
 @font-face {
-  font-family: "Pretendard Variable";
+  font-family: 'Pretendard Variable';
   src: url('@/assets/fonts/PretendardVariable.woff2') format('woff2');
 }
 
@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: "Pretendard Variable", sans-serif;
+  font-family: 'Pretendard Variable', sans-serif;
   font-size: $font-base;
   color: $color-text;
   line-height: 1.4;
@@ -35,7 +35,9 @@ button {
 li {
   list-style: none;
 }
-
 .none {
   display: none;
+}
+input {
+  outline: none;
 }

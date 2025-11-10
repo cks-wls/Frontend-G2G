@@ -1,6 +1,7 @@
 export const ROUTE_PATHS = {
   HOME: '/',
   LOGIN: '/login',
+  SIGNUP: '/signup',
 
   MYPAGE: {
     INDEX: '/mypage',
@@ -8,6 +9,6 @@ export const ROUTE_PATHS = {
 
   SELLER: {
     INDEX: '/seller',
-    PRODUCTS: '/seller/products', 
+    PRODUCTS: '/seller/products',
   },
 } as const

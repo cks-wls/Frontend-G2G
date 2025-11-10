@@ -1,0 +1,27 @@
+.producer-signup-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.producer-signup-title {
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 60px;
+}
+.producer-form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+.producer-form-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #333333;
+}
+.producer-signup-btn {
+  margin-top: 10px;
+  margin-bottom: 35px;
+}

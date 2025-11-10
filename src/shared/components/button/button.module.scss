@@ -29,7 +29,7 @@
 }
 
 .size_lg {
-  width: 360px;
+  width: 400px;
   height: 64px;
   font-size: 18px;
 }
@@ -76,7 +76,17 @@
     color: #3e5b2d;
   }
 }
-
+.variant_gray {
+  background-color: #eeeeee;
+  color: #333333;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  &.active {
+    background-color: #4e6813;
+    color: #ffffff;
+  }
+}
 /* ===== full width 옵션 ===== */
 .full_width {
   width: 100%;
@@ -95,4 +105,3 @@
   align-items: center;
   justify-content: center;
 }
-

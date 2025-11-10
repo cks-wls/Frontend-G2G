@@ -1,7 +1,15 @@
 .producer-number-form {
   width: 400px;
   height: 59px;
-  border: 1px solid #4e6813;
+  border: 1px solid #eeeeee;
   border-radius: 6px;
   padding: 20px;
+  &.error-form {
+    border: 1px solid #ff402b;
+  }
+  &.disabled {
+    background-color: #eeeeee;
+    border: 1px solid #eeeeee;
+    color: #333333;
+  }
 }
