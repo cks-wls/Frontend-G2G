@@ -1,0 +1,29 @@
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-title {
+  margin-top: 40px;
+  color: #333333;
+  font-weight: 700;
+  font-size: 32px;
+}
+.form-box {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-box-bottom {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.btn-box {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
