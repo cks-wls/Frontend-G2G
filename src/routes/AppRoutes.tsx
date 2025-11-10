@@ -1,5 +1,5 @@
 import { ROUTE_PATHS } from '@/constants/route'
-import MainPage from '@/pages/MainPage'
+import MainPage from '@/pages/main'
 import CommonLayout from '@/shared/components/Layout/CommonLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
 import SellerLayout from '@/shared/components/Layout/SellerLayout'
