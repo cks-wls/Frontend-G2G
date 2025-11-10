@@ -17,7 +17,7 @@ function SignUp() {
         </div>
         <div
           className="box producer"
-          onClick={() => navigate(ROUTE_PATHS.LOGIN.SELLER)}
+          onClick={() => navigate(ROUTE_PATHS.LOGIN.USER)}
         >
           <div className="type-title">사업자회원</div>
           <div className="type-description">신선한 상품을 판매하고 싶어요</div>

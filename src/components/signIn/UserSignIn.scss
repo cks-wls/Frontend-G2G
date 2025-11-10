@@ -27,3 +27,12 @@
   flex-direction: column;
   gap: 10px;
 }
+.error-box {
+  font-size: 12px;
+  font-weight: 400;
+  color: #ff402b;
+  text-align: left;
+  &.display-none {
+    display: none;
+  }
+}

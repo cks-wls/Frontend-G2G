@@ -18,6 +18,5 @@ export const ROUTE_PATHS = {
   LOGIN: {
     INDEX: '/login',
     USER: '/login/user',
-    SELLER: '/login/seller',
   },
 } as const

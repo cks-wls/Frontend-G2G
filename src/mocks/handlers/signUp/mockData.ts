@@ -6,7 +6,7 @@ export const userSignUp: UserSignUp[] = [
     id: 1,
     email: 'test01@naver.com',
     password: 'test12345!',
-    password2: 'test1235!',
+    password2: 'test12345!',
     username: 'test01',
     address: '서울시',
     phone_number: '01012345678',
