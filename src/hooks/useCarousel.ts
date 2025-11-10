@@ -9,7 +9,7 @@ interface UseCarouselProps {
 
 const TRANSITION_STYLE = 'transform 0.5s ease-in-out'
 
-const useCarousel = ({
+export const useCarousel = ({
   totalSlides,
   isAutoPlay = false,
   delay = 4000,
@@ -66,5 +66,3 @@ const useCarousel = ({
     stopAutoPlay,
   }
 }
-
-export default useCarousel

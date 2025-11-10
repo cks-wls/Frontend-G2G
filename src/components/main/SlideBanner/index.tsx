@@ -1,5 +1,5 @@
 import { BANNERS } from '@/constants/banner'
-import useCarousel from '@/hooks/useCarousel'
+import {useCarousel} from '@/hooks/useCarousel'
 import classNames from 'classnames/bind'
 import { LucideChevronLeft, LucideChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
