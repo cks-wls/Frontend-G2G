@@ -1,7 +1,7 @@
 import { axiosInstance } from '@/api/axios'
 import { API_PATHS } from '@/constants/api'
 import type { UserSignUp } from '@/types/userSignUp'
-import type { ProducerSignUp } from '@/types/producerSignUp'
+import type { SellerSignUp } from '@/types/sellerSignUp'
 
 export const userSignUpApi = {
   post: async (userData: UserSignUp): Promise<UserSignUp> => {
@@ -10,11 +10,11 @@ export const userSignUpApi = {
   },
 }
 
-export const producerSignUpApi = {
-  post: async (producerData: ProducerSignUp): Promise<ProducerSignUp> => {
+export const sellerSignUpApi = {
+  post: async (sellerData: SellerSignUp): Promise<SellerSignUp> => {
     const { data } = await axiosInstance.post(
-      API_PATHS.PRODUCER.SIGN_UP,
-      producerData
+      API_PATHS.SELLER.SIGN_UP,
+      sellerData
     )
     return data
   },

@@ -1,5 +1,5 @@
 import type { UserSignUp } from '@/types/userSignUp'
-import type { ProducerSignUp } from '@/types/producerSignUp'
+import type { SellerSignUp } from '@/types/sellerSignUp'
 
 export const userSignUp: UserSignUp[] = [
   {
@@ -12,7 +12,7 @@ export const userSignUp: UserSignUp[] = [
     phone_number: '01012345678',
   },
 ]
-export const producerSignUp: ProducerSignUp[] = [
+export const sellerSignUp: SellerSignUp[] = [
   {
     id: 1,
     email: 'pd01@naver.com',

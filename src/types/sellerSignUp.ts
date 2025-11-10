@@ -1,4 +1,4 @@
-export interface ProducerSignUp {
+export interface SellerSignUp {
   id?: number
   email: string
   password: string

@@ -34,7 +34,7 @@ function ProducerCertification() {
         className="producer-certification-btn"
         onClick={() => {
           if (isActive()) {
-            navigate('/sign-up/producer', { state: { businessNumber } })
+            navigate('/signup/seller', { state: { businessNumber } })
           }
         }}
       />

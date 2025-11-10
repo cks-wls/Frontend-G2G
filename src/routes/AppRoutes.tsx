@@ -23,13 +23,13 @@ function AppRoutes() {
       </Route>
       {/* 회원가입 페이지 */}
       <Route element={<SignUpLayout />}>
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-up/user" element={<UserSignUp />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup/user" element={<UserSignUp />} />
         <Route
-          path="/sign-up/producer-certification"
+          path="/signup/seller-certification"
           element={<ProducerCertification />}
         />
-        <Route path="/sign-up/producer" element={<ProducerSignUp />} />
+        <Route path="/signup/seller" element={<ProducerSignUp />} />
       </Route>
       <Route path={ROUTE_PATHS.SELLER.INDEX} element={<SellerLayout />}>
         <Route index element={<MainPage />} />

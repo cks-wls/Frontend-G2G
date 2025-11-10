@@ -1,4 +1,4 @@
-import { producerSignUpApi } from '@/api/signUpApi'
+import { sellerSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/producerSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
@@ -8,7 +8,7 @@ function ProducerSignUp() {
   const location = useLocation()
   const businessNumber = location.state.businessNumber //string 형태로 넘어옴
   // api 명세서랑 변수 이름 맞춤
-  const [producerInformation, setProducerInformation] = useState({
+  const [sellerInformation, setSellerInformation] = useState({
     email: '',
     password: '',
     password2: '',
@@ -43,7 +43,7 @@ function ProducerSignUp() {
   const handleSignUp = async () => {
     if (!isActive) return
     try {
-      const response = await producerSignUpApi.post(producerInformation)
+      const response = await sellerSignUpApi.post(sellerInformation)
       alert(`환영합니다 ${response.username}님!`)
     } catch (err) {
       console.log('가입 실패: ', err)
@@ -51,7 +51,7 @@ function ProducerSignUp() {
   }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    setProducerInformation((prev) => ({ ...prev, [name]: value }))
+    setSellerInformation((prev) => ({ ...prev, [name]: value }))
     //이메일 유효성 검사
     if (name === 'email') {
       const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
@@ -67,7 +67,7 @@ function ProducerSignUp() {
     }
     // 비밀번호 재확인 유효성 검사
     if (name === 'password2') {
-      const isValidRepeatPassword = producerInformation.password === value
+      const isValidRepeatPassword = sellerInformation.password === value
       setIsRepeatPasswordError(!isValidRepeatPassword)
     }
     if (name === 'business_name') {

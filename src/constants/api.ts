@@ -8,7 +8,7 @@ export const API_PATHS = {
   USER: {
     SIGN_UP: '/api/users/signup',
   },
-  PRODUCER: {
+  SELLER: {
     SIGN_UP: '/api/producer/signup',
   },
 } as const
