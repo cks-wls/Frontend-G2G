@@ -1,0 +1,12 @@
+import { categoriesApi } from './../../api/categoriesApi';
+import { useQuery } from '@tanstack/react-query'
+import { Product } from './../../types/product'
+// 절대경로 못찾음 추후 수정
+
+export const useCategories = (id: number) => {
+  return useQuery<Product[]>({
+    queryKey: ['products', id],
+    queryFn: () => categoriesApi(id),
+    initialData: [],
+  })
+}

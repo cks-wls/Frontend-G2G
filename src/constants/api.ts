@@ -1,10 +1,6 @@
-// 추후 API 주소 나오면 .env.development 파일에 정의
-export const API_BASE_URL = import.meta.env.VITE_API_
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const API_PATHS = {
-  PRODUCTS: {
-    GET_ALL: '/api/products',
-  },
   USER: {
     SIGN_UP: '/api/users/signup',
   },
@@ -12,4 +8,8 @@ export const API_PATHS = {
     SIGN_UP: '/api/producer/signup',
   },
   LOGIN: '/api/users/login',
+  PRODUCTS: {
+    GET_ALL: '/api/products',
+  },
+  CATEGORIES: (id: number) => `/api/categories/group/${id}/`
 } as const
