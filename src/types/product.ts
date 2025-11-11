@@ -1,5 +1,25 @@
 export interface Product {
-  id: number
+  product_id: number
+  categories: number[]
+  images: [
+    {
+      image_id: number
+      product: number // 체크
+      user: number  // 체크
+      image_url: 'string'
+    },
+  ]
+  option_values: [
+    {
+      id: number
+      category: {
+        id: number
+        group_name: string
+        name: string
+      }
+      extra_price: '760' // 체크
+    },
+  ]
   name: string
   business_name: string
   price: number

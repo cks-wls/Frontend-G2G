@@ -1,3 +1,4 @@
+import ProductCarousel from '@/components/main/ProductCarousel'
 import SlideBanner from '@/components/main/SlideBanner'
 import { ROUTE_PATHS } from '@/constants/route'
 import Button from '@/shared/components/button'
@@ -5,10 +6,14 @@ import classNames from 'classnames/bind'
 import { LucideChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import styles from './MainPage.module.scss'
+import { useProducts } from '@/hooks/queries/product/useProducts'
 
 const cn = classNames.bind(styles)
 
 const MainPage = () => {
+  // 추후 카테고리 api로 변경
+  const { data, error, isLoading } = useProducts()
+
   return (
     <div className={styles.wrap}>
       <SlideBanner />
@@ -22,6 +27,7 @@ const MainPage = () => {
           </h2>
           <p>가장 인기있는 상품만 모아보세요!</p>
         </div>
+        <ProductCarousel products={data} error={error} isLoading={isLoading} />
       </section>
       <section className={cn('category-container')}>
         <div className={cn('title')}>
@@ -33,6 +39,7 @@ const MainPage = () => {
           </h2>
           <p>지금이 제일 맛있는 10월 제철 음식 모음</p>
         </div>
+        <ProductCarousel products={data} error={error} isLoading={isLoading} />
       </section>
       <section className={cn('iframe-wrap')}>
         <div className={cn('iframe-container')}>

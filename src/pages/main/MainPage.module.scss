@@ -9,10 +9,9 @@
 
 .category-container {
   padding: 40px 0;
-  
+
   .title {
     text-align: center;
-    
     a {
       @include flex-center;
       gap: 4px;
@@ -34,7 +33,6 @@
 .iframe-wrap {
   width: 100%;
   border-top: 1px solid $color-border;
-
 }
 .iframe-container {
   width: 1050px;
