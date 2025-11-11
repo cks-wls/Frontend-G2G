@@ -7,6 +7,7 @@ export const API_PATHS = {
   SELLER: {
     SIGN_UP: '/api/producer/signup',
   },
+  LOGIN: '/api/users/login',
   PRODUCTS: {
     GET_ALL: '/api/products',
   },
