@@ -238,7 +238,6 @@
 .category-wrap {
   @include flex(column, 0);
   width: 240px;
-  height: 500px;
   border: 1px solid $color-border;
   background-color: $color-white;
   position: absolute;
@@ -250,6 +249,7 @@
   li {
     padding: 20px;
     font-size: 14px;
+    cursor: pointer;
 
     &:hover {
       color: $color-main;

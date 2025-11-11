@@ -1,4 +1,5 @@
 import Logo from '@/assets/images/logo.png'
+import { THEME_CATEGORIES } from '@/constants/categories'
 import { ROUTE_PATHS } from '@/constants/route'
 import Search from '@/shared/components/Form/Search/Search'
 import type { UserType } from '@/types/user'
@@ -39,6 +40,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+
   return (
     <header
       className={cn('header', {
@@ -116,12 +118,11 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                 카테고리
               </button>
               <ul className={styles['category-wrap']}>
-                <li>
-                  <Link to="">카테고리 1</Link>
-                </li>
-                <li>
-                  <Link to="">카테고리 2</Link>
-                </li>
+                {THEME_CATEGORIES.map((c) => (
+                  <li>
+                    <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>{c.name}</Link>
+                  </li>
+                ))}
               </ul>
               <ul className={styles.gnb}>
                 <li>
