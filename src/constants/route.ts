@@ -19,4 +19,6 @@ export const ROUTE_PATHS = {
     INDEX: '/login',
     USER: '/login/user',
   },
+
+  PRODUCT_LIST: '/product/list',
 } as const

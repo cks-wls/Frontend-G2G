@@ -10,10 +10,10 @@ import { useProducts } from '@/hooks/queries/product/useProducts'
 
 const cn = classNames.bind(styles)
 
-const MainPage = () => {
+const Main = () => {
   // 추후 카테고리 api로 변경
   const { data, error, isLoading } = useProducts()
-
+  
   return (
     <div className={styles.wrap}>
       <SlideBanner />
@@ -75,4 +75,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default Main
