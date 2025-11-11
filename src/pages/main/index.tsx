@@ -2,7 +2,7 @@ import SlideBanner from '@/components/main/SlideBanner'
 import { ROUTE_PATHS } from '@/constants/route'
 import Button from '@/shared/components/button'
 import classNames from 'classnames/bind'
-import { LucideArrowBigRight, LucideArrowRight, LucideChevronRight } from 'lucide-react'
+import { LucideChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import styles from './MainPage.module.scss'
 
