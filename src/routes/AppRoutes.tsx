@@ -19,7 +19,7 @@ function AppRoutes() {
       {/* 게스트와 소비자 공용 레이아웃 */}
       <Route element={<CommonLayout />}>
         <Route index element={<Main />} />
-        <Route path={ROUTE_PATHS.PRODUCT_LIST} element={<ProductList />} />
+        <Route path={ROUTE_PATHS.CATEGORY_LIST.TEMPLATE} element={<ProductList />} />
         {/* 소비자만 접근 가능 */}
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
           <Route index element={<Main />} />

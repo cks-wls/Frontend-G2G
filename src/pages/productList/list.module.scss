@@ -1,3 +1,6 @@
 @use '@/foundations/mixins' as *;
 @use '@/foundations/variables' as *;
 
+.wrap {
+  width: 1050px;
+}

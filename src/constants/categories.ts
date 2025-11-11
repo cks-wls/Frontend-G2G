@@ -17,3 +17,5 @@ export const THEME_CATEGORIES = [
   { id: 13, group_name: '테마', name: '장류' },
   { id: 14, group_name: '테마', name: '기타' },
 ] as const
+
+export const ALL_CATEGORIES = [...SEASON_CATEGORIES, ...THEME_CATEGORIES,]

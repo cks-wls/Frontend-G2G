@@ -1,19 +1,24 @@
 import ProductCarousel from '@/components/main/ProductCarousel'
 import SlideBanner from '@/components/main/SlideBanner'
 import { ROUTE_PATHS } from '@/constants/route'
+import { useCategory } from '@/hooks/queries/useCategory'
 import Button from '@/shared/components/button'
 import classNames from 'classnames/bind'
 import { LucideChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import styles from './MainPage.module.scss'
-import { useProducts } from '@/hooks/queries/product/useProducts'
 
 const cn = classNames.bind(styles)
 
 const Main = () => {
-  // 추후 카테고리 api로 변경
-  const { data, error, isLoading } = useProducts()
-  
+  // 인기 상품 리스트
+  // 시즌 상품 리스트 (가을)
+  const {
+    data: seasonData,
+    error: seasonError,
+    isLoading: seasonLoading,
+  } = useCategory(3)
+
   return (
     <div className={styles.wrap}>
       <SlideBanner />
@@ -27,19 +32,27 @@ const Main = () => {
           </h2>
           <p>가장 인기있는 상품만 모아보세요!</p>
         </div>
-        <ProductCarousel products={data} error={error} isLoading={isLoading} />
+        <ProductCarousel
+          products={seasonData}
+          error={seasonError}
+          isLoading={seasonLoading}
+        />
       </section>
       <section className={cn('category-container')}>
         <div className={cn('title')}>
           <h2>
-            <Link to={ROUTE_PATHS.HOME}>
+            <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(3)}>
               🍂 집 나간 며느리도 돌아온다! 가을 제철 음식
               <LucideChevronRight />
             </Link>
           </h2>
           <p>지금이 제일 맛있는 10월 제철 음식 모음</p>
         </div>
-        <ProductCarousel products={data} error={error} isLoading={isLoading} />
+        <ProductCarousel
+          products={seasonData}
+          error={seasonError}
+          isLoading={seasonLoading}
+        />
       </section>
       <section className={cn('iframe-wrap')}>
         <div className={cn('iframe-container')}>
