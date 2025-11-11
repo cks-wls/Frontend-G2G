@@ -117,7 +117,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                 <LucideMenu />
                 카테고리
               </button>
-              <ul className={styles['category-wrap']}>
+              <ul className={styles['category-menu']}>
                 {THEME_CATEGORIES.map((c) => (
                   <li>
                     <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>{c.name}</Link>
