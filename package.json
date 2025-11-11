@@ -8,7 +8,8 @@
     "build": "tsc -p tsconfig.app.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@tanstack/react-query": "^5.90.7",

@@ -1,5 +1,6 @@
 import '@/components/signUp/producerCertification.scss'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
+import { ROUTE_PATHS } from '@/constants/route'
 import Button from '@/shared/components/button'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -34,7 +35,7 @@ function ProducerCertification() {
         className="producer-certification-btn"
         onClick={() => {
           if (isActive()) {
-            navigate('/signup/seller', { state: { businessNumber } })
+            navigate(ROUTE_PATHS.SIGNUP.SELLER, { state: { businessNumber } })
           }
         }}
       />

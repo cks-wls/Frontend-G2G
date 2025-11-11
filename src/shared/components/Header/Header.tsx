@@ -63,8 +63,8 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
           <div className={cn('top', { hidden: isCompact })}>
             {userType === 'GUEST' && (
               <div className={styles.login}>
-                <Link to={ROUTE_PATHS.LOGIN}>로그인</Link>
-                <Link to={ROUTE_PATHS.SIGNUP}>회원가입</Link>
+                <Link to={ROUTE_PATHS.LOGIN.INDEX}>로그인</Link>
+                <Link to={ROUTE_PATHS.SIGNUP.INDEX}>회원가입</Link>
               </div>
             )}
 
@@ -149,7 +149,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
               </div>
             )}
             <div className={cn('nav-right', { hidden: isCompact })}>
-              <Link to={ROUTE_PATHS.LOGIN}>입점신청</Link>
+              <Link to={ROUTE_PATHS.LOGIN.INDEX}>입점신청</Link>
             </div>
           </nav>
         </div>

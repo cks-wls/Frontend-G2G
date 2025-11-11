@@ -1,6 +1,6 @@
-import { productApi } from "@/api/productApi"
-import type { Product } from "@/types/product"
-import { useQuery } from "@tanstack/react-query"
+import { productApi } from '@/api/productApi'
+import type { Product } from '@/types/product'
+import { useQuery } from '@tanstack/react-query'
 
 export const useProducts = () => {
   return useQuery<Product[]>({

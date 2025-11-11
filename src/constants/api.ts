@@ -11,4 +11,5 @@ export const API_PATHS = {
   SELLER: {
     SIGN_UP: '/api/producer/signup',
   },
+  LOGIN: '/api/users/login',
 } as const

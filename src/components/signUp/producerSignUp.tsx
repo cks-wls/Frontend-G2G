@@ -45,6 +45,7 @@ function ProducerSignUp() {
     try {
       const response = await sellerSignUpApi.post(sellerInformation)
       alert(`환영합니다 ${response.username}님!`)
+      // 이메일 인증 화면으로 navigate
     } catch (err) {
       console.log('가입 실패: ', err)
     }
