@@ -17,7 +17,7 @@ const ProductList = () => {
 
   return (
     <div className={cn('wrap')}>
-      <div className={cn('')}>
+      <div className={cn('title')}>
         <h2>{category?.name}</h2>
       </div>
       <div className={cn('')}>
