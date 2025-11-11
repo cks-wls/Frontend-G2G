@@ -1,10 +1,18 @@
+import { useOrders } from '@/hooks/queries/myPage/useOrderList'
+import MyPageContainer from './MyPageContainer'
+import OrderListContents from './OrderListContent'
 
 const OrderList = () => {
-  return (
-    <div>
-      
-    </div>
-  );
-};
+  const { data } = useOrders()
+  console.log(data)
 
-export default OrderList;
+  return (
+    <MyPageContainer title="주문 내역">
+      {data.map((item, index) => (
+        <OrderListContents key={index} data={item} />
+      ))}
+    </MyPageContainer>
+  )
+}
+
+export default OrderList

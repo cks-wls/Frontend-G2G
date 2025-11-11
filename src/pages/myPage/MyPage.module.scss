@@ -1,0 +1,16 @@
+@use '@/foundations/variables' as *;
+
+.container {
+  width: 740px;
+  background-color: $color-white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 24px;
+}
+
+.title {
+  border-bottom: 2px solid $color-border;
+  padding-bottom: 20px;
+  font-size: $font-xl;
+  font-weight: $font-semibold;
+}

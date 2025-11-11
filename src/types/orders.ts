@@ -9,6 +9,8 @@ export interface ServerOrders {
   payment_method: 'card'
   created_at: string
   updated_at: string
+  //스웨거에 없음, 요청해야함 총 결제 가격
+  total_price: number
   items: ServerOrderItems[]
 }
 
@@ -28,7 +30,8 @@ export interface Orders {
   totalAmount: string
   status: 'pending' | 'completed'
   paymentMethod: 'card'
-  createAt: string
+  createdAt: string
+  totalPrice: number
   items: OrderItems[]
 }
 
@@ -47,7 +50,8 @@ export const mappingOrders = (orders: ServerOrders[]): Orders[] => {
     totalAmount: order.total_amount,
     status: order.status,
     paymentMethod: order.payment_method,
-    createAt: order.created_at,
+    createdAt: order.created_at,
+    totalPrice: order.total_price,
     items: order.items.map((item) => ({
       id: item.id,
       productName: item.product_name,
