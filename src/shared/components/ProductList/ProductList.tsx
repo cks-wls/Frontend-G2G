@@ -10,7 +10,7 @@ const ProductList = ({ data }: ProductListProps) => {
   return (
     <ul className="product-list">
       {data.map((product) => (
-        <Card key={product.id} product={product} />
+        <Card key={product.product_id} product={product} />
       ))}
     </ul>
   )

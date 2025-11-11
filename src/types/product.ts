@@ -1,9 +1,11 @@
+import { SEASON_CATEGORIES, THEME_CATEGORIES } from "@/constants/categories"
+
 // TODO: 엡체명, 할인율 추가 필요
 export interface Product {
   product_id: number
-  categories: number[]
+  categories: string[]
   images: ProductImage[]
-  option_values: ProductOptionValue[]
+  option_values: ProductOptionValue[] // SeasonCategories[] | ThemeCategories[]
   name: string
   origin: string
   stock: number
@@ -15,6 +17,9 @@ export interface Product {
   created_at: string
   updated_at: string
   seller: number
+  seller_username: string
+  seller_business_name: string
+  seller_business_number: string
 }
 
 export interface ProductImage {
@@ -35,3 +40,6 @@ export interface ProductOptionCategory {
   group_name: string
   name: string
 }
+
+export type SeasonCategories = typeof SEASON_CATEGORIES 
+export type ThemeCategories = typeof THEME_CATEGORIES
