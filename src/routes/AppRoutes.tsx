@@ -11,6 +11,7 @@ import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
 import SellerLayout from '@/shared/components/Layout/SellerLayout'
 import { Route, Routes } from 'react-router-dom'
+import OrderList from '@/pages/myPage/OrderList'
 
 function AppRoutes() {
   return (
@@ -20,7 +21,17 @@ function AppRoutes() {
         <Route index element={<MainPage />} />
         {/* 소비자만 접근 가능 */}
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
-          <Route index element={<MainPage />} />
+          <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
+          <Route
+            path={ROUTE_PATHS.MYPAGE.FAVORITE_PRODUCTS}
+            element={<OrderList />}
+          />
+          <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<OrderList />} />
+          <Route
+            path={ROUTE_PATHS.MYPAGE.INFORMATION}
+            element={<OrderList />}
+          />
+          {/* <Route index element={<MainPage />} /> */}
         </Route>
       </Route>
       {/* 회원가입 및 로그인 페이지 */}
