@@ -9,7 +9,8 @@ export const API_PATHS = {
   },
   LOGIN: '/api/users/login/',
   PRODUCTS: {
-    GET_ALL: '/api/products',
+    GET_ALL: '/api/products/',
+    GET_ID: (id: number) => `/api/products/${id}/`,
   },
   CATEGORIES: {
     GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
