@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 interface PageNationProps {
   totalItems: number // 총 아이템수
-  itemCountPerPage: number // 페이지당 보여줄 아이템수 (default 20)
+  itemCountPerPage?: number // 페이지당 보여줄 아이템수 (default 20)
   maxPageButtons?: number // 최대 페이지 버튼 수 (default 5)
 }
 
