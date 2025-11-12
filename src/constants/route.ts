@@ -26,5 +26,9 @@ export const ROUTE_PATHS = {
   CATEGORY_LIST: {
     TEMPLATE: '/categories/:id', // 라우팅 path
     GENERATOR: (id: number) => `/categories/${id}`, // 경로 생성 함수
+  },
+  PRODUCT_DETAIL: {
+    TEMPLATE: '/product/:id',
+    GENERATOR: (id: number) => `/product/${id}`,
   } as const,
 }
