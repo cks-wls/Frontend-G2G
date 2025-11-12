@@ -59,20 +59,17 @@ function UserSignIn() {
         </div>
       </div>
       <div className="btn-box">
-        <Button
-          size="lg"
-          variant="filled"
-          type="submit"
-          label="로그인"
-          onClick={handleClick}
-        />
+        <Button size="lg" variant="filled" type="submit" onClick={handleClick}>
+          로그인
+        </Button>
         <Button
           size="lg"
           variant="gray"
           type="button"
-          label="회원가입"
           onClick={() => navigate(ROUTE_PATHS.SIGNUP.INDEX)}
-        />
+        >
+          회원가입
+        </Button>
       </div>
     </div>
   )

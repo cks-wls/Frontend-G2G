@@ -11,6 +11,9 @@ export const API_PATHS = {
   PRODUCTS: {
     GET_ALL: '/api/products',
   },
+  ORDERS: {
+    GET_ORDER_LIST: '/api/orders',
+  },
   CATEGORIES: {
     GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
   },

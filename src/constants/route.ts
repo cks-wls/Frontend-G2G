@@ -3,6 +3,10 @@ export const ROUTE_PATHS = {
 
   MYPAGE: {
     INDEX: '/mypage',
+    ORDER_LIST: ':order-list',
+    FAVORITE_PRODUCTS: ':favorite-products',
+    REVIEWS: ':revies',
+    INFORMATION: ':information',
   },
 
   SELLER: {

@@ -51,23 +51,18 @@ function ReviewModal({
           ></textarea>
         </div>
         {/* 버튼 공통 컴포넌트 활용 */}
-        <Button
-          size="lg"
-          variant="outline"
-          label="사진 첨부하기"
-          isFullWidth
-          type="button"
-        />
+        <Button size="lg" variant="outline" isFullWidth type="button">
+          사진 첨부하기
+        </Button>
         {/* 추후 사진 첨부 기능 구현 */}
         <div className="btn-box">
-          <Button size="md" variant="text" label="취소" type="button" />
+          <Button size="md" variant="text" type="button">
+            취소
+          </Button>
           {/* 취소 눌렀을대 로직 구현해야함 */}
-          <Button
-            size="md"
-            variant="filled"
-            label={btnCompleteLabel}
-            type="submit"
-          />
+          <Button size="md" variant="filled" type="submit">
+            {btnCompleteLabel}
+          </Button>
           {/*등록 누를시 Post 해야함*/}
         </div>
       </div>

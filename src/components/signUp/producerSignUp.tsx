@@ -148,12 +148,13 @@ function ProducerSignUp() {
       <Button
         size="lg"
         variant="gray"
-        label="가입완료"
         type="submit"
         isActive={isActive}
         className="producer-signup-btn"
         onClick={handleSignUp}
-      />
+      >
+        가입완료
+      </Button>
     </div>
   )
 }
