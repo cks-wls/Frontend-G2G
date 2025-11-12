@@ -17,7 +17,7 @@ function ProducerSignUp() {
       const payload = { ...sellerInformation, business_number: businessNumber }
       const response = await sellerSignUpApi.post(payload)
       alert(`이메일 인증을 완료해주세요 ${response.username}님!`)
-      navigate(ROUTE_PATHS.LOGIN.INDEX)
+      navigate(ROUTE_PATHS.EMAIL.INDEX)
     } catch (err: any) {
       const errorData = err.response?.data
       if (errorData) {
