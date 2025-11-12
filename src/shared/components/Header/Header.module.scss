@@ -235,10 +235,9 @@
   }
 }
 
-.category-wrap {
+.category-menu {
   @include flex(column, 0);
   width: 240px;
-  height: 500px;
   border: 1px solid $color-border;
   background-color: $color-white;
   position: absolute;
@@ -247,9 +246,10 @@
   z-index: $z-sub-menu;
   display: none;
 
-  li {
-    padding: 20px;
+  a {
     font-size: 14px;
+    display: block;
+    padding: 20px;
 
     &:hover {
       color: $color-main;
@@ -263,11 +263,11 @@
   }
 }
 
-.category:hover + .category-wrap {
+.category:hover + .category-menu {
   display: block;
 }
 
-.category-wrap:hover {
+.category-menu:hover {
   display: block;
 }
 
