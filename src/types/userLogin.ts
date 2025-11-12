@@ -4,8 +4,6 @@ export interface UserLogIn {
 }
 
 export type UserLogInResponse = {
-  message: string
-  email?: string
-  username?: string
-  role?: 'user' | 'seller'
+  access: string
+  refresh: string
 }

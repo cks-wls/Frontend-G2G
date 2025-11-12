@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATHS } from '@/constants/route'
 import { useState } from 'react'
 import { userLogInApi } from '@/api/logInApi'
+import { saveTokens } from '@/api/auth'
 
 function UserSignIn() {
   const navigate = useNavigate()
@@ -21,8 +22,9 @@ function UserSignIn() {
     // 로그인 로직
     try {
       const response = await userLogInApi.post(loginInformation)
-      if (response.message === '로그인 성공') {
-        alert(`환영합니다 ${response.username}님!`)
+      if (response.access) {
+        saveTokens(response.access, response.refresh)
+        alert(`로그인이 완료되었습니다!`)
         navigate(ROUTE_PATHS.HOME)
         // 추후에 헤더 수정하면 사업자인지 유저인지 추가
       } else {

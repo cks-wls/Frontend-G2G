@@ -2,107 +2,32 @@ import { userSignUpApi } from '@/api/signUpApi'
 import '@/components/signUp/userSignUp.scss'
 import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ROUTE_PATHS } from '@/constants/route'
+import { useUserFormValidation } from '@/hooks/useUserFormValidation'
 
 function UserSignUp() {
-  // api 명세서와 맞춤
-  const [userInformation, setUserInformation] = useState({
-    email: '',
-    password: '',
-    password2: '',
-    username: '',
-    address: '',
-    phone_number: '',
-  })
-  // 유저정보 관리
-  const [isEmailError, setIsEmailError] = useState<boolean | undefined>(
-    undefined
-  )
-  const [isPasswordError, setIsPasswordError] = useState<boolean | undefined>(
-    undefined
-  )
-  const [isPassword2Error, setIsPassword2Error] = useState<boolean | undefined>(
-    undefined
-  )
-  const [isUserNameError, setIsUserNameError] = useState<boolean | undefined>(
-    undefined
-  )
-  const [isAddressError, setIsAddressError] = useState<boolean | undefined>(
-    undefined
-  )
-  const [isPhoneNumberError, setIsPhoneNumberError] = useState<
-    boolean | undefined
-  >(undefined)
-
+  const navigate = useNavigate()
+  const { userInformation, errors, handleChange, isActive } =
+    useUserFormValidation()
   const handleSignUp = async () => {
     if (!isActive) return
     try {
       const response = await userSignUpApi.post(userInformation)
-      console.log(response)
-      alert(`환영합니다 ${response.username}님!`)
-      // 이메일 인증화면으로 navigate
-    } catch (err) {
-      console.log('가입 실패: ', err)
+      alert(`이메일 인증을 완료해주세요 ${response.username}님!`)
+      navigate(ROUTE_PATHS.EMAIL.INDEX)
+    } catch (err: any) {
+      const errorData = err.response?.data
+      if (errorData) {
+        let errorMsg = ''
+        for (const key in errorData) {
+          if (Object.prototype.hasOwnProperty.call(errorData, key)) {
+            errorMsg += `${errorData[key].join(', ')}\n`
+          }
+        }
+        alert(errorMsg)
+      }
     }
-  }
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setUserInformation((prev) => ({ ...prev, [name]: value }))
-    // 이메일 유효성 검사
-    if (name === 'email') {
-      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-      setIsEmailError(!isValidEmail)
-    }
-    // 비밀번호 유효성 검사
-    if (name === 'password') {
-      const isValidPassword =
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-          value
-        )
-      setIsPasswordError(!isValidPassword)
-    }
-    if (name === 'password2') {
-      // 비밀번호 재확인 유효성 검사
-      const isValidPassword2 = userInformation.password === value
-      setIsPassword2Error(!isValidPassword2)
-    }
-    if (name === 'username') {
-      // 사용자이름 유효성 검사
-      const isValidUserName = /^.{1,}$/.test(value)
-      setIsUserNameError(!isValidUserName)
-    }
-    if (name === 'address') {
-      // 사용자주소 유효성 검사
-      const isValidAddress = /^.{1,}$/.test(value)
-      setIsAddressError(!isValidAddress)
-    }
-    // 사용자번호 유효성 검사
-    if (name === 'phone_number') {
-      const isValidPhoneNumber = /^\d{11}$/.test(value)
-      setIsPhoneNumberError(!isValidPhoneNumber)
-    }
-  }
-
-  // 버튼 활성화 유무
-  const isActive = () => {
-    if (
-      isEmailError === undefined ||
-      isPasswordError === undefined ||
-      isPassword2Error === undefined ||
-      isUserNameError === undefined ||
-      isAddressError === undefined ||
-      isPhoneNumberError === undefined
-    ) {
-      return false
-    }
-    return (
-      !isEmailError &&
-      !isPasswordError &&
-      !isPassword2Error &&
-      !isUserNameError &&
-      !isAddressError &&
-      !isPhoneNumberError
-    )
   }
 
   return (
@@ -115,9 +40,9 @@ function UserSignUp() {
           type="email"
           name="email"
           onChange={handleChange}
-          isError={isEmailError}
+          isError={errors.email}
         />
-        <div className={`user-error ${isEmailError ? '' : 'display-none'}`}>
+        <div className={`user-error ${errors.email ? '' : 'display-none'}`}>
           이메일 주소가 올바르지 않아요
         </div>
       </div>
@@ -128,9 +53,9 @@ function UserSignUp() {
           type="password"
           name="password"
           onChange={handleChange}
-          isError={isPasswordError}
+          isError={errors.password}
         />
-        <div className={`user-error ${isPasswordError ? '' : 'display-none'}`}>
+        <div className={`user-error ${errors.password ? '' : 'display-none'}`}>
           영문, 숫자, 특수문자를 포함한 8자 이상으로 입력해주세요
         </div>
         <ProducerNumberForm
@@ -138,9 +63,9 @@ function UserSignUp() {
           type="password"
           name="password2"
           onChange={handleChange}
-          isError={isPassword2Error}
+          isError={errors.password2}
         />
-        <div className={`user-error ${isPassword2Error ? '' : 'display-none'}`}>
+        <div className={`user-error ${errors.password2 ? '' : 'display-none'}`}>
           비밀번호가 일치하지 않아요 확인해주세요
         </div>
         <div className="user-password-form-box">
@@ -149,10 +74,10 @@ function UserSignUp() {
             placeHolder="사용자의 이름을 입력해주세요"
             name="username"
             onChange={handleChange}
-            isError={isUserNameError}
+            isError={errors.username}
           />
           <div
-            className={`user-error ${isUserNameError ? '' : 'display-none'}`}
+            className={`user-error ${errors.username ? '' : 'display-none'}`}
           >
             이름은 1자 이상 입력해주세요
           </div>
@@ -163,9 +88,9 @@ function UserSignUp() {
             placeHolder="사용자의 주소를 입력해주세요"
             name="address"
             onChange={handleChange}
-            isError={isAddressError}
+            isError={errors.address}
           />
-          <div className={`user-error ${isAddressError ? '' : 'display-none'}`}>
+          <div className={`user-error ${errors.address ? '' : 'display-none'}`}>
             주소는 1자 이상 입력해주세요
           </div>
         </div>
@@ -175,10 +100,10 @@ function UserSignUp() {
             placeHolder="-를 제외한 전화번호 11자리를 입력해주세요"
             name="phone_number"
             onChange={handleChange}
-            isError={isPhoneNumberError}
+            isError={errors.phone_number}
           />
           <div
-            className={`user-error ${isPhoneNumberError ? '' : 'display-none'}`}
+            className={`user-error ${errors.phone_number ? '' : 'display-none'}`}
           >
             -를 제외한 전화번호 11자리를 입력해주세요
           </div>
@@ -189,7 +114,7 @@ function UserSignUp() {
         variant="gray"
         label="가입완료"
         type="submit"
-        isActive={isActive()}
+        isActive={isActive}
         className="user-signup-btn"
         onClick={handleSignUp}
       />
