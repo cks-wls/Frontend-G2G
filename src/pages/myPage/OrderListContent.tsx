@@ -12,14 +12,18 @@ const OrderListContents = ({ data }: { data: Orders }) => {
               {item.status === 'completed' ? '결제 완료' : '배송준비중'}
             </p>
             <p className="product-name">{item.productName}</p>
-            <div className='row-texts'>
+            <div className="row-texts">
               <p className="sm-text">{item.priceAtPurchase}원</p>
               <p className="quantity">{item.quantity}개</p>
-              <p className='date'>{`${item.orderDate} 결제`}</p>
+              <p className="date">{`${item.orderDate} 결제`}</p>
             </div>
-            <div>
-              <Button label='장바구니 담기' />
-              <Button label='바로 구매하기' />
+            <div className="row-buttons">
+              <Button variant="outline" className="cart-button">
+                <p>장바구니 담기</p>
+              </Button>
+              <Button variant="outline" className="buy-button">
+                바로 구매하기
+              </Button>
             </div>
           </section>
         </div>

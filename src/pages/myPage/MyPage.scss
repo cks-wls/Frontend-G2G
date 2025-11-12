@@ -24,6 +24,10 @@
     border-radius: 4px;
     background-color: $color-border;
   }
+
+  section {
+    @include flex(column)
+  }
   
   .contents-overview {
     @include flex($gap: 6px);
@@ -45,6 +49,17 @@
       }
       .date{
         @include font($size: $font-xs, $weight: $font-normal, $color: $color-subtext)
+      }
+    }
+    .row-buttons {
+      @include flex($gap: 8px);
+      .cart-button {
+        @include font($color: $color-subtext);
+        border: 1px solid $color-subtext;
+        height: 36px;
+      }
+      .buy-button {
+        height: 36px;
       }
     }
   }

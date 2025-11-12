@@ -29,7 +29,6 @@ function ProducerCertification() {
       <Button
         size="lg"
         variant="gray"
-        label="사업자번호 확인하기"
         type="submit"
         isActive={isActive()}
         className="producer-certification-btn"
@@ -38,7 +37,9 @@ function ProducerCertification() {
             navigate(ROUTE_PATHS.SIGNUP.SELLER, { state: { businessNumber } })
           }
         }}
-      />
+      >
+        사업자번호 확인하기
+      </Button>
     </div>
   )
 }
