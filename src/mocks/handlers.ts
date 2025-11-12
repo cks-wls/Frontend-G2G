@@ -1,8 +1,8 @@
+import { categoryHandlers } from './handlers/category'
 import { userLoginHandlers } from './handlers/login'
 import { orderListHandler } from './handlers/myPage'
 import { productHandlers } from './handlers/product'
-import { userSignUpHandlers } from './handlers/signUp'
-import { sellerSignUpHandlers } from './handlers/signUp'
+import { sellerSignUpHandlers, userSignUpHandlers } from './handlers/signUp'
 
 export const handlers = [
   ...productHandlers,
@@ -10,4 +10,5 @@ export const handlers = [
   ...sellerSignUpHandlers,
   ...userLoginHandlers,
   ...orderListHandler,
+  ...categoryHandlers,
 ]

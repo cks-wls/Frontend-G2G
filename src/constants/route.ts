@@ -23,4 +23,11 @@ export const ROUTE_PATHS = {
     INDEX: '/login',
     USER: '/login/user',
   },
+
+  PRODUCT_LIST: '/product/list',
+
+  CATEGORY_LIST: {
+    TEMPLATE: '/categories/:id',                      // 라우팅 path
+    GENERATOR: (id: number) => `/categories/${id}`,   // 경로 생성 함수
+  },
 } as const
