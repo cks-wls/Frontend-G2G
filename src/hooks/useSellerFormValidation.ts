@@ -7,7 +7,7 @@ export interface SellerFormErrors {
   password2?: boolean
   username?: boolean
   business_address?: boolean
-  // address?: boolean
+  address?: boolean
   phone_number?: boolean
   business_name?: boolean
   business_number?: boolean
@@ -20,7 +20,7 @@ export function useSellerFormValidation() {
     password2: '',
     username: '',
     business_address: '',
-    // address: '',
+    address: '',
     phone_number: '',
     business_name: '',
     business_number: '',
@@ -31,7 +31,7 @@ export function useSellerFormValidation() {
     password2: undefined,
     username: undefined,
     business_address: undefined,
-    // address: undefined,
+    address: undefined,
     phone_number: undefined,
     business_name: undefined,
     business_number: false,
@@ -83,9 +83,9 @@ export function useSellerFormValidation() {
         }))
       }
       // 주소 유효성 검사
-      //   if (name === 'address') {
-      //     setErrors((prev) => ({ ...prev, address: !/^.{1,}$/.test(value) }))
-      //   }
+      if (name === 'address') {
+        setErrors((prev) => ({ ...prev, address: !/^.{1,}$/.test(value) }))
+      }
 
       // 전화번호 유효성 검사
       if (name === 'phone_number') {
