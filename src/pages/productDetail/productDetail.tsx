@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import type { Product } from '@/types/product'
 import SummarizeDetail from '@/components/productDetail/summarizeDetail/SummarizeDetail'
-
+import CategoryDetail from '@/components/productDetail/categoryDetail/CategoryDetail'
 function ProductDetail() {
   const { id } = useParams()
   const productId = Number(id)
@@ -25,7 +25,7 @@ function ProductDetail() {
   return (
     <div>
       <SummarizeDetail item={product!} />
-      <div className="modal">모달</div>
+      <CategoryDetail item={product!} />
       <div className="product-information">상세정보</div>
     </div>
   )
