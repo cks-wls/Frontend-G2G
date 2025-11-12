@@ -13,12 +13,14 @@ export const ROUTE_PATHS = {
     INDEX: '/seller',
     PRODUCTS: '/seller/products',
   },
+
   SIGNUP: {
     INDEX: '/signup',
     USER: '/signup/user',
     SELLER_CERTIFICATION: '/signup/seller-certification',
     SELLER: '/signup/seller',
   },
+
   LOGIN: {
     INDEX: '/login',
     USER: '/login/user',
@@ -35,4 +37,6 @@ export const ROUTE_PATHS = {
     TEMPLATE: '/product/:id',
     GENERATOR: (id: number) => `/product/${id}`,
   } as const,
-}
+
+  CART: '/cart',
+} as const

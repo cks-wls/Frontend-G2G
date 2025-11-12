@@ -105,7 +105,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                 <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
                   <LucideHeart />
                 </Link>
-                <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                <Link to={ROUTE_PATHS.CART}>
                   <LucideShoppingCart />
                 </Link>
               </div>
@@ -120,19 +120,21 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
               <ul className={styles['category-menu']}>
                 {THEME_CATEGORIES.map((c) => (
                   <li>
-                    <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>{c.name}</Link>
+                    <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>
+                      {c.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
               <ul className={styles.gnb}>
                 <li>
-                  <Link to="">신상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>신상품</Link>
                 </li>
                 <li>
-                  <Link to="">베스트</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>베스트</Link>
                 </li>
                 <li>
-                  <Link to="">알뜰상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>알뜰상품</Link>
                 </li>
               </ul>
             </div>
@@ -143,14 +145,14 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                   <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
                     <LucideHeart />
                   </Link>
-                  <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                  <Link to={ROUTE_PATHS.CART}>
                     <LucideShoppingCart />
                   </Link>
                 </div>
               </div>
             )}
             <div className={cn('nav-right', { hidden: isCompact })}>
-              <Link to={ROUTE_PATHS.LOGIN.INDEX}>입점신청</Link>
+              <Link to={ROUTE_PATHS.SIGNUP.SELLER}>입점신청</Link>
             </div>
           </nav>
         </div>
