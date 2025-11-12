@@ -118,8 +118,8 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                 카테고리
               </button>
               <ul className={styles['category-menu']}>
-                {THEME_CATEGORIES.map((c) => (
-                  <li>
+                {THEME_CATEGORIES.map((c, index) => (
+                  <li key={index}>
                     <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>
                       {c.name}
                     </Link>
