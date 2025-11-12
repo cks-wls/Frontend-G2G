@@ -4,7 +4,7 @@ import Button from '@/shared/components/button'
 import ProducerNumberForm from '@/shared/components/Form/Producer/ProducerNumberForm'
 import { ROUTE_PATHS } from '@/constants/route'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useSellerFormValidation } from '@/hooks/useSellerFormCalidation'
+import { useSellerFormValidation } from '@/hooks/useSellerFormValidation'
 function ProducerSignUp() {
   const navigate = useNavigate()
   const location = useLocation()
@@ -14,12 +14,21 @@ function ProducerSignUp() {
   const handleSignUp = async () => {
     if (!isActive) return
     try {
-      const response = await sellerSignUpApi.post(sellerInformation)
+      const payload = { ...sellerInformation, business_number: businessNumber }
+      const response = await sellerSignUpApi.post(payload)
       alert(`이메일 인증을 완료해주세요 ${response.username}님!`)
       navigate(ROUTE_PATHS.LOGIN.INDEX)
-    } catch (err) {
-      console.log('가입 실패: ', err)
-      navigate(ROUTE_PATHS.EMAIL.INDEX) // 나중에 삭제예정
+    } catch (err: any) {
+      const errorData = err.response?.data
+      if (errorData) {
+        let errorMsg = ''
+        for (const key in errorData) {
+          if (Object.prototype.hasOwnProperty.call(errorData, key)) {
+            errorMsg += `${errorData[key].join(', ')}\n`
+          }
+        }
+        alert(errorMsg)
+      }
     }
   }
   return (
@@ -71,6 +80,18 @@ function ProducerSignUp() {
         />
         <div className={`user-error ${errors.username ? '' : 'display-none'}`}>
           이름은 1자 이상 입력해주세요
+        </div>
+      </div>
+      <div className="producer-form-box">
+        <div className="producer-form-title">주소</div>
+        <ProducerNumberForm
+          name="address"
+          placeHolder="사용자의 주소를 입력해주세요"
+          onChange={handleChange}
+          isError={errors.address}
+        />
+        <div className={`user-error ${errors.address ? '' : 'display-none'}`}>
+          주소는 1자 이상 입력해주세요
         </div>
       </div>
       <div className="producer-form-box">

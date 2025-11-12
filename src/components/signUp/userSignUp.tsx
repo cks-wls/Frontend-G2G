@@ -16,11 +16,20 @@ function UserSignUp() {
       const response = await userSignUpApi.post(userInformation)
       alert(`이메일 인증을 완료해주세요 ${response.username}님!`)
       navigate(ROUTE_PATHS.EMAIL.INDEX)
-    } catch (err) {
-      console.log('가입 실패: ', err)
-      // navigate(ROUTE_PATHS.EMAIL.INDEX) // 나중에 삭제 예정
+    } catch (err: any) {
+      const errorData = err.response?.data
+      if (errorData) {
+        let errorMsg = ''
+        for (const key in errorData) {
+          if (Object.prototype.hasOwnProperty.call(errorData, key)) {
+            errorMsg += `${errorData[key].join(', ')}\n`
+          }
+        }
+        alert(errorMsg)
+      }
     }
   }
+
   return (
     <div className="user-signup-box">
       <div className="user-signup-title">회원가입</div>
