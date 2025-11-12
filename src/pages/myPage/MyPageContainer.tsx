@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import styles from './MyPage.module.scss'
+import './MyPage.scss'
 
 const MyPageContainer = ({
   title,
@@ -9,8 +9,8 @@ const MyPageContainer = ({
   children: ReactNode
 }) => {
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>{title}</p>
+    <div className='container'>
+      <p className='title'>{title}</p>
       {children}
     </div>
   )
