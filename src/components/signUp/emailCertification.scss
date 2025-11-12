@@ -1,0 +1,28 @@
+.email-certification-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.email-form-title {
+  margin-top: 236px;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 150px;
+}
+.text-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+}
+.certificate {
+  margin-top: 40px;
+  font-weight: 600;
+  &.blue {
+    color: blue;
+  }
+  &.red {
+    color: red;
+  }
+}
