@@ -13,6 +13,7 @@ import SellerLayout from '@/shared/components/Layout/SellerLayout'
 import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import { Route, Routes } from 'react-router-dom'
 import OrderList from '@/pages/myPage/OrderList'
+import EmailCertification from '@/components/signUp/emailCertification'
 
 function AppRoutes() {
   return (
@@ -20,7 +21,10 @@ function AppRoutes() {
       {/* 게스트와 소비자 공용 레이아웃 */}
       <Route element={<CommonLayout />}>
         <Route index element={<Main />} />
-        <Route path={ROUTE_PATHS.CATEGORY_LIST.TEMPLATE} element={<ProductList />} />
+        <Route
+          path={ROUTE_PATHS.CATEGORY_LIST.TEMPLATE}
+          element={<ProductList />}
+        />
         {/* 소비자만 접근 가능 */}
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
@@ -47,6 +51,10 @@ function AppRoutes() {
         <Route path={ROUTE_PATHS.SIGNUP.SELLER} element={<ProducerSignUp />} />
         <Route path={ROUTE_PATHS.LOGIN.INDEX} element={<SignIn />} />
         <Route path={ROUTE_PATHS.LOGIN.USER} element={<UserSignIn />} />
+        <Route
+          path={ROUTE_PATHS.EMAIL.INDEX}
+          element={<EmailCertification />}
+        />
       </Route>
       <Route path={ROUTE_PATHS.SELLER.INDEX} element={<SellerLayout />}>
         <Route index element={<Main />} />
