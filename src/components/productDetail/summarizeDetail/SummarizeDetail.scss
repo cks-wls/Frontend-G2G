@@ -1,0 +1,108 @@
+.detail-box {
+  margin-top: 50px;
+}
+.modal {
+  margin-top: 120px;
+}
+.product-information {
+  margin-top: 40px;
+}
+.product-detail-top-box {
+  display: flex;
+  gap: 50px;
+}
+.representative-img {
+  width: 500px;
+  height: 550px;
+  border-radius: 6px;
+}
+.product-simple-information {
+  display: flex;
+  flex-direction: column;
+}
+.top-description {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #888888;
+}
+.product-detail-title {
+  margin-top: 4px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #333333;
+}
+.product-detail-price {
+  margin-top: 16px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #333333;
+}
+.product-detail-fix-box {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: #888888;
+  font-weight: 400;
+}
+.product-detail-origin-row {
+  display: flex;
+  gap: 61px;
+}
+.product-detail-text {
+  color: #333333;
+}
+.modal-css {
+  position: relative;
+  right: 15px;
+  bottom: 3px;
+}
+.product-detail-option-box {
+  display: flex;
+  gap: 61px;
+  margin-top: 4px;
+  align-items: center;
+}
+.product-count-box {
+  display: flex;
+  align-items: center;
+  gap: 296px;
+  width: 500px;
+  height: 72px;
+  border: 1px solid #eeeeee;
+  padding: 15px;
+  //   추후에 20px로 수정 -> ui상 자연스럽게 하기 위해 15px로 임시조정
+  color: #333333;
+}
+.product-total-price-box {
+  display: flex;
+  gap: 323px;
+  align-items: center;
+  color: #333333;
+}
+.total-price {
+  font-weight: 700;
+  font-size: 28px;
+}
+.wish-add-to-cart-box {
+  display: flex;
+  gap: 12px;
+}
+.count-box {
+  width: 87px;
+  height: 32px;
+  border-radius: 2px;
+  border: 1px solid #eeeeee;
+  padding: 8px 8px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+.calculate-btn {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
