@@ -1,4 +1,4 @@
-import { SEASON_CATEGORIES, THEME_CATEGORIES } from "@/constants/categories"
+import { SEASON_CATEGORIES, THEME_CATEGORIES } from '@/constants/categories'
 
 // TODO: 엡체명, 할인율 추가 필요
 export interface Product {
@@ -20,6 +20,12 @@ export interface Product {
   seller_username: string
   seller_business_name: string
   seller_business_number: string
+  seller_business_address: string
+  review_count: number
+  wish_count: number
+  sales_count: number
+  discount_price: string
+  discount_rate: string
 }
 
 export interface ProductImage {
@@ -41,5 +47,5 @@ export interface ProductOptionCategory {
   name: string
 }
 
-export type SeasonCategories = typeof SEASON_CATEGORIES 
+export type SeasonCategories = typeof SEASON_CATEGORIES
 export type ThemeCategories = typeof THEME_CATEGORIES

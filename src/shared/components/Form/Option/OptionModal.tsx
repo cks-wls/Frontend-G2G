@@ -8,10 +8,12 @@ export type ModalSize = 'md' | 'lg'
 interface OptionModalProps {
   size: ModalSize
   placeHolder?: string
+  className?: string
 }
 function OptionModal({
   size,
   placeHolder = '필수 옵션을 입력해주세요',
+  className,
 }: OptionModalProps) {
   const [isModalOpen, setisModalOpen] = useState(false)
   // 임시로 useState를 이용해 모달 열리는 여부 설정
@@ -19,7 +21,7 @@ function OptionModal({
     setisModalOpen((prev) => !prev)
   }
   return (
-    <div className="option-box">
+    <div className={`option-box ${className || ''}`}>
       <button className={`option-btn ${size}`} onClick={handleClick}>
         {placeHolder}
       </button>
