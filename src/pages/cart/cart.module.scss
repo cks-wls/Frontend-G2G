@@ -1,2 +1,152 @@
 @use '@/foundations/mixins' as *;
 @use '@/foundations/variables' as *;
+
+.wrap {
+  width: 100%;
+  background-color: $color-border;
+  padding: 50px 0;
+}
+
+.title {
+  text-align: center;
+  padding-bottom: 50px;
+
+  h2 {
+    font-size: 28px;
+  }
+}
+
+.cart-wrap {
+  width: 1050px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin: 0 auto;
+}
+
+.cart-left {
+  width: 652px;
+  background-color: $color-white;
+  padding: 40px 24px;
+  border-radius: 6px;
+}
+
+.select-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 2px solid $color-border;
+
+  .select-all {
+    font-size: 20px;
+    font-weight: 600; 
+  }
+
+  button {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid $color-border;
+  }
+}
+
+.list-wrap {
+  @include flex(column, 20px);
+  padding: 20px 0;
+}
+
+.total-wrap {
+  background-color: $color-bg;
+  text-align: center;
+  border-radius: 6px;
+  padding: 12px;
+
+  .total-detail {
+    font-weight: 600;
+    color: $color-subtext;
+    font-size: 14px;
+  }
+  .total {
+    font-weight: 700;
+    font-size: 18px;
+  }
+}
+
+.cart-right {
+  width: 374px;
+  @include flex(column, 20px);
+}
+
+.address-wrap {
+  background-color: $color-white;
+  padding: 24px;
+  border-radius: 6px;
+
+  .address-title {
+    @include flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .address-edit {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      width: 260px;
+    }
+  }
+
+  button {
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid $color-border;
+  }
+}
+
+.amount-wrap {
+  background-color: $color-white;
+  padding: 24px;
+  border-radius: 6px;
+}
+
+.amount-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.amount-detail {
+  @include flex(column, 10px);
+  padding: 20px 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.amount-pair {
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount-semibold {
+  font-weight: 600;
+}
+
+.amount-discount {
+  color: $color-discount;
+}
+
+.amount-total {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount-bold {
+  font-weight: 700;
+  font-size: 18px;
+}
