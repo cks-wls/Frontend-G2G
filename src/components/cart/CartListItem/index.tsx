@@ -1,10 +1,10 @@
+import { ROUTE_PATHS } from '@/constants/route'
 import CheckBox from '@/shared/components/Form/CheckBox/CheckBox'
 import type { CartItem } from '@/types/cart'
 import classNames from 'classnames/bind'
 import { LucideMinus, LucidePlus, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import styles from './CartListItem.module.scss'
-import { ROUTE_PATHS } from '@/constants/route'
 
 const cn = classNames.bind(styles)
 
@@ -41,7 +41,9 @@ const CartListItem = ({
       </div>
       <div className={cn('item-info')}>
         <div>
-          <Link to={''}>
+          <Link
+            to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(Number(item.productId))}
+          >
             <p className={cn('item-name')}>{item.productName}</p>
           </Link>
           <span className={cn('item-discount')}>
