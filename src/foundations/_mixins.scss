@@ -24,7 +24,7 @@
   object-fit: cover;
 }
 
-@mixin font($size: 16px, $weight: 500, $color: black ) {
+@mixin font($size: 16px, $weight: 500, $color: #333 ) {
   font-size: $size;
   font-weight: $weight;
   color: $color

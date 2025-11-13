@@ -17,7 +17,6 @@
 }
 
 .contents-wrapper {
-  // width: 100%;
   img {
     width: 100px;
     height: 110px;
@@ -26,7 +25,8 @@
   }
 
   section {
-    @include flex(column)
+    @include flex(column);
+    justify-content:space-between;
   }
   
   .contents-overview {
@@ -36,21 +36,26 @@
       @include font($weight: $font-bold)
     }
     .product-name {
-      @include font($size: $font-sm)
+      @include font($font-sm)
     }
     .row-texts{
       @include flex();
       align-items: center;
-      .sm-text {
-        @include font($size: $font-sm)
-      }
-      .quantity{
-        @include font($size: $font-sm, $weight: $font-normal, $color: $color-text)
-      }
-      .date{
-        @include font($size: $font-xs, $weight: $font-normal, $color: $color-subtext)
-      }
     }
+    
+    .sm-text {
+      @include font($font-sm)
+    }
+    .quantity{
+      @include font($font-sm, $font-normal, $color-text)
+    }
+    .date{
+      @include font($font-xs, $font-normal, $color-subtext)
+    }
+    .sm-bold {
+      @include font($size: $font-sm, $weight: $font-bold)
+    }
+
     .row-buttons {
       @include flex($gap: 8px);
       .cart-button {

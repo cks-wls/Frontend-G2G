@@ -14,6 +14,7 @@ import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import { Route, Routes } from 'react-router-dom'
 import OrderList from '@/pages/myPage/OrderList'
 import EmailCertification from '@/components/signUp/emailCertification'
+import WishList from '@/pages/myPage/WishList'
 import ProductDetail from '@/pages/productDetail/productDetail'
 
 function AppRoutes() {
@@ -33,10 +34,7 @@ function AppRoutes() {
         {/* 소비자만 접근 가능 */}
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
-          <Route
-            path={ROUTE_PATHS.MYPAGE.FAVORITE_PRODUCTS}
-            element={<OrderList />}
-          />
+          <Route path={ROUTE_PATHS.MYPAGE.WISH_LIST} element={<WishList />} />
           <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<OrderList />} />
           <Route
             path={ROUTE_PATHS.MYPAGE.INFORMATION}
