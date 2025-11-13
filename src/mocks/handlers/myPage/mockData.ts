@@ -1,4 +1,5 @@
 import type { ServerOrders } from '@/types/orders'
+import type { ServerWishList } from '@/types/wishList'
 
 export const orders: ServerOrders[] = [
   {
@@ -58,4 +59,21 @@ export const orders: ServerOrders[] = [
       },
     ],
   },
+]
+
+export const wishLists: ServerWishList[] = [
+  {
+    id: 1,
+    user: 1,
+    product: 1,
+    is_active: true,
+    created_at: "2025-11-12T15:35:46.811Z"
+  },
+  {
+    id: 2,
+    user: 1,
+    product: 2,
+    is_active: false,
+    created_at: "2025-11-12T15:35:46.811Z"
+  }
 ]

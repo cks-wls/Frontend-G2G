@@ -14,6 +14,9 @@ export const API_PATHS = {
   ORDERS: {
     GET_ORDER_LIST: '/api/orders',
   },
+  WISHLISTS: {
+    GET_WISHLIST: '/api/wishlists',
+  },
   CATEGORIES: {
     GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
   },
