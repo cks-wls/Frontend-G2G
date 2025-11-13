@@ -21,6 +21,8 @@ export interface Product {
   seller_business_name: string
   seller_business_number: string
   seller_business_address: string
+  review_count: number
+  wish_count: number
 }
 
 export interface ProductImage {

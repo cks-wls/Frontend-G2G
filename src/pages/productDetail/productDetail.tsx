@@ -5,6 +5,10 @@ import { useParams } from 'react-router-dom'
 import type { Product } from '@/types/product'
 import SummarizeDetail from '@/components/productDetail/summarizeDetail/SummarizeDetail'
 import CategoryDetail from '@/components/productDetail/categoryDetail/CategoryDetail'
+import ProductInformation from '@/components/productDetail/productInformation/ProductInformation'
+import SellerInformation from '@/components/productDetail/sellerInformation/SellerInformation'
+import ProductReview from '@/components/productDetail/productReview/ProductReview'
+import ProductInquiry from '@/components/productDetail/productInquiry/ProductInquiry'
 function ProductDetail() {
   const { id } = useParams()
   const productId = Number(id)
@@ -26,7 +30,10 @@ function ProductDetail() {
     <div>
       <SummarizeDetail item={product!} />
       <CategoryDetail item={product!} />
-      <div className="product-information">상세정보</div>
+      <ProductInformation item={product!} />
+      <SellerInformation item={product!} />
+      <ProductReview item={product!} />
+      <ProductInquiry />
     </div>
   )
 }

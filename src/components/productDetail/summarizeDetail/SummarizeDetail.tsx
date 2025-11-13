@@ -86,7 +86,9 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
 
               {/* 카운트박스 * price */}
             </div>
-            <Button size="xlg" variant="filled" label="바로 구매하기" />
+            <Button size="xlg" variant="filled">
+              바로 구매하기
+            </Button>
             {/* 바로 구매로직 추후에 구현 */}
             <div className="wish-add-to-cart-box">
               <WishButton
@@ -95,7 +97,9 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
                 onClick={() => console.log('좋아요 눌림')}
                 // 추후 좋아요 눌렀을때의 로직 처리
               />
-              <Button size="mlg" variant="gray" label="장바구니 담기" />
+              <Button size="mlg" variant="gray">
+                장바구니 담기
+              </Button>
               {/* 추후 장바구니 추가 로직 구현 */}
             </div>
           </div>
