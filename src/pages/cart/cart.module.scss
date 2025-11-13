@@ -36,10 +36,10 @@
   justify-content: space-between;
   padding-bottom: 20px;
   border-bottom: 2px solid $color-border;
+  font-size: 18px;
 
-  .select-all {
-    font-size: 20px;
-    font-weight: 600; 
+  input[type='checkbox'] {
+    margin-right: 8px;
   }
 
   button {
@@ -149,4 +149,9 @@
 .amount-bold {
   font-weight: 700;
   font-size: 18px;
+}
+
+.disabled {
+  cursor: default;
+  color: $color-border;
 }

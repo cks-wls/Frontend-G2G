@@ -8,13 +8,13 @@ import App from './App'
 
 // MSW 워커를 활성화하는 함수
 async function enableMocking() {
-  // if (import.meta.env.MODE !== 'development') {
-  //   return
-  // }
-  // const { worker } = await import('./mocks/browser')
-  // return worker.start({
-  //   onUnhandledRequest: 'bypass',
-  // })
+  if (import.meta.env.MODE !== 'development') {
+    return
+  }
+  const { worker } = await import('./mocks/browser')
+  return worker.start({
+    onUnhandledRequest: 'bypass',
+  })
 }
 
 const queryClient = new QueryClient()

@@ -18,13 +18,13 @@ export interface ServerCartItem {
 }
 
 export interface Cart {
-  id: number
+  cartId: number
   items: CartItem[]
 }
 
 export interface CartItem {
   id: number
-  productId: number
+  productId: string
   productName: string
   quantity: number
   thumbnail: string
@@ -33,12 +33,12 @@ export interface CartItem {
   deliveryFee: string
 }
 
-export const mappingCart = (carts: ServerCart[]): Cart[] => {
-  return carts.map((cart) => ({
-    id: cart.id,
+export const mappingGetCart = (cart: ServerCart[]): Cart[] => {
+  return cart.map((cart) => ({
+    cartId: cart.id,
     items: cart.items.map((item) => ({
       id: item.id,
-      productId: item.product,
+      productId: String(item.product),
       productName: item.product_name,
       quantity: item.quantity,
       thumbnail: item.thumbnail,
