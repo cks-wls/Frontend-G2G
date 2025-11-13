@@ -23,6 +23,9 @@ export interface Product {
   seller_business_address: string
   review_count: number
   wish_count: number
+  sales_count: number
+  discount_price: string
+  discount_rate: string
 }
 
 export interface ProductImage {
