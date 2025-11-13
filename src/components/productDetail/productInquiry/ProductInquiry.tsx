@@ -31,7 +31,11 @@ function ProductInquiry() {
       {currentItems.map((val, index) => (
         <ProductInquiryList key={index} el={val} />
       ))}
-      <PageNation totalItems={length.length} itemCountPerPage={itemsPerPage} />
+      <PageNation
+        totalItems={length.length}
+        itemCountPerPage={itemsPerPage}
+        className="pageNation-style"
+      />
     </>
   )
 }
