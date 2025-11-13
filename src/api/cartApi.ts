@@ -8,11 +8,15 @@ export const cartApi = {
     return mappingGetCart(data)
   },
 
-  // TODO: patch
-  updateCartQuantity: async (productId: string, quantity: number) => {
-    const { data } = await axiosInstance.put<ServerCart>(
-      API_PATHS.CARTS.UPDATE(productId),
-      { quantity }
+  // TODO: put -> patch로 수정 요청
+  updateCartQuantity: async (
+    cartId: string,
+    productId: string,
+    quantity: number
+  ) => {
+    const { data } = await axiosInstance.patch<ServerCart>(
+      API_PATHS.CARTS.UPDATE(cartId),
+      { productId, quantity }
     )
     return data
   },

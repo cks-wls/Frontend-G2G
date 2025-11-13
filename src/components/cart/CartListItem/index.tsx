@@ -11,7 +11,7 @@ interface CartListItemProps {
   item: CartItem
   isChecked: boolean
   onChecked: (productId: string, isChecked: boolean) => void
-  onQuantityChange: (productId: string, newQuantity: number) => void
+  onChangeQuantity: (productId: string, newQuantity: number) => void
   onDeleteItem: (productIds: string[]) => void
 }
 
@@ -20,11 +20,11 @@ const CartListItem = ({
   isChecked,
   onChecked,
   onDeleteItem,
-  onQuantityChange,
+  onChangeQuantity,
 }: CartListItemProps) => {
-  const handleQuantityChange = (newQuantity: number) => {
+  const handleChangeQuantity = (newQuantity: number) => {
     if (newQuantity < 1) return
-    onQuantityChange(item.productId, newQuantity)
+    onChangeQuantity(item.productId, newQuantity)
   }
 
   return (
@@ -51,7 +51,7 @@ const CartListItem = ({
         <div className={cn('item-quantity')}>
           <button
             type="button"
-            onClick={() => handleQuantityChange(item.quantity - 1)}
+            onClick={() => handleChangeQuantity(item.quantity - 1)}
             className={cn({ disabled: item.quantity === 1 })}
             disabled={item.quantity === 1}
           >
@@ -60,7 +60,7 @@ const CartListItem = ({
           <span>{item.quantity}</span>
           <button
             type="button"
-            onClick={() => handleQuantityChange(item.quantity + 1)}
+            onClick={() => handleChangeQuantity(item.quantity + 1)}
           >
             <LucidePlus size={16} />
           </button>

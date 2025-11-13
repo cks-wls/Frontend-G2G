@@ -1,6 +1,7 @@
 import CartListItem from '@/components/cart/CartListItem'
 import useCart from '@/hooks/queries/cart/useCart'
 import useDeleteCartItems from '@/hooks/queries/cart/useDeleteCartItems'
+import useUpdateCartItem from '@/hooks/queries/cart/useUpdateCartItem'
 import Button from '@/shared/components/button'
 import CheckBox from '@/shared/components/Form/CheckBox/CheckBox'
 import classNames from 'classnames/bind'
@@ -13,25 +14,30 @@ const cn = classNames.bind(styles)
 const Cart = () => {
   const { data, isLoading, error } = useCart()
   const { mutate: deleteItems } = useDeleteCartItems()
+  const { mutate: updateQuantity } = useUpdateCartItem()
   const [selectedItems, setSelectedItems] = useState<string[]>([])
 
   const cartId = String(data?.[0]?.cartId)
   const cartItems = data?.[0]?.items || []
 
+  // 전체 아이템 ID 목록
   const allItemIds = useMemo(
     () => cartItems.map((item) => item.productId),
     [cartItems]
   )
 
+  // 전체 선택 여부
   const isAllSelected = useMemo(
     () => selectedItems.length > 0 && selectedItems.length === cartItems.length,
     [cartItems.length, selectedItems.length]
   )
 
+  // 전체 선택 체크박스 핸들러
   const handleSelectAll = (checked: boolean) => {
     setSelectedItems(checked ? allItemIds : [])
   }
 
+  // 개별 선택 체크박스 핸들러
   const handleSelectItem = (productId: string, checked: boolean) => {
     if (checked) {
       setSelectedItems((prev) => [...prev, productId])
@@ -40,11 +46,18 @@ const Cart = () => {
     }
   }
 
-  const handleDeleteSelected = (selectedItems: string[]) => {
+  // 수량 변경 핸들러
+  const handleChangeQuantity = (productId: string, quantity: number) => {
+    updateQuantity({ cartId, productId, quantity })
+  }
+
+  // 선택 삭제 버튼 핸들러
+  const handleDeleteSelected = () => {
     deleteItems({ cartId, productIds: selectedItems })
     setSelectedItems([])
   }
 
+  // 개별 삭제 핸들러
   const handleDeleteItem = (productIds: string[]) => {
     deleteItems({ cartId, productIds })
   }
@@ -79,19 +92,21 @@ const Cart = () => {
             <button
               className={cn({ disabled: selectedItems.length === 0 })}
               type="button"
-              onClick={() => handleDeleteSelected(selectedItems)}
+              onClick={handleDeleteSelected}
               disabled={selectedItems.length === 0}
             >
               선택삭제
             </button>
           </div>
+
+          {/* 장바구니 아이템 목록 */}
           <ul className={cn('list-wrap')}>
             {cartItems.map((item) => (
               <CartListItem
                 key={item.id}
                 item={item}
                 onDeleteItem={handleDeleteItem}
-                onQuantityChange={() => {}}
+                onChangeQuantity={handleChangeQuantity}
                 isChecked={selectedItems.includes(item.productId)}
                 onChecked={handleSelectItem}
               />
