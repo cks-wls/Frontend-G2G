@@ -1,33 +1,34 @@
+import { useFormatDate } from '@/hooks/useFormatDate'
 import Button from '@/shared/components/button'
-import type { Orders } from '@/types/orders'
+import type { OrderItems } from '@/types/orders'
 
-const OrderListContents = ({ data }: { data: Orders }) => {
+const OrderListContents = ({ data }: { data: OrderItems }) => {
+  const formattedDate = useFormatDate(data.orderDate)
+
   return (
     <div className="contents-wrapper">
-      {data.items.map((item) => (
-        <div className="contents-overview">
-          <img alt="이미지 들어갈 자리" />
-          <section>
-            <p className="status">
-              {item.status === 'completed' ? '결제 완료' : '배송준비중'}
-            </p>
-            <p className="product-name">{item.productName}</p>
-            <div className="row-texts">
-              <p className="sm-text">{item.priceAtPurchase}원</p>
-              <p className="quantity">{item.quantity}개</p>
-              <p className="date">{`${item.orderDate} 결제`}</p>
-            </div>
-            <div className="row-buttons">
-              <Button variant="outline" className="cart-button">
-                <p>장바구니 담기</p>
-              </Button>
-              <Button variant="outline" className="buy-button">
-                바로 구매하기
-              </Button>
-            </div>
-          </section>
-        </div>
-      ))}
+      <div className="contents-overview">
+        <img alt={`${data.productName} 이미지`} src={`${data.productImage}`} />
+        <section>
+          <p className="status">
+            {data.status === 'completed' ? '결제 완료' : '배송준비중'}
+          </p>
+          <p className="product-name">{data.productName}</p>
+          <div className="row-texts">
+            <p className="sm-text">{data.priceAtPurchase}원</p>
+            <p className="quantity">{data.quantity}개</p>
+            <p className="date">{`${formattedDate} 결제`}</p>
+          </div>
+          <div className="row-buttons">
+            <Button variant="outline" className="cart-button">
+              장바구니 담기
+            </Button>
+            <Button variant="outline" className="buy-button">
+              바로 구매하기
+            </Button>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

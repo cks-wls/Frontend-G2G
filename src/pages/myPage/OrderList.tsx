@@ -3,12 +3,11 @@ import MyPageContainer from './MyPageContainer'
 import OrderListContents from './OrderListContent'
 
 const OrderList = () => {
-  const { data } = useOrders()
-  console.log(data)
+  const { data: orderList } = useOrders()
 
   return (
     <MyPageContainer title="주문 내역">
-      {data.map((item, index) => (
+      {orderList.map((item, index) => (
         <OrderListContents key={index} data={item} />
       ))}
     </MyPageContainer>
