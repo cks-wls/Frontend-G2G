@@ -14,6 +14,7 @@ import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
 import { Route, Routes } from 'react-router-dom'
 import OrderList from '@/pages/myPage/OrderList'
 import EmailCertification from '@/components/signUp/emailCertification'
+import ProductDetail from '@/pages/productDetail/productDetail'
 
 function AppRoutes() {
   return (
@@ -24,6 +25,10 @@ function AppRoutes() {
         <Route
           path={ROUTE_PATHS.CATEGORY_LIST.TEMPLATE}
           element={<ProductList />}
+        />
+        <Route
+          path={ROUTE_PATHS.PRODUCT_DETAIL.TEMPLATE}
+          element={<ProductDetail />}
         />
         {/* 소비자만 접근 가능 */}
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>

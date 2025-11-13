@@ -1,0 +1,34 @@
+.seller-information-description-box {
+  margin-top: 20px;
+  width: 100%;
+  height: 260px;
+  padding: 40px;
+  background-color: #eeeeee;
+  display: flex;
+  gap: 20px;
+}
+.seller-img {
+  width: 200px;
+  height: 180px;
+  background-color: #ffffff;
+}
+.seller-description-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.seller-description-form {
+  display: flex;
+  gap: 61px;
+}
+.seller-description {
+  width: 80px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #888888;
+}
+.seller-description-real {
+  font-weight: 400;
+  font-size: 14px;
+  color: #333333;
+}

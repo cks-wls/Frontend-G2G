@@ -2,7 +2,7 @@ import { type ReactNode } from 'react'
 import styles from '@/shared/components/button/button.module.scss'
 
 // 리터럴 유니언 타입 (규칙 준수)
-export type ButtonSize = 'sm' | 'md' | 'lg'
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'mlg' | 'xlg'
 export type ButtonVariant = 'filled' | 'outline' | 'text' | 'gray'
 export type IconPosition = 'left' | 'right'
 
