@@ -63,12 +63,9 @@ const Main = () => {
               남다른 밥상
             </h2>
             <p>G2G를 더욱 생생하게 만나보세요.</p>
-            <Button
-              label="더 많은 영상 보기 +"
-              type="button"
-              variant="gray"
-              size="md"
-            />
+            <Button type="button" variant="gray" size="md">
+              더 많은 영상 보기 +
+            </Button>
           </div>
           <div>
             <iframe

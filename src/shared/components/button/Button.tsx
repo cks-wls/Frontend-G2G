@@ -1,4 +1,4 @@
-import React from 'react'
+import { type ReactNode } from 'react'
 import styles from '@/shared/components/button/button.module.scss'
 
 // 리터럴 유니언 타입 (규칙 준수)
@@ -8,34 +8,28 @@ export type IconPosition = 'left' | 'right'
 
 // 객체 타입 정의 (규칙 준수)
 export interface ButtonProps {
-  label: string
+  children: ReactNode
   onClick?: () => void
   isDisabled?: boolean
   isActive?: boolean
   size?: ButtonSize
   type?: 'button' | 'submit' | 'reset'
   variant?: ButtonVariant
-  icon?: React.ReactNode
-  iconPosition?: IconPosition
   isFullWidth?: boolean
   /** 외부 스타일 커스터마이징 지원 */
   className?: string
-  style?: React.CSSProperties
 }
 
 const Button = ({
-  label,
+  children,
   onClick,
   isDisabled = false,
   isActive = false,
   size = 'md',
   type = 'button',
   variant = 'filled',
-  icon,
-  iconPosition = 'left',
   isFullWidth = false,
   className = '',
-  style,
 }: ButtonProps) => {
   // 클릭 핸들러 (규칙 준수)
   const handleClick = () => {
@@ -63,15 +57,8 @@ const Button = ({
       onClick={handleClick}
       disabled={isDisabled}
       aria-disabled={isDisabled}
-      style={style}
     >
-      {icon && iconPosition === 'left' && (
-        <span className={styles.icon}>{icon}</span>
-      )}
-      <span>{label}</span>
-      {icon && iconPosition === 'right' && (
-        <span className={styles.icon}>{icon}</span>
-      )}
+      {children}
     </button>
   )
 }
