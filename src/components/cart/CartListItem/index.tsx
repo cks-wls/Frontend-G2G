@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import { LucideMinus, LucidePlus, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import styles from './CartListItem.module.scss'
+import { ROUTE_PATHS } from '@/constants/route'
 
 const cn = classNames.bind(styles)
 
@@ -12,7 +13,7 @@ interface CartListItemProps {
   isChecked: boolean
   onChecked: (productId: string, isChecked: boolean) => void
   onChangeQuantity: (productId: string, newQuantity: number) => void
-  onDeleteItem: (productIds: string[]) => void
+  onDeleteItem: (productId: string) => void
 }
 
 const CartListItem = ({
@@ -34,7 +35,7 @@ const CartListItem = ({
         onCheckedChange={(isChecked) => onChecked(item.productId, isChecked)}
       />
       <div className={cn('item-img')}>
-        <Link to={''}>
+        <Link to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(Number(item.productId))}>
           <img src={item.thumbnail} alt={item.productName} />
         </Link>
       </div>
@@ -69,7 +70,7 @@ const CartListItem = ({
       <button
         type="button"
         className={cn('item-delete')}
-        onClick={() => onDeleteItem([item.productId])}
+        onClick={() => onDeleteItem(item.productId)}
       >
         <X />
       </button>

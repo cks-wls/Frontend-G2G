@@ -6,7 +6,7 @@ import Button from '@/shared/components/button'
 import CheckBox from '@/shared/components/Form/CheckBox/CheckBox'
 import classNames from 'classnames/bind'
 import { LucideMapPin } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import styles from './cart.module.scss'
 
 const cn = classNames.bind(styles)
@@ -16,6 +16,18 @@ const Cart = () => {
   const { mutate: deleteItems } = useDeleteCartItems()
   const { mutate: updateQuantity } = useUpdateCartItem()
   const [selectedItems, setSelectedItems] = useState<string[]>([])
+
+  const initialized = useRef(false)
+
+  // data가 변경될 때 마다 전체 선택 상태로 업데이트
+  useEffect(() => {
+    const items = data?.[0]?.items
+    if (items && items.length > 0 && !initialized.current) {
+      const allItemIds = items.map((item) => item.productId)
+      setSelectedItems(allItemIds)
+      initialized.current = true
+    }
+  }, [data])
 
   const cartId = String(data?.[0]?.cartId)
   const cartItems = data?.[0]?.items || []
@@ -31,6 +43,41 @@ const Cart = () => {
     () => selectedItems.length > 0 && selectedItems.length === cartItems.length,
     [cartItems.length, selectedItems.length]
   )
+
+  // 선택된 아이템들만 필터링
+  const selectedCartItems = useMemo(
+    () => cartItems.filter((item) => selectedItems.includes(item.productId)),
+    [cartItems, selectedItems]
+  )
+
+  // 결제 금액 계산
+  const amounts = useMemo(() => {
+    const totalOriginalProductPrice = selectedCartItems.reduce(
+      (acc, item) => acc + Number(item.price) * item.quantity,
+      0
+    )
+    const totalProductPrice = selectedCartItems.reduce(
+      (acc, item) => acc + Number(item.discountPrice) * item.quantity,
+      0
+    )
+    const totalDiscount = selectedCartItems.reduce(
+      (acc, item) =>
+        acc + (Number(item.price) - Number(item.discountPrice)) * item.quantity,
+      0
+    )
+    const deliveryFee = selectedCartItems.reduce(
+      (acc, item) => acc + Number(item.deliveryFee) * item.quantity,
+      0
+    )
+
+    return {
+      totalOriginalProductPrice,
+      totalProductPrice,
+      totalDiscount,
+      deliveryFee,
+      payAmount: totalProductPrice + deliveryFee,
+    }
+  }, [selectedCartItems])
 
   // 전체 선택 체크박스 핸들러
   const handleSelectAll = (checked: boolean) => {
@@ -58,8 +105,9 @@ const Cart = () => {
   }
 
   // 개별 삭제 핸들러
-  const handleDeleteItem = (productIds: string[]) => {
-    deleteItems({ cartId, productIds })
+  const handleDeleteItem = (productId: string) => {
+    deleteItems({ cartId, productIds: [productId] })
+    setSelectedItems((prev) => prev.filter((id) => id !== productId))
   }
 
   if (isLoading) return <div>로딩 중...</div>
@@ -115,9 +163,14 @@ const Cart = () => {
           <div className={cn('products')}></div>
           <div className={cn('total-wrap')}>
             <p className={cn('total-detail')}>
-              상품 {}원 + 배송비 {}원
+              상품 {amounts.totalProductPrice.toLocaleString()}원 + 배송비
+              {amounts.deliveryFee
+                ? ` ${amounts.deliveryFee.toLocaleString()}원 `
+                : ' 무료'}
             </p>
-            <p className={cn('total')}>{} 원</p>
+            <p className={cn('total')}>
+              {amounts.payAmount.toLocaleString()}원
+            </p>
           </div>
         </div>
         <div className={cn('cart-right')}>
@@ -127,7 +180,7 @@ const Cart = () => {
               <p>배송지</p>
             </div>
             <div className={cn('address-edit')}>
-              {/* 추후 유저 정보 api 연동 */}
+              {/* TODO: 유저 정보 api 연동 */}
               <p>{'주소~'}</p>
               <button type="button">변경</button>
             </div>
@@ -139,24 +192,31 @@ const Cart = () => {
             <div className={cn('amount-detail')}>
               <div className={cn('amount-pair')}>
                 <p>상품금액</p>
-                <p className={cn('amount-semibold')}>{}원</p>
+                <p className={cn('amount-semibold')}>
+                  {amounts.totalOriginalProductPrice.toLocaleString()}원
+                </p>
               </div>
               <div className={cn('amount-pair')}>
                 <p>상품할인금액</p>
                 <p className={cn('amount-semibold', 'amount-discount')}>
-                  -{}원
+                  -{amounts.totalDiscount.toLocaleString()}원
                 </p>
               </div>
               <div className={cn('amount-pair')}>
                 <p>배송비</p>
-                <p className={cn('amount-semibold')}>{}원</p>
+                <p className={cn('amount-semibold')}>
+                  {amounts.deliveryFee.toLocaleString()}원
+                </p>
               </div>
             </div>
             <div className={cn('amount-total')}>
               <p>결제예정금액</p>
-              <p className={cn('amount-bold')}>{}원</p>
+              <p className={cn('amount-bold')}>
+                {amounts.payAmount.toLocaleString()}원
+              </p>
             </div>
           </div>
+          {/* TODO: 주문 상품 등록 api 연동 및 구매 완료 모달 노출*/}
           <Button onClick={() => {}} variant="filled" isFullWidth type="button">
             구매하기
           </Button>
