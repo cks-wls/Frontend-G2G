@@ -9,7 +9,7 @@ const SellerLayout = () => {
       <Header />
       <div className={styles['seller-bg']}>
         <div className={styles['seller-main']}>
-          <SideNavigation userName="" navType="SELLER" />
+          <SideNavigation />
           <main>
             <Outlet />
           </main>
