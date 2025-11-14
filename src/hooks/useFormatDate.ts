@@ -1,0 +1,5 @@
+export const useFormatDate = (date: string): string => {
+  const newDate = new Date(date)
+  const formattedDate = `${newDate.getFullYear()}.${String(newDate.getMonth() + 1).padStart(2, '0')}.${String(newDate.getDate()).padStart(2, '0')}`
+  return formattedDate
+}
