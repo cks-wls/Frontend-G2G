@@ -3,6 +3,7 @@ import ProducerCertification from '@/components/signUp/producerCertification'
 import ProducerSignUp from '@/components/signUp/producerSignUp'
 import UserSignUp from '@/components/signUp/userSignUp'
 import { ROUTE_PATHS } from '@/constants/route'
+import Cart from '@/pages/cart'
 import Main from '@/pages/main'
 import ProductList from '@/pages/productList'
 import SignIn from '@/pages/signIn/signIn'
@@ -24,6 +25,10 @@ function AppRoutes() {
       <Route element={<CommonLayout />}>
         <Route index element={<Main />} />
         <Route
+          path={ROUTE_PATHS.PRODUCT_LIST}
+          element={<ProductList />}
+        />
+        <Route
           path={ROUTE_PATHS.CATEGORY_LIST.TEMPLATE}
           element={<ProductList />}
         />
@@ -32,6 +37,7 @@ function AppRoutes() {
           element={<ProductDetail />}
         />
         {/* 소비자만 접근 가능 */}
+        <Route path={ROUTE_PATHS.CART} element={<Cart />} />
         <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
           <Route path={ROUTE_PATHS.MYPAGE.WISH_LIST} element={<WishList />} />
@@ -40,7 +46,6 @@ function AppRoutes() {
             path={ROUTE_PATHS.MYPAGE.INFORMATION}
             element={<OrderList />}
           />
-          {/* <Route index element={<MainPage />} /> */}
         </Route>
       </Route>
       {/* 회원가입 및 로그인 페이지 */}
