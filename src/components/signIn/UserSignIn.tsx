@@ -32,7 +32,6 @@ function UserSignIn() {
       if (response.access) {
         saveTokens(response.access, response.refresh)
         const payload = jwtDecode<UserJwtPayload>(response.access)
-        console.log(payload)
         if (payload.is_seller === true) {
           setUser('SELLER', payload.username)
         } else {
