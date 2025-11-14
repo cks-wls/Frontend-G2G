@@ -1,5 +1,7 @@
-import { createContext, useContext, useState } from 'react'
+import { jwtDecode } from 'jwt-decode'
+import { createContext, useContext, useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
+import type { UserJwtPayload } from '@/types/jwtPayload'
 type UserType = 'GUEST' | 'CONSUMER' | 'SELLER'
 
 interface UserContextType {
@@ -22,6 +24,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     setUserType(type)
     setUserName(name)
   }
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken')
+    if (token) {
+      const payload = jwtDecode<UserJwtPayload>(token)
+      const type = payload.is_seller ? 'SELLER' : 'CONSUMER'
+      setUser(type, payload.username)
+    }
+  }, [])
   return (
     <UserContext.Provider value={{ userType, userName, setUser }}>
       {children}

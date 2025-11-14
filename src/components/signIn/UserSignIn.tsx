@@ -7,11 +7,8 @@ import { useState } from 'react'
 import { userLogInApi } from '@/api/logInApi'
 import { saveTokens } from '@/api/auth'
 import { useUser } from '@/stores/userContext'
-import { jwtDecode, type JwtPayload } from 'jwt-decode'
-interface UserJwtPayload extends JwtPayload {
-  is_seller?: boolean
-  username: string
-}
+import { jwtDecode } from 'jwt-decode'
+import type { UserJwtPayload } from '@/types/jwtPayload'
 function UserSignIn() {
   const { setUser } = useUser()
   const navigate = useNavigate()
