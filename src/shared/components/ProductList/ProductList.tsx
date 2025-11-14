@@ -16,7 +16,7 @@ const ProductList = ({ products, error, isLoading }: ProductListProps) => {
 
   return (
     <ul className="product-list">
-      {products.map((product) => (
+      {products?.map((product) => (
         <Card key={product.product_id} product={product} />
       ))}
     </ul>

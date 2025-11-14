@@ -1,13 +1,22 @@
-.check-box {
-  width: 16px;
-  height: 16px;
-  border: 1px solid #eeeeee;
-  margin-right: 10px;
-  border-radius: 4px;
-}
+.check-box-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 
-.check-box:checked {
-  accent-color: #4e6813;
-  border: 1px solid #eeeeee;
-  border-radius: 4px;
+  input {
+    appearance: none;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type='checkbox']:checked {
+    background: url('../../../../assets/icons/check.svg') no-repeat center
+      #4e6813;
+  }
+
+  label {
+    cursor: pointer;
+    font-weight: 500;
+  }
 }
