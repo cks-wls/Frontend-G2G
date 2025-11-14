@@ -13,7 +13,7 @@ export const API_PATHS = {
     GET_ID: (id: number) => `/api/products/${id}/`,
   },
   ORDERS: {
-    GET_ORDER_LIST: '/api/orders',
+    GET_ORDER_LIST: '/api/orders/items',
   },
   WISHLISTS: {
     GET_WISHLIST: '/api/wishlists',
