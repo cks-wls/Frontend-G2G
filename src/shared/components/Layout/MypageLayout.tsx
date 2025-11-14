@@ -6,7 +6,7 @@ const MypageLayout = () => {
   return (
     <div className={styles['consumer-bg']}>
       <div className={styles['consumer-main']}>
-        <SideNavigation userName="" navType="CONSUMER" />
+        <SideNavigation />
         <Outlet />
       </div>
     </div>

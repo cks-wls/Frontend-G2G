@@ -2,12 +2,12 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const API_PATHS = {
   USER: {
-    SIGN_UP: '/api/users/signup/',
+    SIGN_UP: '/api/auth/signup/',
   },
   SELLER: {
-    SIGN_UP: '/api/users/signup/seller/',
+    SIGN_UP: '/api/auth/seller-signup/',
   },
-  LOGIN: '/api/users/login/',
+  LOGIN: '/api/auth/login/',
   PRODUCTS: {
     GET_ALL: '/api/products/',
     GET_ID: (id: number) => `/api/products/${id}/`,

@@ -2,7 +2,6 @@ import Logo from '@/assets/images/logo.png'
 import { THEME_CATEGORIES } from '@/constants/categories'
 import { ROUTE_PATHS } from '@/constants/route'
 import Search from '@/shared/components/Form/Search/Search'
-import type { UserType } from '@/types/user'
 import classNames from 'classnames/bind'
 import {
   LucideHeart,
@@ -12,20 +11,26 @@ import {
   LucideSprout,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Header.module.scss'
-
+import { useUser } from '@/stores/userContext'
 const cn = classNames.bind(styles)
 
 export interface HeaderProps {
-  userType?: UserType // 사용자 구분
-  userName?: string // 로그인된 사용자명
-  onLogout?: () => void // 로그아웃 버튼 클릭 시
   onSearch?: (keyword: string) => void // 검색 이벤트
 }
 
-const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
+const Header = () => {
   const [isCompact, setIsCompact] = useState(false)
+  const { userType, userName, setUser } = useUser()
+  const navigate = useNavigate()
+  const handleLogOut = () => {
+    localStorage.removeItem('accessToken')
+    localStorage.removeItem('refreshToken')
+    setUser('GUEST')
+    alert('로그아웃 되었습니다!')
+    navigate(ROUTE_PATHS.HOME)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +59,11 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
           <h1>
             <img src={Logo} alt="G2G 로고" />
           </h1>
-          <button className={styles.logout} type="button" onClick={onLogout}>
+          <button
+            className={styles.logout}
+            type="button"
+            onClick={handleLogOut}
+          >
             로그아웃
             <LucideLogOut size={16} />
           </button>
@@ -85,7 +94,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
                     <Link to={ROUTE_PATHS.MYPAGE.INDEX}>회원정보</Link>
                   </li>
                   <li>
-                    <button type="button" onClick={onLogout}>
+                    <button type="button" onClick={handleLogOut}>
                       로그아웃
                     </button>
                   </li>

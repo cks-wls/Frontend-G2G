@@ -6,13 +6,17 @@ import { ROUTE_PATHS } from '@/constants/route'
 import { useState } from 'react'
 import { userLogInApi } from '@/api/logInApi'
 import { saveTokens } from '@/api/auth'
-
+import { useUser } from '@/stores/userContext'
+import { jwtDecode } from 'jwt-decode'
+import type { UserJwtPayload } from '@/types/jwtPayload'
 function UserSignIn() {
+  const { setUser } = useUser()
   const navigate = useNavigate()
   const [loginInformation, setLoginInformation] = useState({
     email: '',
     password: '',
   })
+  // 이메일 인증 확인 유무
   const [isError, setIsError] = useState(false)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -24,14 +28,21 @@ function UserSignIn() {
       const response = await userLogInApi.post(loginInformation)
       if (response.access) {
         saveTokens(response.access, response.refresh)
+        const payload = jwtDecode<UserJwtPayload>(response.access)
+        if (payload.is_seller === true) {
+          setUser('SELLER', payload.username)
+        } else {
+          setUser('CONSUMER', payload.username)
+        }
         alert(`로그인이 완료되었습니다!`)
         navigate(ROUTE_PATHS.HOME)
-        // 추후에 헤더 수정하면 사업자인지 유저인지 추가
       } else {
+        // 에러처리 추가 401에러면 이메일인증 오류 -> 403에러면 이메일 및 비밀번호가 틀렸습니다 이런식으로
         setIsError(true)
       }
     } catch (err) {
       setIsError(true)
+      console.log(err)
     }
   }
   return (
