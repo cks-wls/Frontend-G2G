@@ -21,4 +21,10 @@ export const API_PATHS = {
   CATEGORIES: {
     GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
   },
+  CARTS: {
+    GET: '/api/carts/',
+    ADD: '/api/carts/',
+    UPDATE: (id: string) => `/api/carts/${id}/`,
+    DELETE: (id: string) => `/api/carts/${id}/`,
+  },
 } as const
