@@ -8,10 +8,14 @@ import {
 } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import styles from './SideNavigation.module.scss'
-import type { UserType } from '@/types/user'
+import { useUser } from '@/stores/userContext'
 
 const USER_SIDE_MENU = [
-  { label: '주문 내역', path: '/mypage/order-list', icon: <LucideDollarSign /> },
+  {
+    label: '주문 내역',
+    path: '/mypage/order-list',
+    icon: <LucideDollarSign />,
+  },
   { label: '찜한 상품', path: '/mypage/wish-list', icon: <LucideHeart /> },
   { label: '상품 후기', path: '', icon: <LucideSquarePen /> },
   { label: '회원정보 관리', path: '', icon: <LucideUserRoundCheck /> },
@@ -25,26 +29,19 @@ const SELLER_SIDE_MENU = [
   { label: '업체 정보 관리', path: '', icon: <LucideFileText /> },
 ]
 
-interface SideNavigationProps {
-  userName: string
-  navType?: UserType
-}
-
-const SideNavigation = ({
-  userName,
-  navType = 'CONSUMER',
-}: SideNavigationProps) => {
+const SideNavigation = () => {
   const location = useLocation()
   const currentPath = location.pathname
+  const { userType, userName } = useUser()
 
-  const menuList = navType === 'CONSUMER' ? USER_SIDE_MENU : SELLER_SIDE_MENU
+  const menuList = userType === 'CONSUMER' ? USER_SIDE_MENU : SELLER_SIDE_MENU
 
   return (
-    <nav className={styles[`${navType}-nav`]}>
+    <nav className={styles[`${userType}-nav`]}>
       <div className={styles['user-name']}>
         <p>
           {userName}
-          {navType === 'CONSUMER' ? '님' : ''}
+          {userType === 'CONSUMER' ? '님' : ''}
         </p>
       </div>
       <ul className={styles['menu-list']}>
