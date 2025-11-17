@@ -1,0 +1,22 @@
+.check-box-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  input {
+    appearance: none;
+    border: 1px solid #eeeeee;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type='checkbox']:checked {
+    background: url('../../../../assets/icons/check.svg') no-repeat center
+      #4e6813;
+  }
+
+  label {
+    cursor: pointer;
+    font-weight: 500;
+  }
+}

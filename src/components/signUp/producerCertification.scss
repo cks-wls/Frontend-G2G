@@ -1,0 +1,25 @@
+.producer-certification-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.producer-certification-title {
+  margin-top: 236px;
+  font-weight: 700;
+  font-size: 32px;
+  color: #333333;
+  margin-bottom: 100px;
+}
+.producer-certification-btn {
+  margin-top: 20px;
+}
+.error-msg {
+  margin-top: 4px;
+  color: #ff402b;
+  font-weight: 400;
+  font-size: 12px;
+  text-align: left;
+  &.display-none {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+@use '@/foundations/mixins' as *;
+@use '@/foundations/variables' as *;
+
+.container {
+  @include flex(column, 0);
+  min-height: 100vh;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding-top: 156px;
+}
+
+.consumer-bg {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  align-items: start;
+  background-color: $color-border;
+}
+
+.consumer-main {
+  @include flex(row, 20px);
+  width: $container-width;
+  align-items: start;
+}
+
+.seller-bg {
+  flex-grow: 1;
+  background-color: $color-border;
+}
+
+.seller-main {
+  @include flex(row, 20px);
+  padding: 100px 50px 50px;
+  align-items: start;
+}
