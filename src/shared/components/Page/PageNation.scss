@@ -1,0 +1,35 @@
+.pagination {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+}
+.page {
+  cursor: pointer;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+.page.active {
+  background-color: #4e6813;
+  color: #ffffff;
+}
+.back-arrow {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 8px 0px;
+  margin-right: 24px;
+  color: #888888;
+}
+.next-arrow {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  padding: 8px 0px;
+  margin-left: 24px;
+  color: #888888;
+}
