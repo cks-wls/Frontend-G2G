@@ -25,13 +25,21 @@ export const ROUTE_PATHS = {
     INDEX: '/login',
     USER: '/login/user',
   },
-  PRODUCT_LIST: '/product/list',
+  PRODUCT_LIST: {
+    INDEX: '/products',
+    NEW: '/products?ordering=created_at',
+    BEST: '/products?ordering=sales_count',
+    SALE: '/products?ordering=discount_price',
+    CATEGORY: (category_name: string) =>
+      `/products?category_name=${category_name}`,
+    SELLER: (seller_business_name: string) => `/products?seller_business_name=${seller_business_name}`,
+  },
   EMAIL: {
     INDEX: '/email/certification',
   },
   CATEGORY_LIST: {
     TEMPLATE: '/categories/:id', // 라우팅 path
-    GENERATOR: (id: number) => `/categories/${id}`, // 경로 생성 함수
+    GENERATOR: (id: string) => `/categories/${id}`, // 경로 생성 함수
   },
   PRODUCT_DETAIL: {
     TEMPLATE: '/product/:id',

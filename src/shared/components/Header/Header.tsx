@@ -120,7 +120,7 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
               <ul className={styles['category-menu']}>
                 {THEME_CATEGORIES.map((c, index) => (
                   <li key={index}>
-                    <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>
+                    <Link to={ROUTE_PATHS.PRODUCT_LIST.CATEGORY(c.name)}>
                       {c.name}
                     </Link>
                   </li>
@@ -128,13 +128,13 @@ const Header = ({ userType = 'GUEST', userName, onLogout }: HeaderProps) => {
               </ul>
               <ul className={styles.gnb}>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>신상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.NEW}>신상품</Link>
                 </li>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>베스트</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.BEST}>베스트</Link>
                 </li>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>알뜰상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.SALE}>알뜰상품</Link>
                 </li>
               </ul>
             </div>
