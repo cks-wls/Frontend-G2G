@@ -2,10 +2,10 @@ import CartListItem from '@/components/cart/CartListItem'
 import useCart from '@/hooks/queries/cart/useCart'
 import useDeleteCartItems from '@/hooks/queries/cart/useDeleteCartItems'
 import useUpdateCartItem from '@/hooks/queries/cart/useUpdateCartItem'
-// import useInfo from '@/hooks/queries/myPage/useInfo'
+import useInfo from '@/hooks/queries/myPage/useInfo'
 import Button from '@/shared/components/button'
 import CheckBox from '@/shared/components/Form/CheckBox/CheckBox'
-// import { useUser } from '@/stores/userContext'
+import { useUser } from '@/stores/userContext'
 import classNames from 'classnames/bind'
 import { LucideMapPin } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
@@ -15,8 +15,8 @@ const cn = classNames.bind(styles)
 
 const Cart = () => {
   // TODO: userID 없이 정보 조회 가능하던가 / 로그인 응답 값으로 id 주던가
-  // const { userId } = useUser()
-  // const { data: userData } = useInfo(userId)
+  const { userId } = useUser()
+  const { data: userData } = useInfo(Number(userId))
   const { data: cartData, isLoading } = useCart()
   const { mutate: deleteItems } = useDeleteCartItems()
   const { mutate: updateQuantity } = useUpdateCartItem()
@@ -167,7 +167,7 @@ const Cart = () => {
               <p>배송지</p>
             </div>
             <div className={cn('address-edit')}>
-              {/* <p>{userData?.address}</p> */}
+              <p>{userData?.address}</p>
               <button type="button">변경</button>
             </div>
           </div>
