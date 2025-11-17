@@ -90,7 +90,7 @@ const Header = () => {
                 </Link>
                 <ul className={styles.dropdown}>
                   <li>
-                    <Link to={ROUTE_PATHS.MYPAGE.INDEX}>주문내역</Link>
+                    <Link to={ROUTE_PATHS.MYPAGE.ORDER_LIST}>주문내역</Link>
                   </li>
                   <li>
                     <Link to={ROUTE_PATHS.MYPAGE.INDEX}>회원정보</Link>

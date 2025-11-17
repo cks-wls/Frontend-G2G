@@ -17,7 +17,7 @@ import CommonLayout from '@/shared/components/Layout/CommonLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
 import SellerLayout from '@/shared/components/Layout/SellerLayout'
 import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 function AppRoutes() {
   return (
@@ -25,7 +25,10 @@ function AppRoutes() {
       {/* 게스트와 소비자 공용 레이아웃 */}
       <Route element={<CommonLayout />}>
         <Route index element={<Main />} />
-        <Route path={ROUTE_PATHS.PRODUCT_LIST.INDEX} element={<ProductList />} />
+        <Route
+          path={ROUTE_PATHS.PRODUCT_LIST.INDEX}
+          element={<ProductList />}
+        />
         <Route
           path={ROUTE_PATHS.PRODUCT_DETAIL.TEMPLATE}
           element={<ProductDetail />}
@@ -49,6 +52,10 @@ function AppRoutes() {
             </ProtectedRoute>
           }
         >
+          <Route
+            index
+            element={<Navigate to={ROUTE_PATHS.MYPAGE.ORDER_LIST} replace />}
+          />
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
           <Route path={ROUTE_PATHS.MYPAGE.WISH_LIST} element={<WishList />} />
           <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<OrderList />} />
@@ -77,7 +84,7 @@ function AppRoutes() {
       <Route
         path={ROUTE_PATHS.SELLER.INDEX}
         element={
-          <ProtectedRoute allowedTypes='SELLER'>
+          <ProtectedRoute allowedTypes="SELLER">
             {' '}
             <SellerLayout />
           </ProtectedRoute>
