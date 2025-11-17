@@ -21,7 +21,7 @@ export const API_PATHS = {
   CARTS: {
     GET: '/api/carts/',
     ADD: '/api/carts/',
-    UPDATE: (id: string) => `/api/carts/${id}/`,
-    DELETE: (id: string) => `/api/carts/${id}/`,
+    UPDATE: '/api/carts/items/',
+    DELETE: '/api/carts/items/',
   },
 } as const
