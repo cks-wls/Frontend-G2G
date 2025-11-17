@@ -3,6 +3,7 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 export const API_PATHS = {
   USER: {
     SIGN_UP: '/api/auth/signup/',
+    GET: (id: number) => `/api/users/${id}/`,
   },
   SELLER: {
     SIGN_UP: '/api/auth/seller-signup/',
