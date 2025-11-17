@@ -32,7 +32,9 @@ export const ROUTE_PATHS = {
     SALE: '/products?ordering=discount_price',
     CATEGORY: (category_name: string) =>
       `/products?category_name=${category_name}`,
-    SELLER: (seller_business_name: string) => `/products?seller_business_name=${seller_business_name}`,
+    SELLER: (seller_business_name: string) =>
+      `/products?seller_business_name=${seller_business_name}`,
+    SEARCH: (q: string) => `products?q=${q}`,
   },
   EMAIL: {
     INDEX: '/email/certification',
