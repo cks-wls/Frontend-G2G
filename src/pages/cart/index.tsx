@@ -28,7 +28,8 @@ const Cart = () => {
       initialized.current = true
     }
   }, [cartData])
-  const cart = cartData[0]
+
+  const cart = cartData?.[0] || []
   const cartItems = cartData?.[0]?.items || []
 
   // 전체 아이템 ID 목록
@@ -100,17 +101,7 @@ const Cart = () => {
   }
 
   if (isLoading) return <div>로딩 중...</div>
-  if (error) return <div>오류가 발생했습니다.</div>
-  if (cartData.length === 0) {
-    return (
-      <div className={cn('wrap')}>
-        <div className={cn('title')}>
-          <h2>장바구니</h2>
-        </div>
-        <div>장바구니가 비어있습니다.</div>
-      </div>
-    )
-  }
+  // if (error) return <div>에러: {error.message}</div>
 
   return (
     <div className={cn('wrap')}>
@@ -138,26 +129,30 @@ const Cart = () => {
 
           {/* 장바구니 아이템 목록 */}
           <ul className={cn('list-wrap')}>
-            {cartItems.map((item) => (
-              <CartListItem
-                key={item.id}
-                item={item}
-                onDeleteItem={handleDeleteItem}
-                onChangeQuantity={handleChangeQuantity}
-                isChecked={selectedItems.includes(item.productId)}
-                onChecked={handleSelectItem}
-              />
-            ))}
+            {cartData.length === 0 ? (
+              <div>장바구니가 비어있습니다.</div>
+            ) : (
+              cartItems.map((item) => (
+                <CartListItem
+                  key={item.id}
+                  item={item}
+                  onDeleteItem={handleDeleteItem}
+                  onChangeQuantity={handleChangeQuantity}
+                  isChecked={selectedItems.includes(item.productId)}
+                  onChecked={handleSelectItem}
+                />
+              ))
+            )}
           </ul>
           <div className={cn('products')}></div>
           <div className={cn('total-wrap')}>
             <p className={cn('total-detail')}>
-              상품 {cart.totalProductPrice.toLocaleString()}원 + 배송비
+              상품 {cart.totalProductPrice?.toLocaleString()}원 + 배송비
               {cart.totalDeliveryFee
-                ? ` ${cart.totalDeliveryFee.toLocaleString()}원 `
+                ? ` ${cart.totalDeliveryFee?.toLocaleString()}원 `
                 : ' 무료'}
             </p>
-            <p className={cn('total')}>{cart.finalPrice.toLocaleString()}원</p>
+            <p className={cn('total')}>{cart.finalPrice?.toLocaleString()}원</p>
           </div>
         </div>
         <div className={cn('cart-right')}>
@@ -186,20 +181,20 @@ const Cart = () => {
               <div className={cn('amount-pair')}>
                 <p>상품할인금액</p>
                 <p className={cn('amount-semibold', 'amount-discount')}>
-                  -{amounts.totalDiscount.toLocaleString()}원
+                  -{amounts.totalDiscount?.toLocaleString()}원
                 </p>
               </div>
               <div className={cn('amount-pair')}>
                 <p>배송비</p>
                 <p className={cn('amount-semibold')}>
-                  {cart.totalDeliveryFee.toLocaleString()}원
+                  {cart.totalDeliveryFee?.toLocaleString()}원
                 </p>
               </div>
             </div>
             <div className={cn('amount-total')}>
               <p>결제예정금액</p>
               <p className={cn('amount-bold')}>
-                {cart.finalPrice.toLocaleString()}원
+                {cart.finalPrice?.toLocaleString()}원
               </p>
             </div>
           </div>
