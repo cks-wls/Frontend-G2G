@@ -1,4 +1,5 @@
 import CartListItem from '@/components/cart/CartListItem'
+import { ROUTE_PATHS } from '@/constants/route'
 import useCart from '@/hooks/queries/cart/useCart'
 import useDeleteCartItems from '@/hooks/queries/cart/useDeleteCartItems'
 import useUpdateCartItem from '@/hooks/queries/cart/useUpdateCartItem'
@@ -9,6 +10,7 @@ import { useUser } from '@/stores/userContext'
 import classNames from 'classnames/bind'
 import { LucideMapPin } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styles from './cart.module.scss'
 
 const cn = classNames.bind(styles)
@@ -21,6 +23,7 @@ const Cart = () => {
   const { mutate: deleteItems } = useDeleteCartItems()
   const { mutate: updateQuantity } = useUpdateCartItem()
   const [selectedItems, setSelectedItems] = useState<number[]>([])
+  const navigate = useNavigate()
 
   const initialized = useRef(false)
 
@@ -203,7 +206,15 @@ const Cart = () => {
             </div>
           </div>
           {/* TODO: 주문 상품 등록 api 연동 및 구매 완료 모달 노출*/}
-          <Button onClick={() => {}} variant="filled" isFullWidth type="button">
+          <Button
+            onClick={() => {
+              alert('결제 완료')
+              navigate(ROUTE_PATHS.MYPAGE.INDEX)
+            }}
+            variant="filled"
+            isFullWidth
+            type="button"
+          >
             구매하기
           </Button>
         </div>
