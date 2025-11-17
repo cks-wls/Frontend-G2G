@@ -12,25 +12,24 @@ import styles from './cart.module.scss'
 const cn = classNames.bind(styles)
 
 const Cart = () => {
-  const { data, isLoading, error } = useCart()
+  const { data: cartData, isLoading, error } = useCart()
   const { mutate: deleteItems } = useDeleteCartItems()
   const { mutate: updateQuantity } = useUpdateCartItem()
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
+  const [selectedItems, setSelectedItems] = useState<number[]>([])
 
   const initialized = useRef(false)
 
   // data가 변경될 때 마다 전체 선택 상태로 업데이트
   useEffect(() => {
-    const items = data?.[0]?.items
+    const items = cartData?.[0]?.items
     if (items && items.length > 0 && !initialized.current) {
       const allItemIds = items.map((item) => item.productId)
       setSelectedItems(allItemIds)
       initialized.current = true
     }
-  }, [data])
-
-  const cartId = String(data?.[0]?.cartId)
-  const cartItems = data?.[0]?.items || []
+  }, [cartData])
+  const cart = cartData[0]
+  const cartItems = cartData?.[0]?.items || []
 
   // 전체 아이템 ID 목록
   const allItemIds = useMemo(
@@ -53,29 +52,19 @@ const Cart = () => {
   // 결제 금액 계산
   const amounts = useMemo(() => {
     const totalOriginalProductPrice = selectedCartItems.reduce(
-      (acc, item) => acc + Number(item.price) * item.quantity,
-      0
-    )
-    const totalProductPrice = selectedCartItems.reduce(
-      (acc, item) => acc + Number(item.discountPrice) * item.quantity,
+      (acc, item) => acc + Number(item.originalPrice) * item.quantity,
       0
     )
     const totalDiscount = selectedCartItems.reduce(
       (acc, item) =>
-        acc + (Number(item.price) - Number(item.discountPrice)) * item.quantity,
-      0
-    )
-    const deliveryFee = selectedCartItems.reduce(
-      (acc, item) => acc + Number(item.deliveryFee) * item.quantity,
+        acc +
+        (Number(item.price) - Number(item.discountAmount)) * item.quantity,
       0
     )
 
     return {
       totalOriginalProductPrice,
-      totalProductPrice,
       totalDiscount,
-      deliveryFee,
-      payAmount: totalProductPrice + deliveryFee,
     }
   }, [selectedCartItems])
 
@@ -85,7 +74,7 @@ const Cart = () => {
   }
 
   // 개별 선택 체크박스 핸들러
-  const handleSelectItem = (productId: string, checked: boolean) => {
+  const handleSelectItem = (productId: number, checked: boolean) => {
     if (checked) {
       setSelectedItems((prev) => [...prev, productId])
     } else {
@@ -94,25 +83,25 @@ const Cart = () => {
   }
 
   // 수량 변경 핸들러
-  const handleChangeQuantity = (productId: string, quantity: number) => {
-    updateQuantity({ cartId, productId, quantity })
+  const handleChangeQuantity = (productId: number, quantity: number) => {
+    updateQuantity({ productId, quantity })
   }
 
   // 선택 삭제 버튼 핸들러
   const handleDeleteSelected = () => {
-    deleteItems({ cartId, productIds: selectedItems })
+    deleteItems({ productIds: selectedItems })
     setSelectedItems([])
   }
 
   // 개별 삭제 핸들러
-  const handleDeleteItem = (productId: string) => {
-    deleteItems({ cartId, productIds: [productId] })
+  const handleDeleteItem = (productId: number) => {
+    deleteItems({ productIds: [productId] })
     setSelectedItems((prev) => prev.filter((id) => id !== productId))
   }
 
   if (isLoading) return <div>로딩 중...</div>
   if (error) return <div>오류가 발생했습니다.</div>
-  if (!data) {
+  if (cartData.length === 0) {
     return (
       <div className={cn('wrap')}>
         <div className={cn('title')}>
@@ -163,14 +152,12 @@ const Cart = () => {
           <div className={cn('products')}></div>
           <div className={cn('total-wrap')}>
             <p className={cn('total-detail')}>
-              상품 {amounts.totalProductPrice.toLocaleString()}원 + 배송비
-              {amounts.deliveryFee
-                ? ` ${amounts.deliveryFee.toLocaleString()}원 `
+              상품 {cart.totalProductPrice.toLocaleString()}원 + 배송비
+              {cart.totalDeliveryFee
+                ? ` ${cart.totalDeliveryFee.toLocaleString()}원 `
                 : ' 무료'}
             </p>
-            <p className={cn('total')}>
-              {amounts.payAmount.toLocaleString()}원
-            </p>
+            <p className={cn('total')}>{cart.finalPrice.toLocaleString()}원</p>
           </div>
         </div>
         <div className={cn('cart-right')}>
@@ -205,14 +192,14 @@ const Cart = () => {
               <div className={cn('amount-pair')}>
                 <p>배송비</p>
                 <p className={cn('amount-semibold')}>
-                  {amounts.deliveryFee.toLocaleString()}원
+                  {cart.totalDeliveryFee.toLocaleString()}원
                 </p>
               </div>
             </div>
             <div className={cn('amount-total')}>
               <p>결제예정금액</p>
               <p className={cn('amount-bold')}>
-                {amounts.payAmount.toLocaleString()}원
+                {cart.finalPrice.toLocaleString()}원
               </p>
             </div>
           </div>

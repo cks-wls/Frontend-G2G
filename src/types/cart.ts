@@ -31,7 +31,7 @@ export interface Cart {
 
 export interface CartItem {
   id: number
-  productId: string
+  productId: number
   productName: string
   thumbnail: string
   price: number
@@ -47,7 +47,7 @@ export const mappingGetCart = (cart: ServerCart[]): Cart[] => {
     cartId: cart.id,
     items: cart.items.map((item) => ({
       id: item.id,
-      productId: String(item.product),
+      productId: item.product,
       productName: item.product_name,
       thumbnail: item.thumbnail,
       price: item.price,
