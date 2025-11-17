@@ -30,6 +30,7 @@ export const ROUTE_PATHS = {
     NEW: '/products?ordering=created_at',
     BEST: '/products?ordering=sales_count',
     SALE: '/products?ordering=discount_price',
+    SORT: (sortValue: string) => `/products?ordering=${sortValue}`,
     CATEGORY: (category_name: string) =>
       `/products?category_name=${category_name}`,
     SELLER: (seller_business_name: string) =>
@@ -38,10 +39,6 @@ export const ROUTE_PATHS = {
   },
   EMAIL: {
     INDEX: '/email/certification',
-  },
-  CATEGORY_LIST: {
-    TEMPLATE: '/categories/:id', // 라우팅 path
-    GENERATOR: (id: string) => `/categories/${id}`, // 경로 생성 함수
   },
   PRODUCT_DETAIL: {
     TEMPLATE: '/product/:id',

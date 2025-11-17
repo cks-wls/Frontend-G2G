@@ -4,7 +4,7 @@ import PageNation from '@/shared/components/Page/PageNation'
 import List from '@/shared/components/ProductList/ProductList'
 import classNames from 'classnames/bind'
 import { useMemo } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import styles from './list.module.scss'
 
 const LIST_TITLES: Record<string, string> = {
@@ -12,9 +12,19 @@ const LIST_TITLES: Record<string, string> = {
   sales_count: '🔥 지금 가장 핫한 베스트',
   discount_price: '💸 놓치면 후회할 특가',
 }
+
+const SORTS = [
+  { sortValue: 'created_at', label: '신상품순' },
+  { sortValue: '-sale_price', label: '낮은가격순' },
+  { sortValue: 'sale_price', label: '높은가격순' },
+  { sortValue: 'sales_count', label: '판매량순' },
+  { sortValue: 'review_count', label: '후기많은순' },
+]
+
 const cn = classNames.bind(styles)
 
 const ProductList = () => {
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
   const orderingParam = searchParams.get('ordering')
@@ -49,12 +59,43 @@ const ProductList = () => {
     return '전체 상품'
   }, [params])
 
+  const handleSort = (sortValue: string) => {
+    const currentParams = new URLSearchParams(searchParams)
+
+    currentParams.set('ordering', sortValue)
+
+    if (currentParams.has('page')) {
+      currentParams.set('page', '1')
+    }
+    navigate(`${location.pathname}?${currentParams.toString()}`)
+  }
+
   return (
     <div className={cn('wrap')}>
       <div className={cn('title')}>
         <h2>{title}</h2>
       </div>
       <div>
+        <ul className={cn('sort-list')}>
+          {SORTS.map((sort) => {
+            // 현재 활성화된 정렬인지 확인
+            const isActive =
+              ordering === sort.sortValue ||
+              (!ordering && sort.sortValue === 'created_at')
+
+            return (
+              <li key={sort.sortValue}>
+                <button
+                  type="button"
+                  onClick={() => handleSort(sort.sortValue)}
+                  className={cn({ active: isActive })} // 활성화 스타일 적용
+                >
+                  {sort.label}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
         <List products={data} isLoading={isLoading} error={error} />
         <PageNation totalItems={data.length} />
       </div>

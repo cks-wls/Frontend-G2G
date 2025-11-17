@@ -8,12 +8,13 @@ import {
 
 // 정렬 기준
 export const SORT_OPTIONS = [
+  'created_at',
+  '-sale_price',
   'sale_price',
   'sales_count',
   'review_count',
-  'wish_count',
   'discount_price',
-  'created_at',
+  'wish_count',
 ] as const
 
 export type SortValue = (typeof SORT_OPTIONS)[number]
