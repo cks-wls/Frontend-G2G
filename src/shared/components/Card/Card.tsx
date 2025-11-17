@@ -1,12 +1,13 @@
+import { ROUTE_PATHS } from '@/constants/route'
 import WishButton from '@/shared/components/WishButton'
-import type { Product } from '@/types/product'
-// import { MessageSquareText } from 'lucide-react'
+import type { ProductListType } from '@/types/productList'
+import { MessageSquareText } from 'lucide-react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Card.scss'
 
 interface CardProps {
-  product: Product
+  product: ProductListType
 }
 
 const Card = ({ product }: CardProps) => {
@@ -14,8 +15,8 @@ const Card = ({ product }: CardProps) => {
 
   return (
     <li className="card">
-      <Link to={`/product/${product.product_id}`}>
-        <img src={product.images[0].image_url} alt={product.name} />
+      <Link to={`/product/${product.productId}`}>
+        <img src={product.thumbnail} alt={product.productName} />
       </Link>
       <div className="wish-container">
         <WishButton
@@ -24,29 +25,33 @@ const Card = ({ product }: CardProps) => {
           isWish={like}
         ></WishButton>
       </div>
-      <Link to={`/product/${product.product_id}`}>
+      <Link to={`/product/${product.productId}`}>
         <div className="info">
-          <span className="business-name">[{product.seller_business_name}]</span>
-          <h4 className="name">{product.name}</h4>
+          <Link
+            to={ROUTE_PATHS.PRODUCT_LIST.SELLER(product.sellerBusinessName)}
+          >
+            <span className="business-name">
+              [{product.sellerBusinessName}]
+            </span>
+          </Link>
+          <h4 className="name">{product.productName}</h4>
           <div>
-            {/* TODO: 상품 타입 추가되어야 함 */}
-            {/* {product.discount_rate ? (
+            {product.discountRate ? (
               <div>
                 <span className="final">{product.price}원</span>
                 <div>
-                  <span className="rate">{product.discount_rate}%</span>
-                  <span className="price">{product.final_price}원</span>
+                  <span className="rate">{product.discountRate}%</span>
+                  <span className="price">{product.discountPrice}원</span>
                 </div>
               </div>
-            ) : ( */}
+            ) : (
               <span className="price">{product.price}원</span>
-            {/* )} */}
+            )}
           </div>
-          {/* TODO: 상품 타입 추가되어야 함 */}
-          {/* <div className={product.review_count ? 'review' : 'none'}>
+          <div className={product.reviewCount ? 'review' : 'none'}>
             <MessageSquareText size={16} color="#888" />
-            <span>{product.review_count}</span>
-          </div> */}
+            <span>{product.reviewCount}</span>
+          </div>
         </div>
       </Link>
     </li>

@@ -1,7 +1,7 @@
 import ProductCarousel from '@/components/main/ProductCarousel'
 import SlideBanner from '@/components/main/SlideBanner'
 import { ROUTE_PATHS } from '@/constants/route'
-import { useCategory } from '@/hooks/queries/useCategory'
+import useProductList from '@/hooks/queries/product/useProductList'
 import Button from '@/shared/components/button'
 import classNames from 'classnames/bind'
 import { LucideChevronRight } from 'lucide-react'
@@ -12,12 +12,18 @@ const cn = classNames.bind(styles)
 
 const Main = () => {
   // 인기 상품 리스트
+  const {
+    data: popularData,
+    error: popularError,
+    isLoading: popularLoading,
+  } = useProductList({ ordering: 'sales_count' })
+
   // 시즌 상품 리스트 (가을)
   const {
     data: seasonData,
     error: seasonError,
     isLoading: seasonLoading,
-  } = useCategory(3)
+  } = useProductList({ category_name: '가을' })
 
   return (
     <div className={styles.wrap}>
@@ -25,7 +31,7 @@ const Main = () => {
       <section className={cn('category-container')}>
         <div className={cn('title')}>
           <h2>
-            <Link to={ROUTE_PATHS.HOME}>
+            <Link to={ROUTE_PATHS.PRODUCT_LIST.BEST}>
               🔥 이 달의 인기 상품
               <LucideChevronRight />
             </Link>
@@ -33,15 +39,15 @@ const Main = () => {
           <p>가장 인기있는 상품만 모아보세요!</p>
         </div>
         <ProductCarousel
-          products={seasonData}
-          error={seasonError}
-          isLoading={seasonLoading}
+          products={popularData}
+          error={popularError}
+          isLoading={popularLoading}
         />
       </section>
       <section className={cn('category-container')}>
         <div className={cn('title')}>
           <h2>
-            <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(3)}>
+            <Link to={ROUTE_PATHS.PRODUCT_LIST.CATEGORY('가을')}>
               🍂 집 나간 며느리도 돌아온다! 가을 제철 음식
               <LucideChevronRight />
             </Link>

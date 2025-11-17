@@ -9,7 +9,7 @@ export const API_PATHS = {
   },
   LOGIN: '/api/auth/login/',
   PRODUCTS: {
-    GET_ALL: '/api/products/',
+    GET_PRODUCT_LIST: '/api/products/',
     GET_ID: (id: number) => `/api/products/${id}/`,
   },
   ORDERS: {
@@ -17,9 +17,6 @@ export const API_PATHS = {
   },
   WISHLISTS: {
     GET_WISHLIST: '/api/wishlists',
-  },
-  CATEGORIES: {
-    GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
   },
   CARTS: {
     GET: '/api/carts/',
