@@ -23,7 +23,7 @@ const mockReviewList: ServerReviewType[] = [
     like_count: 1,
     created_at: '2025-11-18T03:24:53.805Z',
     updated_at: '2025-11-18T03:24:53.805Z',
-    user: 1,
+    user: '1',
     product: 1,
   },
 ]
