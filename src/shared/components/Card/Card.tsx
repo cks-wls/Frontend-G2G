@@ -34,22 +34,14 @@ const Card = ({ product }: CardProps) => {
           <div>
             {product.discountRate ? (
               <div>
-                <span className="final">
-                  {parseInt(product.price).toLocaleString()}원
-                </span>
+                <span className="final">{product.price}원</span>
                 <div>
-                  <span className="rate">
-                    {parseInt(product.discountRate)}%
-                  </span>
-                  <span className="price">
-                    {parseInt(product.discountPrice).toLocaleString()}원
-                  </span>
+                  <span className="rate">{product.discountRate}%</span>
+                  <span className="price">{product.discountPrice}원</span>
                 </div>
               </div>
             ) : (
-              <span className="price">
-                {parseInt(product.price).toLocaleString()}원
-              </span>
+              <span className="price">{product.price}원</span>
             )}
           </div>
         </Link>

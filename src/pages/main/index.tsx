@@ -16,7 +16,7 @@ const Main = () => {
     data: popularData,
     error: popularError,
     isLoading: popularLoading,
-  } = useProductList({ ordering: 'sales_count' })
+  } = useProductList({ ordering: '-stats__sales_count' })
 
   // 시즌 상품 리스트 (가을)
   const {
