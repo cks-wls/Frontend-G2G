@@ -37,7 +37,7 @@ const Cart = () => {
     }
   }, [cartData])
 
-  const cart = cartData?.[0] || []
+  // const cart = cartData?.[0] || []
   const cartItems = cartData?.[0]?.items || []
 
   // 전체 아이템 ID 목록
