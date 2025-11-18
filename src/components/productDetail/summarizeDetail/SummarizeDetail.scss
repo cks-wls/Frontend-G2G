@@ -80,10 +80,10 @@
 }
 .product-total-price-box {
   display: flex;
-  gap: 323px;
+  justify-content: space-between;
   align-items: center;
   color: #333333;
-  width: 600px;
+  width: 500px;
 }
 .total-price {
   font-weight: 700;
