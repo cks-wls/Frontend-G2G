@@ -178,7 +178,7 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
                 </div>
               </div>
               <div className="product-total-price-box">
-                <span>총 합계금액</span>
+                <span className="product-total-price">총 합계금액</span>
                 <span className="total-price">
                   {discountPrice > 0
                     ? (

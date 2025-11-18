@@ -28,7 +28,7 @@ function ProductDetail() {
   return (
     <div className="product-detail-box">
       <SummarizeDetail item={product!} />
-      <CategoryDetail item={product!} />
+      <CategoryDetail />
       <ProductInformation item={product!} />
       <SellerInformation item={product!} />
       <ProductReview item={product!} />

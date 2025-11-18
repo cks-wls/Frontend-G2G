@@ -7,7 +7,7 @@ const ReviewList = () => {
 
   return (
     <MyPageContainer title="작성한 후기">
-      {data.map((review) => (
+      {data?.map((review) => (
         <ReviewListContent key={review.id} data={review} />
       ))}
     </MyPageContainer>
