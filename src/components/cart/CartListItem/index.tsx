@@ -35,22 +35,22 @@ const CartListItem = ({
         onCheckedChange={(isChecked) => onChecked(item.productId, isChecked)}
       />
       <div className={cn('item-img')}>
-        <Link to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(Number(item.productId))}>
+        <Link to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(item.productId)}>
           <img src={item.thumbnail} alt={item.productName} />
         </Link>
       </div>
       <div className={cn('item-info')}>
         <div>
           <Link
-            to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(Number(item.productId))}
+            to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(item.productId)}
           >
             <p className={cn('item-name')}>{item.productName}</p>
           </Link>
           <span className={cn('item-discount')}>
-            {item.discountAmount?.toLocaleString()}원
+            {item.price?.toLocaleString()}원
           </span>
           <span className={cn('item-price')}>
-            {item.price?.toLocaleString()}원
+            {item.originalPrice?.toLocaleString()}원
           </span>
         </div>
         <div className={cn('item-quantity')}>
