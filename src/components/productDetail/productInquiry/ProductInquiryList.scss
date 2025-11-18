@@ -13,4 +13,7 @@
 .short-section-component {
   width: 10%;
   text-align: center;
+  &.answer {
+    color: #4e6813;
+  }
 }

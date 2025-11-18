@@ -32,7 +32,7 @@ function UserSignIn() {
         if (payload.is_seller === true) {
           setUser('SELLER', payload.username)
         } else {
-          setUser('CONSUMER', payload.username)
+          setUser('CONSUMER', payload.username, payload.user_id)
         }
         alert(`로그인이 완료되었습니다!`)
         navigate(ROUTE_PATHS.HOME)

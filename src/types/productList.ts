@@ -37,8 +37,8 @@ export const mappingProductList = (products: ServerProductListType[]) => {
   return products.map((product) => ({
     productId: product.product_id,
     productName: product.name,
-    price: product.price,
-    discountPrice: product.discount_price,
+    price: Number(product.price).toLocaleString(),
+    discountPrice: Number(product.discount_price).toLocaleString(),
     discountRate: product.discount_rate,
     thumbnail: product.thumbnail,
     reviewCount: product.review_count,

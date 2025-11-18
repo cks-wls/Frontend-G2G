@@ -18,7 +18,6 @@ function ProductDetail() {
     try {
       const response = await productDetailApi.getById(id)
       setProduct(response)
-      console.log(response.name)
     } catch (err: any) {
       console.log(err)
     }
@@ -27,9 +26,9 @@ function ProductDetail() {
     if (productId) handleFetch(productId)
   }, [productId])
   return (
-    <div>
+    <div className="product-detail-box">
       <SummarizeDetail item={product!} />
-      <CategoryDetail item={product!} />
+      <CategoryDetail />
       <ProductInformation item={product!} />
       <SellerInformation item={product!} />
       <ProductReview item={product!} />

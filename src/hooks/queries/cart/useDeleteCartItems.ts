@@ -6,12 +6,10 @@ const useDeleteCartItems = () => {
 
   return useMutation({
     mutationFn: async ({
-      cartId,
       productIds,
     }: {
-      cartId: string
-      productIds: string[]
-    }) => await cartApi.deleteCartItems(cartId, productIds),
+      productIds: number[]
+    }) => await cartApi.deleteCartItems(productIds),
     // 삭제 성공 시 useCart 다시 실행
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
   })

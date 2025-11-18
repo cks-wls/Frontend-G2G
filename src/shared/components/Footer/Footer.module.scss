@@ -21,6 +21,11 @@
   @include flex(column, 32px);
   font-size: 14px;
 
+  img {
+    width: 62px;
+    height: 24px;
+  }
+
   .links {
     display: flex;
     gap: 36px;

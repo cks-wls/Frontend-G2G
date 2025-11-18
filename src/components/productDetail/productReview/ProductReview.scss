@@ -51,3 +51,42 @@ img {
   width: 100%;
   border-top: 1px solid #333333;
 }
+.review-item {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  gap: 134px;
+  min-height: 141px;
+  padding: 20px;
+}
+.review-user-name {
+  font-size: 14px;
+  font-weight: 400;
+  color: #888888;
+}
+.review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #333333;
+  font-size: 14px;
+  font-weight: 400;
+}
+.default-ment {
+  color: #888888;
+  font-size: 14px;
+  font-weight: 400;
+}
+.review-img {
+  width: 164px;
+  height: 164px;
+}
+.review-date {
+  font-size: 12px;
+  font-weight: 400;
+  color: #888888;
+}
+.temporary-img {
+  width: 176px;
+  height: 164px;
+}
