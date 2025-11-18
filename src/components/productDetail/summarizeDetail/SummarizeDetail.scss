@@ -68,13 +68,14 @@
 }
 .product-count-box {
   display: flex;
+  position: relative;
   align-items: center;
-  gap: 296px;
   width: 500px;
   height: 72px;
   border: 1px solid #eeeeee;
   padding: 15px;
   //   추후에 20px로 수정 -> ui상 자연스럽게 하기 위해 15px로 임시조정
+  justify-content: space-between;
   color: #333333;
 }
 .product-total-price-box {

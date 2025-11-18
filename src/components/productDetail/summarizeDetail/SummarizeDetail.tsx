@@ -9,11 +9,13 @@ import MinusIcon from '@/assets/icons/minus.svg'
 import { useUser } from '@/stores/userContext'
 import BackToLogin from '@/components/productDetail/backToLogin/BackToLogin'
 import { useParams } from 'react-router-dom'
-import { getAccessToken } from '@/api/auth'
-import { jwtDecode } from 'jwt-decode'
-import type { UserJwtPayload } from '@/types/jwtPayload'
+// import { getAccessToken } from '@/api/auth'
+// import { jwtDecode } from 'jwt-decode'
+// import type { UserJwtPayload } from '@/types/jwtPayload'
 import { cartAddApi } from '@/api/cartAddApi'
-import { addWishListApi } from '@/api/wishListApi'
+// import { addWishListApi } from '@/api/wishListApi'
+import MoveToCart from '@/components/productDetail/moveToCart/MoveToCart'
+
 interface SummarizeDetailProps {
   item: Product
 }
@@ -22,12 +24,14 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
   const [count, setCount] = useState<number>(1)
   const { userType } = useUser()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [like, setLike] = useState(false)
   const [selectedOption, setSelectedOption] = useState<string>('')
   const [selectedExtraPrice, setSelectedExtraPrice] = useState<number>(0)
+  const [isCartMove, setIsCartMove] = useState(false)
   const productId = Number(params.id)
-  const token = getAccessToken() ?? ''
-  const payload = jwtDecode<UserJwtPayload>(token)
-  const userId = Number(payload.user_id)
+  // const token = getAccessToken() ?? ''
+  // const payload = jwtDecode<UserJwtPayload>(token)
+  // const userId = Number(payload.user_id)
   const discountPrice = Number(item?.discount_price)
   const handleAddToCount = () => {
     setCount((prev) => prev + 1)
@@ -35,12 +39,12 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
   const handleDelToCount = () => {
     if (count > 1) {
       setCount((prev) => prev - 1)
-      // console.log(item?.images?.[0]?.image_url)
-      console.log(discountPrice)
+      console.log(item?.images?.[0]?.image_url)
     }
   }
   const handleCloseModal = () => {
     setIsModalOpen(false)
+    setIsCartMove(false)
   }
   const handleClickAddToCart = async () => {
     // 장바구니 담기 눌렀을때의 로직
@@ -53,10 +57,9 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
           product_id: productId,
           quantity: count,
         }
-        console.log(cartInformation)
         const response = await cartAddApi.cartAdd(cartInformation)
+        setIsCartMove(true)
         console.log(response)
-        alert('장바구니에 담겼습니다!')
       } catch (err) {
         console.log(err)
       }
@@ -75,23 +78,24 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
     if (userType === 'GUEST') {
       setIsModalOpen(true)
     } else {
-      try {
-        const wishListAddData = {
-          user: userId,
-          product: productId,
-        }
-        console.log(wishListAddData)
-        const response = await addWishListApi.postWishList(wishListAddData)
-        console.log(response)
-        alert('찜 목록에 추가 되었습니다')
-      } catch (err) {
-        console.log(err)
-      }
+      // try {
+      //   const wishListAddData = {
+      //     user: userId,
+      //     product: productId,
+      //   }
+      //   console.log(wishListAddData)
+      //   const response = await addWishListApi.postWishList(wishListAddData)
+      //   console.log(response)
+      setLike((prev) => !prev)
+      // } catch (err) {
+      //   console.log(err)
+      // }
     }
   }
   return (
     <>
       {isModalOpen && <BackToLogin onClick={handleCloseModal} />}
+      {isCartMove && <MoveToCart onClick={handleCloseModal} />}
       <div className="detail-box">
         <div className="product-detail-top-box">
           <img
@@ -155,7 +159,9 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
                 />
               </div>
               <div className="product-count-box">
-                <span>선택한 옵션명</span>
+                <span className="selected-option">
+                  {selectedOption || '선택한 옵션명'}
+                </span>
                 {/* 이부분도 옵션명 받아와야함 */}
                 <div className="count-box">
                   <img
@@ -194,7 +200,7 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
               <div className="wish-add-to-cart-box">
                 <WishButton
                   buttonType="detail"
-                  isWish={false}
+                  isWish={like}
                   onClick={handleClickWishList}
                   // 추후 좋아요 눌렀을때의 로직 처리
                 />
@@ -205,7 +211,6 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
                 >
                   장바구니 담기
                 </Button>
-                {/* 추후 장바구니 추가 로직 구현 */}
               </div>
             </div>
           </div>
