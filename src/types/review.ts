@@ -3,9 +3,10 @@ export interface ServerReviewType {
   comment: string
   like_count: number
   created_at: string
-  updated_at: string
-  user: number,
-  product: number
+  updated_at?: string
+  user: string
+  images?: string[]
+  product?: number
 }
 
 export interface ReviewType {
