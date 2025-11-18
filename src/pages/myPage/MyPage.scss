@@ -1,0 +1,127 @@
+@use '@/foundations/variables' as *;
+@use '@/foundations/mixins' as *;
+
+.container {
+  width: 740px;
+  background-color: $color-white;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 40px 24px;
+}
+
+.title {
+  border-bottom: 2px solid $color-border;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  font-size: $font-xl;
+  font-weight: $font-semibold;
+}
+
+.contents-wrapper {
+  img {
+    width: 100px;
+    height: 110px;
+    border-radius: 4px;
+    background-color: $color-border;
+  }
+
+  section {
+    @include flex(column);
+    justify-content: space-between;
+  }
+
+  .contents-overview {
+    @include flex($gap: 6px);
+    padding: 10px 0px;
+    .status {
+      @include font($weight: $font-bold);
+    }
+    .product-name {
+      @include font($font-sm);
+    }
+    .row-texts {
+      @include flex();
+      align-items: center;
+    }
+
+    .sm-text {
+      @include font($font-sm);
+    }
+    .quantity {
+      @include font($font-sm, $font-normal, $color-text);
+    }
+    .date {
+      @include font($font-xs, $font-normal, $color-subtext);
+    }
+    .sm-bold {
+      @include font($size: $font-sm, $weight: $font-bold);
+    }
+
+    .row-buttons {
+      @include flex($gap: 8px);
+      .cart-button {
+        @include font($color: $color-subtext);
+        border: 1px solid $color-subtext;
+        height: 36px;
+      }
+      .buy-button {
+        height: 36px;
+      }
+    }
+  }
+}
+
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid $color-border;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .content-info {
+    width: 532px;
+    @include flex(column);
+    justify-content: space-between;
+  }
+
+  .info-top {
+    @include flex;
+    align-items: center;
+  }
+
+  .review-like {
+    @include font(12px, 500, $color-white);
+    background-color: $color-main;
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  .content-name {
+    @include font(14px, 500, $color-text);
+  }
+
+  .review-update {
+    @include font(12px, 400, $color-subtext);
+  }
+}
+
+.review-buttons {
+  @include flex;
+  button {
+    @include font(12px, 500, $color-subtext);
+    width: 40px;
+    height: 24px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+  }
+}
+
+.review-comment {
+  padding: 10px 0 20px;
+  @include font(14px, 400, $color-text);
+  border-bottom: 2px solid $color-border;
+}

@@ -1,0 +1,71 @@
+@use '@/foundations/mixins' as *;
+@use '@/foundations/variables' as *;
+
+.list-item {
+  @include flex(row, 20px);
+  align-items: start;
+  height: 110px;
+}
+
+input {
+  width: 20px;
+  height: 20px;
+}
+
+.item-img {
+  width: 100px;
+  height: 110px;
+  border-radius: 4px;
+  background-color: $color-border;
+
+  img {
+    @include img;
+  }
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 396px;
+  height: 100%;
+
+  .item-name {
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .item-discount {
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  .item-price {
+    font-size: 12px;
+    color: $color-subtext;
+    text-decoration: line-through;
+  }
+}
+
+.item-quantity {
+  border: 1px solid $color-border;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 14px;
+  @include flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 88px;
+
+  button {
+    padding: 8px;
+    @include flex-center
+  }
+
+  .disabled {
+    color: $color-subtext;
+    cursor: default;
+  }
+}
+
+.item-delete {
+  color: $color-subtext;
+}
