@@ -1,9 +1,11 @@
 import '@/components/productDetail/categoryDetail/CategoryDetail.scss'
-import type { Product } from '@/types/product'
-interface CategoryDetailProps {
-  item: Product
-}
-function CategoryDetail({ item }: CategoryDetailProps) {
+import { API_PATHS } from '@/constants/api'
+import axios from 'axios'
+import type { ServerReviewType } from '@/types/review'
+import { useEffect, useState } from 'react'
+
+function CategoryDetail() {
+  const [reviews, setReviews] = useState<ServerReviewType[]>([])
   const handleClick = (id: string) => {
     const el = document.getElementById(id)
     if (el) {
@@ -14,6 +16,17 @@ function CategoryDetail({ item }: CategoryDetailProps) {
       })
     }
   }
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        const response = await axios.get(API_PATHS.REVIEWS.GET_REVIEW_LIST)
+        setReviews(response.data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchReviews()
+  }, [])
 
   return (
     <div className="category-detail-box">
@@ -31,7 +44,7 @@ function CategoryDetail({ item }: CategoryDetailProps) {
           className="detail-category"
           onClick={() => handleClick('product-review')}
         >
-          후기 ({item?.review_count}){' '}
+          후기 ({reviews.length})
         </span>
         <span
           className="detail-category"
