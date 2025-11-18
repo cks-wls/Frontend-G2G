@@ -19,6 +19,9 @@ export const API_PATHS = {
   WISHLISTS: {
     GET_WISHLIST: '/api/wishlists/',
   },
+  CATEGORIES: {
+    GET_PRODUCTS: (id: number) => `api/categories/${id}/`,
+  },
   CARTS: {
     GET: '/api/carts/',
     ADD: '/api/carts/',
