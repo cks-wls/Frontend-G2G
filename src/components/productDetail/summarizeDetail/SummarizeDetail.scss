@@ -16,9 +16,10 @@
   height: 550px;
   border-radius: 6px;
 }
-.product-simple-information {
+.product-simple-description {
   display: flex;
   flex-direction: column;
+  width: 500px;
 }
 .top-description {
   margin-top: 4px;
@@ -38,6 +39,7 @@
   font-weight: 700;
   font-size: 28px;
   color: #333333;
+  width: 100%;
 }
 .product-detail-fix-box {
   margin-top: 16px;
@@ -47,6 +49,7 @@
   font-size: 14px;
   color: #888888;
   font-weight: 400;
+  width: 100%
 }
 .product-detail-origin-row {
   display: flex;
