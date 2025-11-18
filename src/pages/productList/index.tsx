@@ -8,17 +8,17 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import styles from './list.module.scss'
 
 const LIST_TITLES: Record<string, string> = {
-  created_at: '✨ 따끈따끈 신상품',
-  sales_count: '🔥 지금 가장 핫한 베스트',
-  discount_price: '💸 놓치면 후회할 특가',
+  '-created_at': '✨ 따끈따끈 신상품',
+  '-stats__sales_count': '🔥 지금 가장 핫한 베스트',
+  '-discount_price': '💸 놓치면 후회할 특가',
 }
 
 const SORTS = [
-  { sortValue: 'created_at', label: '신상품순' },
-  { sortValue: '-sale_price', label: '낮은가격순' },
-  { sortValue: 'sale_price', label: '높은가격순' },
-  { sortValue: 'sales_count', label: '판매량순' },
-  { sortValue: 'review_count', label: '후기많은순' },
+  { sortValue: '-created_at', label: '신상품순' },
+  { sortValue: 'price', label: '낮은가격순' },
+  { sortValue: '-price', label: '높은가격순' },
+  { sortValue: '-stats__sales_count', label: '판매량순' },
+  { sortValue: '-stats__review_count', label: '후기많은순' },
 ]
 
 const cn = classNames.bind(styles)

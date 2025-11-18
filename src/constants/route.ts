@@ -27,9 +27,9 @@ export const ROUTE_PATHS = {
   },
   PRODUCT_LIST: {
     INDEX: '/products',
-    NEW: '/products?ordering=created_at',
-    BEST: '/products?ordering=sales_count',
-    SALE: '/products?ordering=discount_price',
+    NEW: '/products?ordering=-created_at',
+    BEST: '/products?ordering=-stats__sales_count',
+    SALE: '/products?ordering=-discount_price',
     SORT: (sortValue: string) => `/products?ordering=${sortValue}`,
     CATEGORY: (category_name: string) =>
       `/products?category_name=${category_name}`,

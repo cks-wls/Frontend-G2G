@@ -8,13 +8,13 @@ import {
 
 // 정렬 기준
 export const SORT_OPTIONS = [
-  'created_at',
-  '-sale_price',
-  'sale_price',
-  'sales_count',
-  'review_count',
-  'discount_price',
-  'wish_count',
+  '-created_at', // 신상품순
+  'price', // 낮은가격순
+  '-price', // 높은가격순
+  '-stats__sales_count', // 판매량순
+  '-stats__review_count', // 후기많은순
+  '-discount_price', // 할인가순
+  '-stats__wish_count', // 찜많은순
 ] as const
 
 export type SortValue = (typeof SORT_OPTIONS)[number]
