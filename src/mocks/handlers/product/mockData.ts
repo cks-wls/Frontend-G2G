@@ -1,4 +1,4 @@
-import { SEASON_CATEGORIES, THEME_CATEGORIES } from '@/constants/categories'
+// import { SEASON_CATEGORIES, THEME_CATEGORIES } from '@/constants/categories'
 import type { Product } from '@/types/product'
 
 const PLACEHOLDER_IMG =
@@ -10,9 +10,9 @@ const PLACEHOLDER_IMG =
   </svg>
 `)
 // 카테고리 이름으로 원본 객체를 찾기 위한 맵
-const ALL_CATEGORIES_MAP = new Map(
-  [...SEASON_CATEGORIES, ...THEME_CATEGORIES].map((cat) => [cat.name, cat])
-)
+// const ALL_CATEGORIES_MAP = new Map(
+//   [...SEASON_CATEGORIES, ...THEME_CATEGORIES].map((cat) => [cat.name, cat])
+// )
 
 // --- 헬퍼 함수 ---
 const randomDate = (start: Date, end: Date): string => {
@@ -37,9 +37,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 1,
-        category: { id: 1, group_name: '시즌', name: '봄' },
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '고창 햅쌀 10kg',
@@ -76,9 +75,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 2,
-        category: { id: 2, group_name: '시즌', name: '여름' },
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '하동 봄녹차 200g',
@@ -110,9 +108,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [{ image_id: 3, product: 3, user: 3, image_url: PLACEHOLDER_IMG }],
     option_values: [
       {
-        id: 3,
-        category: ALL_CATEGORIES_MAP.get('가을')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '청송 GAP 인증 사과 5kg',
@@ -143,9 +140,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [{ image_id: 4, product: 4, user: 4, image_url: PLACEHOLDER_IMG }],
     option_values: [
       {
-        id: 4,
-        category: ALL_CATEGORIES_MAP.get('축산물')!,
-        extra_price: '5000', // 추가금
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '횡성 한우 1+ 등급 등심 500g',
@@ -175,9 +171,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [{ image_id: 5, product: 5, user: 5, image_url: PLACEHOLDER_IMG }],
     option_values: [
       {
-        id: 5,
-        category: ALL_CATEGORIES_MAP.get('여름')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '완도 활전복 (대) 1kg',
@@ -234,9 +229,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [{ image_id: 7, product: 7, user: 7, image_url: PLACEHOLDER_IMG }],
     option_values: [
       {
-        id: 6,
-        category: ALL_CATEGORIES_MAP.get('겨울')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '제주 레드향 3kg',
@@ -266,9 +260,8 @@ export const MOCK_PRODUCTS: Product[] = [
     images: [{ image_id: 8, product: 8, user: 8, image_url: PLACEHOLDER_IMG }],
     option_values: [
       {
-        id: 7,
-        category: ALL_CATEGORIES_MAP.get('장류')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '순창 전통 고추장 1kg',
@@ -355,9 +348,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 8,
-        category: ALL_CATEGORIES_MAP.get('가을')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '양양 자연산 송이버섯 1kg',
@@ -418,9 +410,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 9,
-        category: ALL_CATEGORIES_MAP.get('축산물')!,
-        extra_price: '5000',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '제주 흑돼지 오겹살 600g (냉장)',
@@ -480,9 +471,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 10,
-        category: ALL_CATEGORIES_MAP.get('봄')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '논산 딸기 1kg (특)',
@@ -542,9 +532,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 11,
-        category: ALL_CATEGORIES_MAP.get('농산가공')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '서산 어리굴젓 500g',
@@ -576,9 +565,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 12,
-        category: ALL_CATEGORIES_MAP.get('여름')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '성주 참외 2kg',
@@ -666,9 +654,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 13,
-        category: ALL_CATEGORIES_MAP.get('겨울')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '해남 절임배추 10kg',
@@ -728,9 +715,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 14,
-        category: ALL_CATEGORIES_MAP.get('가을')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '상주 곶감 선물세트 1호',
@@ -762,9 +748,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 15,
-        category: ALL_CATEGORIES_MAP.get('화훼류')!,
-        extra_price: '3000',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '공기정화식물 몬스테라 (중형 화분)',
@@ -852,9 +837,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 16,
-        category: ALL_CATEGORIES_MAP.get('특작류')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '보성 유기농 가루녹차 100g',
@@ -886,9 +870,8 @@ export const MOCK_PRODUCTS: Product[] = [
     ],
     option_values: [
       {
-        id: 17,
-        category: ALL_CATEGORIES_MAP.get('가을')!,
-        extra_price: '0',
+        category_name: '1kg',
+        extra_price: '1000',
       },
     ],
     name: '파주 장단콩 (백태) 1kg',

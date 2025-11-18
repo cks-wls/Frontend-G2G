@@ -36,16 +36,15 @@ export interface ProductImage {
 }
 
 export interface ProductOptionValue {
-  id: number
-  category: ProductOptionCategory
+  category_name: string
   extra_price: string
 }
 
-export interface ProductOptionCategory {
-  id: number
-  group_name: string
-  name: string
-}
+// export interface ProductOptionCategory {
+//   id: number
+//   group_name: string
+//   name: string
+// }
 
 export type SeasonCategories = typeof SEASON_CATEGORIES
 export type ThemeCategories = typeof THEME_CATEGORIES

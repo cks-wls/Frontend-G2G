@@ -5,7 +5,7 @@ interface SellerInformationProps {
 }
 function SellerInformation({ item }: SellerInformationProps) {
   return (
-    <div className="seller-information-box">
+    <div id="seller-information" className="seller-information-box">
       <div className="seller-information-title-box">
         <span className="seller-information-title">업체정보</span>
         <span className="seller-informtaion-more">상품 더보기</span>

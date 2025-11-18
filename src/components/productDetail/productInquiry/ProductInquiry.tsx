@@ -19,7 +19,9 @@ function ProductInquiry() {
 
   return (
     <>
-      <div className="inquiry-title">상품문의</div>
+      <div id="product-inquiry" className="inquiry-title">
+        상품문의
+      </div>
       <div className="inquiry-box">
         <div className="inquiry-top-section">
           <div className="long-section">제목</div>
