@@ -13,10 +13,10 @@ export const API_PATHS = {
     GET_ID: (id: number) => `/api/products/${id}/`,
   },
   ORDERS: {
-    GET_ORDER_LIST: '/api/orders/items',
+    GET_ORDER_LIST: '/api/orders/items/',
   },
   WISHLISTS: {
-    GET_WISHLIST: '/api/wishlists',
+    GET_WISHLIST: '/api/wishlists/',
   },
   CATEGORIES: {
     GET_PRODUCTS: (id: number) => `/api/categories/${id}/`,
