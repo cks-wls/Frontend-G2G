@@ -7,6 +7,7 @@ import { ROUTE_PATHS } from '@/constants/route'
 import Cart from '@/pages/cart'
 import Main from '@/pages/main'
 import OrderList from '@/pages/myPage/OrderList'
+import ReviewList from '@/pages/myPage/ReviewList'
 import WishList from '@/pages/myPage/WishList'
 import ProductDetail from '@/pages/productDetail/productDetail'
 import ProductList from '@/pages/productList'
@@ -58,7 +59,7 @@ function AppRoutes() {
           />
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
           <Route path={ROUTE_PATHS.MYPAGE.WISH_LIST} element={<WishList />} />
-          <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<OrderList />} />
+          <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<ReviewList />} />
           <Route
             path={ROUTE_PATHS.MYPAGE.INFORMATION}
             element={<OrderList />}
