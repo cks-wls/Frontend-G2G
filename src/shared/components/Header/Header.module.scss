@@ -79,12 +79,14 @@
     }
   }
 
-  .user {
+  .user-wrap {
     position: relative;
     height: 100%;
-    @include flex(row, 4px);
-    align-items: center;
 
+    .user {
+      @include flex(row, 4px);
+      align-items: center;
+    }
     .user-icon {
       width: 28px;
       height: 28px;
@@ -114,6 +116,10 @@
     transition:
       opacity 0.3s ease-in-out,
       width 0.3s ease-in-out;
+
+      img {
+        @include img  
+      }
 
     &.hidden {
       opacity: 0;
@@ -294,7 +300,7 @@
   }
 }
 
-.user:hover .dropdown {
+.user-wrap:hover .dropdown {
   display: block;
 }
 

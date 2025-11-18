@@ -25,15 +25,11 @@ const Card = ({ product }: CardProps) => {
           isWish={like}
         ></WishButton>
       </div>
-      <Link to={`/product/${product.productId}`}>
-        <div className="info">
-          <Link
-            to={ROUTE_PATHS.PRODUCT_LIST.SELLER(product.sellerBusinessName)}
-          >
-            <span className="business-name">
-              [{product.sellerBusinessName}]
-            </span>
-          </Link>
+      <div className="info">
+        <Link to={ROUTE_PATHS.PRODUCT_LIST.SELLER(product.sellerBusinessName)}>
+          <span className="business-name">[{product.sellerBusinessName}]</span>
+        </Link>
+        <Link to={`/product/${product.productId}`}>
           <h4 className="name">{product.productName}</h4>
           <div>
             {product.discountRate ? (
@@ -48,12 +44,12 @@ const Card = ({ product }: CardProps) => {
               <span className="price">{product.price}원</span>
             )}
           </div>
-          <div className={product.reviewCount ? 'review' : 'none'}>
-            <MessageSquareText size={16} color="#888" />
-            <span>{product.reviewCount}</span>
-          </div>
+        </Link>
+        <div className={product.reviewCount ? 'review' : 'none'}>
+          <MessageSquareText size={16} color="#888" />
+          <span>{product.reviewCount}</span>
         </div>
-      </Link>
+      </div>
     </li>
   )
 }

@@ -12,6 +12,7 @@
 .title {
   border-bottom: 2px solid $color-border;
   padding-bottom: 20px;
+  margin-bottom: 20px;
   font-size: $font-xl;
   font-weight: $font-semibold;
 }
@@ -26,34 +27,34 @@
 
   section {
     @include flex(column);
-    justify-content:space-between;
+    justify-content: space-between;
   }
-  
+
   .contents-overview {
     @include flex($gap: 6px);
     padding: 10px 0px;
     .status {
-      @include font($weight: $font-bold)
+      @include font($weight: $font-bold);
     }
     .product-name {
-      @include font($font-sm)
+      @include font($font-sm);
     }
-    .row-texts{
+    .row-texts {
       @include flex();
       align-items: center;
     }
-    
+
     .sm-text {
-      @include font($font-sm)
+      @include font($font-sm);
     }
-    .quantity{
-      @include font($font-sm, $font-normal, $color-text)
+    .quantity {
+      @include font($font-sm, $font-normal, $color-text);
     }
-    .date{
-      @include font($font-xs, $font-normal, $color-subtext)
+    .date {
+      @include font($font-xs, $font-normal, $color-subtext);
     }
     .sm-bold {
-      @include font($size: $font-sm, $weight: $font-bold)
+      @include font($size: $font-sm, $weight: $font-bold);
     }
 
     .row-buttons {
@@ -68,4 +69,59 @@
       }
     }
   }
+}
+
+.content-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid $color-border;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .content-info {
+    width: 532px;
+    @include flex(column);
+    justify-content: space-between;
+  }
+
+  .info-top {
+    @include flex;
+    align-items: center;
+  }
+
+  .review-like {
+    @include font(12px, 500, $color-white);
+    background-color: $color-main;
+    border-radius: 4px;
+    padding: 2px 6px;
+  }
+
+  .content-name {
+    @include font(14px, 500, $color-text);
+  }
+
+  .review-update {
+    @include font(12px, 400, $color-subtext);
+  }
+}
+
+.review-buttons {
+  @include flex;
+  button {
+    @include font(12px, 500, $color-subtext);
+    width: 40px;
+    height: 24px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+  }
+}
+
+.review-comment {
+  padding: 10px 0 20px;
+  @include font(14px, 400, $color-text);
+  border-bottom: 2px solid $color-border;
 }
