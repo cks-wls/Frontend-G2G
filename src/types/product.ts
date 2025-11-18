@@ -46,6 +46,10 @@ export interface ProductOptionCategory {
   group_name: string
   name: string
 }
+export interface ProductOptionValue {
+  category_name: string
+  extra_price: string
+}
 
 export type SeasonCategories = typeof SEASON_CATEGORIES
 export type ThemeCategories = typeof THEME_CATEGORIES
