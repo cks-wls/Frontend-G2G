@@ -2,6 +2,7 @@ import Logo from '@/assets/images/logo.png'
 import { THEME_CATEGORIES } from '@/constants/categories'
 import { ROUTE_PATHS } from '@/constants/route'
 import Search from '@/shared/components/Form/Search/Search'
+import { useUser } from '@/stores/userContext'
 import classNames from 'classnames/bind'
 import {
   LucideHeart,
@@ -13,7 +14,6 @@ import {
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Header.module.scss'
-import { useUser } from '@/stores/userContext'
 const cn = classNames.bind(styles)
 
 export interface HeaderProps {
@@ -81,14 +81,16 @@ const Header = () => {
 
             {/* 로그인 후 (소비자 유형) */}
             {userType === 'CONSUMER' && (
-              <Link to={ROUTE_PATHS.MYPAGE.INDEX} className={styles.user}>
-                <span>{userName ?? '사용자'} 님</span>
-                <div className={styles['user-icon']}>
-                  <LucideSprout size={20} />
-                </div>
+              <div className={styles['user-wrap']}>
+                <Link to={ROUTE_PATHS.MYPAGE.INDEX} className={styles.user}>
+                  <span>{userName ?? '사용자'} 님</span>
+                  <div className={styles['user-icon']}>
+                    <LucideSprout size={20} />
+                  </div>
+                </Link>
                 <ul className={styles.dropdown}>
                   <li>
-                    <Link to={ROUTE_PATHS.MYPAGE.INDEX}>주문내역</Link>
+                    <Link to={ROUTE_PATHS.MYPAGE.ORDER_LIST}>주문내역</Link>
                   </li>
                   <li>
                     <Link to={ROUTE_PATHS.MYPAGE.INDEX}>회원정보</Link>
@@ -99,7 +101,7 @@ const Header = () => {
                     </button>
                   </li>
                 </ul>
-              </Link>
+              </div>
             )}
           </div>
           <div className={styles.middle}>
@@ -129,7 +131,7 @@ const Header = () => {
               <ul className={styles['category-menu']}>
                 {THEME_CATEGORIES.map((c, index) => (
                   <li key={index}>
-                    <Link to={ROUTE_PATHS.CATEGORY_LIST.GENERATOR(c.id)}>
+                    <Link to={ROUTE_PATHS.PRODUCT_LIST.CATEGORY(c.name)}>
                       {c.name}
                     </Link>
                   </li>
@@ -137,13 +139,13 @@ const Header = () => {
               </ul>
               <ul className={styles.gnb}>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>신상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.NEW}>신상품</Link>
                 </li>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>베스트</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.BEST}>베스트</Link>
                 </li>
                 <li>
-                  <Link to={ROUTE_PATHS.PRODUCT_LIST}>알뜰상품</Link>
+                  <Link to={ROUTE_PATHS.PRODUCT_LIST.SALE}>알뜰상품</Link>
                 </li>
               </ul>
             </div>

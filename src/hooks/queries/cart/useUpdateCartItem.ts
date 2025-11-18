@@ -6,14 +6,12 @@ const useUpdateCartItem = () => {
 
   return useMutation({
     mutationFn: async ({
-      cartId,
       productId,
       quantity,
     }: {
-      cartId: string
-      productId: string
+      productId: number
       quantity: number
-    }) => await cartApi.updateCartQuantity(cartId, productId, quantity),
+    }) => await cartApi.updateCartQuantity(productId, quantity),
 
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['cart'] }),
   })

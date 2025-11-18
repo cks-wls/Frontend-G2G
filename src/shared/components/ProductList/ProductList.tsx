@@ -1,9 +1,9 @@
 import Card from '@/shared/components/Card/Card'
-import type { Product } from '@/types/product'
+import type { ProductListType } from '@/types/productList'
 import './ProductList.scss'
 
 export interface ProductListProps {
-  products: Product[]
+  products: ProductListType[]
   isLoading: boolean
   error: Error | null
 }
@@ -17,7 +17,7 @@ const ProductList = ({ products, error, isLoading }: ProductListProps) => {
   return (
     <ul className="product-list">
       {products?.map((product) => (
-        <Card key={product.product_id} product={product} />
+        <Card key={product.productId} product={product} />
       ))}
     </ul>
   )
