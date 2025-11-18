@@ -28,4 +28,7 @@ export const API_PATHS = {
     UPDATE: '/api/carts/items/',
     DELETE: '/api/carts/items/',
   },
+  REVIEWS: {
+    GET_REVIEW_LIST: '/api/reviews/',
+  },
 } as const

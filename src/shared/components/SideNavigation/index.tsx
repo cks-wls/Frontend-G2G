@@ -9,15 +9,16 @@ import {
 import { Link, useLocation } from 'react-router-dom'
 import styles from './SideNavigation.module.scss'
 import { useUser } from '@/stores/userContext'
+import { ROUTE_PATHS } from '@/constants/route'
 
 const USER_SIDE_MENU = [
   {
     label: '주문 내역',
-    path: '/mypage/order-list',
+    path: ROUTE_PATHS.MYPAGE.ORDER_LIST,
     icon: <LucideDollarSign />,
   },
-  { label: '찜한 상품', path: '/mypage/wish-list', icon: <LucideHeart /> },
-  { label: '상품 후기', path: '', icon: <LucideSquarePen /> },
+  { label: '찜한 상품', path: ROUTE_PATHS.MYPAGE.WISH_LIST, icon: <LucideHeart /> },
+  { label: '상품 후기', path: ROUTE_PATHS.MYPAGE.REVIEWS, icon: <LucideSquarePen /> },
   { label: '회원정보 관리', path: '', icon: <LucideUserRoundCheck /> },
 ]
 
