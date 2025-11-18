@@ -20,11 +20,11 @@ function OptionModal({
   option,
   onSelectOption,
 }: OptionModalProps) {
-  const [isModalOpen, setisModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedOption, setSelectedOption] = useState(placeHolder)
   // 임시로 useState를 이용해 모달 열리는 여부 설정
   const handleClick = () => {
-    setisModalOpen((prev) => !prev)
+    setIsModalOpen((prev) => !prev)
   }
   const handleSelect = (value: ProductOptionValue) => {
     const price = parseInt(value.extra_price)
@@ -33,7 +33,7 @@ function OptionModal({
 
     onSelectOption?.(value.category_name, price)
 
-    setisModalOpen(false)
+    setIsModalOpen(false)
   }
   return (
     <div className={`option-box ${className || ''}`}>
