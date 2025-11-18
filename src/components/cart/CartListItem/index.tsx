@@ -11,9 +11,9 @@ const cn = classNames.bind(styles)
 interface CartListItemProps {
   item: CartItem
   isChecked: boolean
-  onChecked: (productId: string, isChecked: boolean) => void
-  onChangeQuantity: (productId: string, newQuantity: number) => void
-  onDeleteItem: (productId: string) => void
+  onChecked: (productId: number, isChecked: boolean) => void
+  onChangeQuantity: (productId: number, newQuantity: number) => void
+  onDeleteItem: (productId: number) => void
 }
 
 const CartListItem = ({
@@ -47,9 +47,11 @@ const CartListItem = ({
             <p className={cn('item-name')}>{item.productName}</p>
           </Link>
           <span className={cn('item-discount')}>
-            {item.discountPrice.toLocaleString()}원
+            {item.discountAmount?.toLocaleString()}원
           </span>
-          <span className={cn('item-price')}>{item.price}원</span>
+          <span className={cn('item-price')}>
+            {item.price?.toLocaleString()}원
+          </span>
         </div>
         <div className={cn('item-quantity')}>
           <button

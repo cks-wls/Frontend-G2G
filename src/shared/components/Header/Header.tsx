@@ -2,6 +2,7 @@ import Logo from '@/assets/images/logo.png'
 import { THEME_CATEGORIES } from '@/constants/categories'
 import { ROUTE_PATHS } from '@/constants/route'
 import Search from '@/shared/components/Form/Search/Search'
+import { useUser } from '@/stores/userContext'
 import classNames from 'classnames/bind'
 import {
   LucideHeart,
@@ -13,7 +14,6 @@ import {
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styles from './Header.module.scss'
-import { useUser } from '@/stores/userContext'
 const cn = classNames.bind(styles)
 
 export interface HeaderProps {
@@ -81,14 +81,16 @@ const Header = () => {
 
             {/* 로그인 후 (소비자 유형) */}
             {userType === 'CONSUMER' && (
-              <Link to={ROUTE_PATHS.MYPAGE.INDEX} className={styles.user}>
-                <span>{userName ?? '사용자'} 님</span>
-                <div className={styles['user-icon']}>
-                  <LucideSprout size={20} />
-                </div>
+              <div className={styles['user-wrap']}>
+                <Link to={ROUTE_PATHS.MYPAGE.INDEX} className={styles.user}>
+                  <span>{userName ?? '사용자'} 님</span>
+                  <div className={styles['user-icon']}>
+                    <LucideSprout size={20} />
+                  </div>
+                </Link>
                 <ul className={styles.dropdown}>
                   <li>
-                    <Link to={ROUTE_PATHS.MYPAGE.INDEX}>주문내역</Link>
+                    <Link to={ROUTE_PATHS.MYPAGE.ORDER_LIST}>주문내역</Link>
                   </li>
                   <li>
                     <Link to={ROUTE_PATHS.MYPAGE.INDEX}>회원정보</Link>
@@ -99,7 +101,7 @@ const Header = () => {
                     </button>
                   </li>
                 </ul>
-              </Link>
+              </div>
             )}
           </div>
           <div className={styles.middle}>

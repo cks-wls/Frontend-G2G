@@ -12,11 +12,12 @@ import ProductDetail from '@/pages/productDetail/productDetail'
 import ProductList from '@/pages/productList'
 import SignIn from '@/pages/signIn/signIn'
 import SignUp from '@/pages/signUp/signUp'
+import ProtectedRoute from '@/shared/components/auth/ProtectedRoute'
 import CommonLayout from '@/shared/components/Layout/CommonLayout'
 import MypageLayout from '@/shared/components/Layout/MypageLayout'
 import SellerLayout from '@/shared/components/Layout/SellerLayout'
 import SignUpLayout from '@/shared/components/Layout/SignUpLayout'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
 function AppRoutes() {
   return (
@@ -24,14 +25,37 @@ function AppRoutes() {
       {/* 게스트와 소비자 공용 레이아웃 */}
       <Route element={<CommonLayout />}>
         <Route index element={<Main />} />
-        <Route path={ROUTE_PATHS.PRODUCT_LIST.INDEX} element={<ProductList />} />
+        <Route
+          path={ROUTE_PATHS.PRODUCT_LIST.INDEX}
+          element={<ProductList />}
+        />
         <Route
           path={ROUTE_PATHS.PRODUCT_DETAIL.TEMPLATE}
           element={<ProductDetail />}
         />
         {/* 소비자만 접근 가능 */}
-        <Route path={ROUTE_PATHS.CART} element={<Cart />} />
-        <Route path={ROUTE_PATHS.MYPAGE.INDEX} element={<MypageLayout />}>
+
+        <Route
+          path={ROUTE_PATHS.CART}
+          element={
+            <ProtectedRoute allowedTypes="CONSUMER">
+              <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path={ROUTE_PATHS.MYPAGE.INDEX}
+          element={
+            <ProtectedRoute allowedTypes="CONSUMER">
+              <MypageLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route
+            index
+            element={<Navigate to={ROUTE_PATHS.MYPAGE.ORDER_LIST} replace />}
+          />
           <Route path={ROUTE_PATHS.MYPAGE.ORDER_LIST} element={<OrderList />} />
           <Route path={ROUTE_PATHS.MYPAGE.WISH_LIST} element={<WishList />} />
           <Route path={ROUTE_PATHS.MYPAGE.REVIEWS} element={<OrderList />} />
@@ -57,9 +81,15 @@ function AppRoutes() {
           element={<EmailCertification />}
         />
       </Route>
-      <Route path={ROUTE_PATHS.SELLER.INDEX} element={<SellerLayout />}>
-        <Route index element={<Main />} />
-      </Route>
+      <Route
+        path={ROUTE_PATHS.SELLER.INDEX}
+        element={
+          <ProtectedRoute allowedTypes="SELLER">
+            {' '}
+            <SellerLayout />
+          </ProtectedRoute>
+        }
+      ></Route>
     </Routes>
   )
 }

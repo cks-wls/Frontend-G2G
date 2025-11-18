@@ -8,24 +8,18 @@ export const cartApi = {
     return mappingGetCart(data)
   },
 
-  // TODO: put -> patch로 수정 요청
-  updateCartQuantity: async (
-    cartId: string,
-    productId: string,
-    quantity: number
-  ) => {
+  updateCartQuantity: async (productId: number, quantity: number) => {
     const { data } = await axiosInstance.patch<ServerCart>(
-      API_PATHS.CARTS.UPDATE(cartId),
-      { productId, quantity }
+      API_PATHS.CARTS.UPDATE,
+      { product_id: productId, quantity }
     )
     return data
   },
 
-  // TODO: 장바구니 상품 선택 삭제, 전체 삭제 모두 가능 하도록 productId 배열로 보낼 수 있게 수정 요청
-  deleteCartItems: async (cartId: string, productIds: string[]) => {
+  deleteCartItems: async (productIds: number[]) => {
     const { data } = await axiosInstance.delete<ServerCart>(
-      API_PATHS.CARTS.DELETE(cartId),
-      { data: { productIds } }
+      API_PATHS.CARTS.DELETE,
+      { data: { product_ids: productIds } }
     )
     return data
   },

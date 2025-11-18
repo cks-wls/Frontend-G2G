@@ -79,12 +79,14 @@
     }
   }
 
-  .user {
+  .user-wrap {
     position: relative;
     height: 100%;
-    @include flex(row, 4px);
-    align-items: center;
 
+    .user {
+      @include flex(row, 4px);
+      align-items: center;
+    }
     .user-icon {
       width: 28px;
       height: 28px;
@@ -294,7 +296,7 @@
   }
 }
 
-.user:hover .dropdown {
+.user-wrap:hover .dropdown {
   display: block;
 }
 
