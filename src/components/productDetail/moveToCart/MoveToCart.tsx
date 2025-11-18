@@ -1,4 +1,4 @@
-import AlertImg from '@/assets/images/productdetail/alert.png'
+import AlertImg from '@/assets/images/productDetail/alert.png'
 import Button from '@/shared/components/button'
 import { useNavigate } from 'react-router-dom'
 import { ROUTE_PATHS } from '@/constants/route'
