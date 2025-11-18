@@ -64,16 +64,27 @@ const Cart = () => {
       (acc, item) => acc + Number(item.originalPrice) * item.quantity,
       0
     )
+    const totalProductPrice = selectedCartItems.reduce(
+      (acc, item) => acc + Number(item.price) * item.quantity,
+      0
+    )
     const totalDiscount = selectedCartItems.reduce(
       (acc, item) =>
         acc +
         (Number(item.price) - Number(item.discountAmount)) * item.quantity,
       0
     )
+    const deliveryFee = selectedCartItems.reduce(
+      (acc, item) => acc + Number(item.deliveryFee) * item.quantity,
+      0
+    )
 
     return {
       totalOriginalProductPrice,
+      totalProductPrice,
       totalDiscount,
+      deliveryFee,
+      payAmount: totalProductPrice + deliveryFee,
     }
   }, [selectedCartItems])
 
@@ -155,12 +166,15 @@ const Cart = () => {
           <div className={cn('products')}></div>
           <div className={cn('total-wrap')}>
             <p className={cn('total-detail')}>
-              상품 {cart.totalProductPrice?.toLocaleString()}원 + 배송비
-              {cart.totalDeliveryFee
-                ? ` ${cart.totalDeliveryFee?.toLocaleString()}원 `
+              상품 {amounts.totalProductPrice.toLocaleString()}원 + 배송비
+              {amounts.deliveryFee
+                ? ` ${amounts.deliveryFee.toLocaleString()}원 `
                 : ' 무료'}
             </p>
-            <p className={cn('total')}>{cart.finalPrice?.toLocaleString()}원</p>
+            <p className={cn('total')}>
+              {' '}
+              {amounts.payAmount.toLocaleString()}원
+            </p>
           </div>
         </div>
         <div className={cn('cart-right')}>
@@ -194,21 +208,21 @@ const Cart = () => {
               <div className={cn('amount-pair')}>
                 <p>배송비</p>
                 <p className={cn('amount-semibold')}>
-                  {cart.totalDeliveryFee?.toLocaleString()}원
+                  {amounts.deliveryFee.toLocaleString()}원
                 </p>
               </div>
             </div>
             <div className={cn('amount-total')}>
               <p>결제예정금액</p>
               <p className={cn('amount-bold')}>
-                {cart.finalPrice?.toLocaleString()}원
+                {amounts.payAmount.toLocaleString()}원
               </p>
             </div>
           </div>
           {/* TODO: 주문 상품 등록 api 연동 및 구매 완료 모달 노출*/}
           <Button
             onClick={() => {
-              alert('결제 완료')
+              alert('주문이 완료되었습니다.')
               navigate(ROUTE_PATHS.MYPAGE.INDEX)
             }}
             variant="filled"
