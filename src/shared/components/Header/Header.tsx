@@ -153,7 +153,7 @@ const Header = () => {
               <div className={styles['nav-compact-right']}>
                 <Search />
                 <div>
-                  <Link to={ROUTE_PATHS.MYPAGE.INDEX}>
+                  <Link to={ROUTE_PATHS.MYPAGE.WISH_LIST}>
                     <LucideHeart />
                   </Link>
                   <Link to={ROUTE_PATHS.CART}>
