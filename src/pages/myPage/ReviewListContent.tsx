@@ -19,7 +19,7 @@ const ReviewListContent = ({ data }: { data: ReviewType }) => {
             </span>
             <p className="content-name">{review?.productName}</p>
           </div>
-          <p className="review-update">{useFormatDate(data.updated_at)}</p>
+          <p className="review-update">{useFormatDate(data.updated_at)} 작성</p>
         </div>
         <div className="review-buttons">
           <Button variant="outline" className="edit-button">
