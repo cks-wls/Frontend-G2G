@@ -11,7 +11,7 @@ function ProductReview({ item }: ProductReviewProps) {
     setIsAddClick((prev) => !prev)
   }
   return (
-    <>
+    <div id="product-review">
       <div className="review-title">상품 후기</div>
       <div className="review-count">
         <img src={recommendIcon} />
@@ -43,7 +43,7 @@ function ProductReview({ item }: ProductReviewProps) {
           {/* 추후 매핑으로 돌릴 예정 */}
         </div>
       )}
-    </>
+    </div>
   )
 }
 export default ProductReview
