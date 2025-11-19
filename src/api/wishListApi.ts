@@ -1,15 +1,18 @@
 import { API_PATHS } from '@/constants/api'
+import { wishLists } from '@/mocks/handlers/myPage/mockData'
+import { type AddWishList, type ServerWishList } from '@/types/wishList'
 import { axiosInstance } from './axios'
-import {
-  mappingWishList,
-  type WishList,
-  type AddWishList,
-} from '@/types/wishList'
+
+// export const wishListApi = {
+//   getWishList: async (): Promise<WishList[]> => {
+//     const { data } = await axiosInstance.get(API_PATHS.WISHLISTS.GET_WISHLIST)
+//     return mappingWishList(data)
+//   },
+// }
 
 export const wishListApi = {
-  getWishList: async (): Promise<WishList[]> => {
-    const { data } = await axiosInstance.get(API_PATHS.WISHLISTS.GET_WISHLIST)
-    return mappingWishList(data)
+  getWishList: async (): Promise<ServerWishList[]> => {
+    return wishLists
   },
 }
 
