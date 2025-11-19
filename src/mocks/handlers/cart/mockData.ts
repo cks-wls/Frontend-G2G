@@ -19,7 +19,7 @@ export const mockCart: ServerCart[] = [
       },
       {
         id: 2,
-        product: 8,
+        product: 1,
         product_name: '대홍단감자',
         thumbnail: '',
         price: 18500,
