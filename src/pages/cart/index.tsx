@@ -71,9 +71,7 @@ const Cart = () => {
       0
     )
     const totalDiscount = selectedCartItems.reduce(
-      (acc, item) =>
-        acc +
-        (Number(item.price) - Number(item.discountAmount)) * item.quantity,
+      (acc, item) => acc + Number(item.discountAmount) * item.quantity,
       0
     )
     const deliveryFee = selectedCartItems.reduce(
