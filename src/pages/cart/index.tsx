@@ -4,6 +4,7 @@ import useCart from '@/hooks/queries/cart/useCart'
 import useDeleteCartItems from '@/hooks/queries/cart/useDeleteCartItems'
 import useUpdateCartItem from '@/hooks/queries/cart/useUpdateCartItem'
 import useInfo from '@/hooks/queries/myPage/useInfo'
+import useProductList from '@/hooks/queries/product/useProductList'
 import Button from '@/shared/components/button'
 import CheckBox from '@/shared/components/Form/CheckBox/CheckBox'
 import { useUser } from '@/stores/userContext'
@@ -20,6 +21,7 @@ const Cart = () => {
   const { userId } = useUser()
   const { data: userData } = useInfo(Number(userId))
   const { data: cartData, isLoading } = useCart()
+  const { data: productData } = useProductList()
   const { mutate: deleteItems } = useDeleteCartItems()
   const { mutate: updateQuantity } = useUpdateCartItem()
   const [selectedItems, setSelectedItems] = useState<number[]>([])
@@ -151,10 +153,11 @@ const Cart = () => {
             {cartData.length === 0 ? (
               <div>장바구니가 비어있습니다.</div>
             ) : (
-              cartItems.map((item) => (
+              cartItems.map((item, index) => (
                 <CartListItem
                   key={item.id}
                   item={item}
+                  product={productData[index]}
                   onDeleteItem={handleDeleteItem}
                   onChangeQuantity={handleChangeQuantity}
                   isChecked={selectedItems.includes(item.productId)}
