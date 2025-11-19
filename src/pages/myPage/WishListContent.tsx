@@ -9,7 +9,7 @@ const WishListContent = ({ data }: { data: WishList }) => {
   return (
     <div className="contents-wrapper">
       <div className="contents-overview">
-        <img alt={wish?.thumbnail} />
+        <img alt={wish?.thumbnail} src={wish?.thumbnail} />
         <section>
           <div>
             <p className="sm-text">{wish?.productName}</p>

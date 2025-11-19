@@ -39,13 +39,13 @@ const CartListItem = ({
       />
       <div className={cn('item-img')}>
         <Link to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(item.productId)}>
-          <img src={product.thumbnail} alt={product.productName} />
+          <img src={product?.thumbnail} alt={product?.productName} />
         </Link>
       </div>
       <div className={cn('item-info')}>
         <div>
           <Link to={ROUTE_PATHS.PRODUCT_DETAIL.GENERATOR(item.productId)}>
-            <p className={cn('item-name')}>{product.productName}</p>
+            <p className={cn('item-name')}>{product?.productName}</p>
           </Link>
           <span className={cn('item-discount')}>
             {product.price?.toLocaleString()}원

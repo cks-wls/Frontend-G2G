@@ -15,12 +15,12 @@ const OrderListContents = ({
   return (
     <div className="contents-wrapper">
       <div className="contents-overview">
-        <img alt={`${product.productName} 이미지`} src={product.thumbnail} />
+        <img alt={`${product?.productName} 이미지`} src={product?.thumbnail} />
         <section>
           <p className="status">
             {orderData.status === 'completed' ? '결제 완료' : '배송준비중'}
           </p>
-          <p className="product-name">{product.productName}</p>
+          <p className="product-name">{product?.productName}</p>
           <div className="row-texts">
             <p className="sm-text">{orderData.priceAtPurchase}원</p>
             <p className="quantity">{orderData.quantity}개</p>
