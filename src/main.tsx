@@ -8,12 +8,6 @@ import App from './App'
 
 // MSW 워커를 활성화하는 함수
 async function enableMocking() {
-  if (
-    import.meta.env.MODE !== 'development' ||
-    window.location.hostname.includes('vercel.app')
-  ) {
-    return
-  }
   const { worker } = await import('./mocks/browser')
   return worker.start({
     onUnhandledRequest: 'bypass', // 서버에 없는 요청은 그냥 통과
