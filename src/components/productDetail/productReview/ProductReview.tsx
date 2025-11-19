@@ -61,23 +61,24 @@ function ProductReview({ item }: ProductReviewProps) {
             <span>추천</span> */}
           </div>
           <div className="review-detail">
-            {reviews.map((review) => (
-              <div key={review.id} className="review-item">
-                <div className="review-user-name">{review.user}</div>
-                <div className="review-content">
-                  <p className="default-ment">{item.name}</p>
-                  {review.comment}
-                  {review.images?.[0] && (
-                    <img
-                      src={review.images[0]}
-                      alt={item.name}
-                      className="review-img"
-                    />
-                  )}
-                  <p className="review-date">{review.created_at}</p>
+            {Array.isArray(reviews) &&
+              reviews.map((review) => (
+                <div key={review.id} className="review-item">
+                  <div className="review-user-name">{review.user}</div>
+                  <div className="review-content">
+                    <p className="default-ment">{item.name}</p>
+                    {review.comment}
+                    {review.images?.[0] && (
+                      <img
+                        src={review.images[0]}
+                        alt={item.name}
+                        className="review-img"
+                      />
+                    )}
+                    <p className="review-date">{review.created_at}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       )}
