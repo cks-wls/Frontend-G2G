@@ -62,7 +62,7 @@ function ProductReview({ item }: ProductReviewProps) {
           </div>
           <div className="review-detail">
             {Array.isArray(reviews) &&
-              reviews.map((review) => (
+              reviews?.map?.((review) => (
                 <div key={review.id} className="review-item">
                   <div className="review-user-name">{review.user}</div>
                   <div className="review-content">
