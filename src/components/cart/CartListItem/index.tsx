@@ -48,7 +48,7 @@ const CartListItem = ({
             <p className={cn('item-name')}>{product?.productName}</p>
           </Link>
           <span className={cn('item-discount')}>
-            {product.price?.toLocaleString()}원
+            {product?.price?.toLocaleString()}원
           </span>
           <span className={cn('item-price')}>
             {item.originalPrice?.toLocaleString()}원
