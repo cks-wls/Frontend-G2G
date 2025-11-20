@@ -53,18 +53,18 @@ function SummarizeDetail({ item }: SummarizeDetailProps) {
     if (userType === 'GUEST') {
       setIsModalOpen(true)
     } else {
-      try {
-        const cartInformation = {
-          // user_id: userId,
-          product_id: productId,
-          quantity: count,
-        }
-        const response = await cartAddApi.cartAdd(cartInformation)
-        setIsCartMove(true)
-        console.log(response)
-      } catch (err) {
-        console.log(err)
-      }
+      // try {
+      //   const cartInformation = {
+      //     // user_id: userId,
+      //     product_id: productId,
+      //     quantity: count,
+      //   }
+      // const response = await cartAddApi.cartAdd(cartInformation)
+      setIsCartMove(true)
+      // console.log(response)
+      // } catch (err) {
+      //   console.log(err)
+      // }
     }
   }
 
